@@ -9,14 +9,23 @@ const styles = StyleSheet.create({
 		gap: 10,
 		backgroundColor: "#f0f0f0",
 	},
-	textBubble: {
+	message: {
 		backgroundColor: "#ffa173",
 		padding: 10,
 		borderRadius: 10,
 	},
-	textBubbleText: {
+	messageText: {
 		fontSize: 25,
 	},
+	userContainer: {
+		display: "flex",
+		flexDirection: "column",
+		alignItems: "center",
+	},
+	username: {
+		fontSize: 20,
+		fontWeight: "bold",
+	}
 });
 
 export default styles;
