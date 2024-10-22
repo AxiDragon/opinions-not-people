@@ -3,9 +3,11 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
 	chatContainer: {
 		display: "flex",
-		justifyContent: "center",
+		padding: 20,
+		justifyContent: "flex-start",
 		alignItems: "center",
 		gap: 10,
+		backgroundColor: "#f0f0f0",
 	},
 	textBubble: {
 		backgroundColor: "#ffa173",
@@ -14,7 +16,7 @@ const styles = StyleSheet.create({
 	},
 	textBubbleText: {
 		fontSize: 25,
-	}
+	},
 });
 
 export default styles;
