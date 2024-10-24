@@ -1,4 +1,5 @@
-import { View, Text, Image } from "react-native";
+import { View, Text } from "react-native";
+import { Image } from "expo-image";
 import React from "react";
 import User from "@/models/User";
 import styles from "@/assets/styling/style";
