@@ -10,7 +10,7 @@ type Props = {
 export default function MessageUI({ message }: Props) {
 	return (
 		<View style={styles.message}>
-			<UserUI user={message.user} />
+			{message.user && <UserUI user={message.user} />}
 			<Text style={styles.messageText}>{message.text}</Text>
 		</View>
 	);

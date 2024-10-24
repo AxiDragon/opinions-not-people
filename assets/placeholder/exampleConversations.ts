@@ -20,6 +20,32 @@ export const convo1: Message[] = [
 	},
 ];
 
+export const convo1alt: Message[] = [
+	{
+		text: "It's a beautiful day today. PNO and Grant are having a conversation.",
+	},
+	{
+		text: "Hello! How are you doing today?",
+		user: PNO,
+	},
+	{
+		text: "I'm doing well, thank you for asking. How about you?",
+		user: GRANT,
+	},
+	{
+		text: "I'm doing well too. I'm glad to hear that you're doing well.",
+		user: PNO,
+	},
+	{
+		text: "I'm glad to hear that you're glad to hear that I'm doing well.",
+		user: GRANT,
+	},
+	{
+		text: "Well, wasn't that a lovely conversation?",
+	}
+];
+
+
 export const convo2: Message[] = [
 	{
 		text: "Hey there! Long time no see. How have you been?",
