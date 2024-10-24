@@ -2,7 +2,7 @@ import 'react-native-gesture-handler';
 import { ScrollView } from "react-native";
 import MessageUI from "./MessageUI";
 import styles from "@/assets/styling/style";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Gesture, GestureDetector, GestureHandlerRootView } from "react-native-gesture-handler";
 import React from "react";
 import Message from '@/models/Message';
@@ -12,22 +12,28 @@ type Props = {
 }
 
 export default function Chat({ messages }: Props) {
+	const scrollViewRef = useRef<ScrollView>(null);
 	const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
 
 	//TODO: Maybe contemplate if this is the best way to handle this
 	//it works for now though! I'll learn along the way
 	const handleTap = useCallback(() => {
 		if (currentMessageIndex < messages.length - 1) {
-			console.log("Tapped");
 			setCurrentMessageIndex(currentMessageIndex + 1);
 		}
 	}, [currentMessageIndex, messages.length]);
+
+	useEffect(() => {
+		if (scrollViewRef.current) {
+			scrollViewRef.current.scrollToEnd({ animated: true });
+		}
+	}, [currentMessageIndex]);
 
 	const tap = Gesture.Tap().onStart(handleTap);
 
 	return (
 		<GestureHandlerRootView>
-			<ScrollView contentContainerStyle={styles.chatContainer}>
+			<ScrollView contentContainerStyle={styles.chatContainer} ref={scrollViewRef}>
 				{messages.map((message, i) => (
 					i <= currentMessageIndex - 1 && <MessageUI key={i} message={message} />
 				))}
