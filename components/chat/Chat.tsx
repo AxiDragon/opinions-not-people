@@ -31,11 +31,13 @@ export default function Chat({ messages }: Props) {
 
 	const tap = Gesture.Tap().onStart(handleTap);
 
+	//TODO: The last message still blocks scrolling due to GestureDetector - find a way to deal with that
 	return (
 		<GestureHandlerRootView>
 			<ScrollView contentContainerStyle={styles.chatContainer} ref={scrollViewRef}>
 				{messages.map((message, i) => (
-					i <= currentMessageIndex - 1 && <MessageUI key={i} message={message} />
+					i <= currentMessageIndex - 1 &&
+					<MessageUI key={i} message={message} />
 				))}
 				<GestureDetector gesture={tap}>
 					<MessageUI message={messages[currentMessageIndex]} />

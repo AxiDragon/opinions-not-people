@@ -12,6 +12,7 @@ export default function MessageUI({ message }: Props) {
 		<View style={styles.message}>
 			{message.user && <UserUI user={message.user} />}
 			<Text style={styles.messageText}>{message.text}</Text>
+			{message.customContent}
 		</View>
 	);
 }

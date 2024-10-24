@@ -1,5 +1,7 @@
-import Message from "../../models/Message";
-import { GRANT, PNO } from "../../models/User";
+import Message from "@/models/Message";
+import { GRANT, PNO } from "@/models/User";
+import MessageUI from "@/components/chat/MessageUI"
+import { Text, TextInput } from "react-native";
 
 export const convo1: Message[] = [
 	{
@@ -20,7 +22,7 @@ export const convo1: Message[] = [
 	},
 ];
 
-export const convo1alt: Message[] = [
+export const convo1Alt: Message[] = [
 	{
 		text: "It's a beautiful day today. PNO and Grant are having a conversation.",
 	},
@@ -44,7 +46,6 @@ export const convo1alt: Message[] = [
 		text: "Well, wasn't that a lovely conversation?",
 	}
 ];
-
 
 export const convo2: Message[] = [
 	{
@@ -123,4 +124,22 @@ export const convo2: Message[] = [
 		text: "Thanks, you too!",
 		user: PNO,
 	},
+];
+
+export const convo1CustomContent: Message[] = [
+	{
+		text: "It's a beautiful day today. PNO and Grant are having a conversation.",
+	},
+	{
+		text: "Hello! How are you doing today?",
+		user: PNO,
+	},
+	{
+		text: "I'm doing well, thank you for asking.",
+		user: GRANT,
+		customContent: <TextInput placeholder="Type your response here" />,
+	},
+	{
+		text: "Wow.",
+	}
 ];
