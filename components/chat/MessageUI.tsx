@@ -3,11 +3,15 @@ import styles from "@/assets/styling/style";
 import Message from "@/models/Message";
 import UserUI from "./UserUI";
 
-export default function MessageUI(props: { message: Message }) {
+type Props = {
+	message: Message;
+}
+
+export default function MessageUI({ message }: Props) {
 	return (
 		<View style={styles.message}>
-			<UserUI user={props.message.user} />
-			<Text style={styles.messageText}>{props.message.text}</Text>
+			<UserUI user={message.user} />
+			<Text style={styles.messageText}>{message.text}</Text>
 		</View>
 	);
 }
