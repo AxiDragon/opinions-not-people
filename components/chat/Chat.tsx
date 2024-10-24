@@ -1,11 +1,11 @@
 import 'react-native-gesture-handler';
 import { ScrollView } from "react-native";
 import MessageUI from "./MessageUI";
-import styles from "@/app/style";
+import styles from "@/assets/styling/style";
 import { useCallback, useState } from "react";
 import { Gesture, GestureDetector, GestureHandlerRootView } from "react-native-gesture-handler";
 import React from "react";
-import Message from '@/app/models/Message';
+import Message from '@/models/Message';
 
 export default function Chat(props: { messages: Message[] }) {
 	const [currentMessageIndex, setCurrentMessageIndex] = useState(0);

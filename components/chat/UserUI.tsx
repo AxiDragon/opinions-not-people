@@ -1,7 +1,7 @@
 import { View, Text, Image } from "react-native";
 import React from "react";
-import User from "@/app/models/User";
-import styles from "@/app/style";
+import User from "@/models/User";
+import styles from "@/assets/styling/style";
 
 export default function UserUI(props: { user: User }) {
 	return (

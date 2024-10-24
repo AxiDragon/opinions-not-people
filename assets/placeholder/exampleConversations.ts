@@ -1,5 +1,5 @@
-import Message from "../models/Message";
-import { GRANT, PNO } from "../models/User";
+import Message from "../../models/Message";
+import { GRANT, PNO } from "../../models/User";
 
 export const convo1: Message[] = [
 	{

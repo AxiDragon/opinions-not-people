@@ -1,6 +1,6 @@
 import { Text, View } from "react-native";
-import styles from "@/app/style";
-import Message from "@/app/models/Message";
+import styles from "@/assets/styling/style";
+import Message from "@/models/Message";
 import UserUI from "./UserUI";
 
 export default function MessageUI(props: { message: Message }) {
