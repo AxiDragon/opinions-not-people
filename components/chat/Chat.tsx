@@ -18,6 +18,7 @@ export default function Chat({ messages }: Props) {
 	//it works for now though! I'll learn along the way
 	const handleTap = useCallback(() => {
 		if (currentMessageIndex < messages.length - 1) {
+			console.log("Tapped");
 			setCurrentMessageIndex(currentMessageIndex + 1);
 		}
 	}, [currentMessageIndex, messages.length]);
@@ -26,13 +27,14 @@ export default function Chat({ messages }: Props) {
 
 	return (
 		<GestureHandlerRootView>
-			<GestureDetector gesture={tap}>
-				<ScrollView contentContainerStyle={styles.chatContainer}>
-					{messages.map((message, i) => (
-						i <= currentMessageIndex && <MessageUI key={i} message={message} />
-					))}
-				</ScrollView>
-			</GestureDetector>
+			<ScrollView contentContainerStyle={styles.chatContainer}>
+				{messages.map((message, i) => (
+					i <= currentMessageIndex - 1 && <MessageUI key={i} message={message} />
+				))}
+				<GestureDetector gesture={tap}>
+					<MessageUI message={messages[currentMessageIndex]} />
+				</GestureDetector>
+			</ScrollView>
 		</GestureHandlerRootView>
 	);
 }
