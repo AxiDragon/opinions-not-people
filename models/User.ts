@@ -1,4 +1,4 @@
-import images from "@/assets/mapping/imageMapping";
+import images from "@/assets/data/imageMapping";
 
 export default class User {
 	public image;
