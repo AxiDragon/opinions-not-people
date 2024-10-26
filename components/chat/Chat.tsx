@@ -34,8 +34,16 @@ export default function Chat({ messages }: Props) {
 	//TODO: The last message still blocks scrolling due to GestureDetector - find a way to deal with that
 	//TODO: See if there's a way to check if the previous message was from the same user and if so, don't show the UserUI
 	return (
-		<GestureHandlerRootView>
-			<ScrollView contentContainerStyle={styles.chatContainer} ref={scrollViewRef}>
+		<GestureHandlerRootView style={{
+			flex: 1,
+			width: 500,
+			maxWidth: "100%",
+		}}>
+			<ScrollView
+				contentContainerStyle={styles.chatContainer}
+				ref={scrollViewRef}
+				showsVerticalScrollIndicator={false}
+			>
 				{messages.map((message, i) => (
 					i <= currentMessageIndex - 1 &&
 					<MessageUI key={i} message={message} />
@@ -52,9 +60,10 @@ const styles = StyleSheet.create({
 	chatContainer: {
 		display: "flex",
 		padding: 20,
+		paddingTop: 50,
 		justifyContent: "flex-start",
 		alignItems: "center",
-		gap: 10,
-		backgroundColor: "#f0f0f0",
+		gap: 15,
+		width: "100%",
 	},
 });

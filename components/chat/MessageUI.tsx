@@ -1,6 +1,7 @@
 import { Text, View, StyleSheet } from "react-native";
 import Message from "@/models/Message";
 import UserUI from "./UserUI";
+import { COLORS } from "@/constants/colors";
 
 type Props = {
 	message: Message;
@@ -21,11 +22,17 @@ export default function MessageUI({ message }: Props) {
 //TODO: Make the UI here pretty
 const styles = StyleSheet.create({
 	message: {
-		backgroundColor: "#ffa173",
-		padding: 10,
+		backgroundColor: COLORS.messageBackground,
+		borderColor: COLORS.messageBorder,
+		borderWidth: 2,
+		padding: 15,
 		borderRadius: 10,
+		width: "100%",
+		maxWidth: 300,
 	},
 	messageText: {
 		fontSize: 25,
+		textAlign: "center",
+		color: COLORS.text,
 	},
 });

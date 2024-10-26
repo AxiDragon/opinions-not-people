@@ -1,3 +1,4 @@
+import { COLORS } from "@/constants/colors";
 import Slider from "@react-native-community/slider";
 import { StyleSheet, View, Text } from "react-native";
 
@@ -24,15 +25,15 @@ export default function LabelledSlider({
 				minimumValue={minimumValue}
 				maximumValue={maximumValue}
 				value={(minimumValue + maximumValue) / 2}
-				minimumTrackTintColor="#1fb28a"
-				maximumTrackTintColor="#d3d3d3"
-				thumbTintColor="#b9e4c9"
+				minimumTrackTintColor={COLORS.messageBorder}
+				maximumTrackTintColor={COLORS.background}
+				thumbTintColor={COLORS.messageBorder}
 				onValueChange={onValueChange}
 			/>
 			<View style={{ width: "90%", flexDirection: "row", justifyContent: "space-between" }}>
-				<Text>{leftLabel}</Text>
-				{middleLabel && <Text>{middleLabel}</Text>}
-				<Text>{rightLabel}</Text>
+				<Text style={styles.text}>{leftLabel}</Text>
+				{middleLabel && <Text style={styles.text}>{middleLabel}</Text>}
+				<Text style={styles.text}>{rightLabel}</Text>
 			</View>
 		</View>
 	)
@@ -44,6 +45,10 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: "center",
 		alignItems: "center",
-		backgroundColor: "#F5FCFF",
 	},
+	text: {
+		color: COLORS.text,
+		fontSize: 12,
+		textAlign: "center",
+	}
 });

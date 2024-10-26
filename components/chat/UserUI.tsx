@@ -2,6 +2,7 @@ import { View, Text, StyleSheet } from "react-native";
 import { Image } from "expo-image";
 import React from "react";
 import User from "@/models/User";
+import { COLORS } from "@/constants/colors";
 
 type Props = {
 	user: User;
@@ -25,5 +26,6 @@ const styles = StyleSheet.create({
 	username: {
 		fontSize: 20,
 		fontWeight: "bold",
+		color: COLORS.text,
 	}
 });
