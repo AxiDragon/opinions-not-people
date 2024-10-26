@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
 		maxWidth: 300,
 	},
 	messageText: {
-		fontSize: 25,
+		fontSize: 20,
 		textAlign: "center",
 		color: COLORS.text,
 	},

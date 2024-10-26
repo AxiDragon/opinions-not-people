@@ -11,9 +11,9 @@ const intro: Message[] = [
 	new Message("My name is...", undefined,
 		<TextInput
 			style={{
-				fontSize: 24,
-				backgroundColor: "papayawhip",
-				padding: 5,
+				fontSize: 20,
+				backgroundColor: "#ffe6d4",
+				padding: 10,
 				borderRadius: 5,
 				marginTop: 5
 			}}
@@ -26,7 +26,7 @@ const intro: Message[] = [
 	new Message(() => "Nice to meet you, " + getUsername() + "!", PNO),
 	new Message("I'd like to ask if you agree or disagree on the following:", PNO),
 	new Message("The government should reduce their military spending.", PNO,
-		<LabelledSlider onValueChange={(value) => console.log(value)} middleLabel="No Opinion" />
+		<LabelledSlider onValueChange={(value) => console.log(value)} middleLabel="Neutral" />
 	),
 ];
 
