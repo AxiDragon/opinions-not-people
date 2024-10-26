@@ -28,7 +28,7 @@ const intro: Message[] = [
 	new Message("Hey, I'm going to ask your opinion on something.", PNO),
 	new Message("Do you agree or disagree with the following topic?", PNO),
 	new Message("\"The government should reduce their military spending.\"", PNO,
-		<LabeledSlider onValueChange={(value) => console.log(value)} middleLabel="Neutral" />
+		<LabeledSlider onValueChange={(value) => { }} middleLabel="Neutral" />
 	),
 ];
 
