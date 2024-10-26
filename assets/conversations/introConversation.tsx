@@ -27,6 +27,7 @@ const intro: Message[] = [
 	new Message(() => "Nice to meet you, " + getUsername() + "!", PNO),
 	new Message("Hey, I'm going to ask your opinion on something.", PNO),
 	new Message("Do you agree or disagree with the following topic?", PNO),
+	new Message("Remember! You don't have to fully agree or disagree.", PNO),
 	new Message("\"The government should reduce their military spending.\"", PNO,
 		<LabeledSlider onValueChange={(value) => { }} middleLabel="Neutral" />
 	),
