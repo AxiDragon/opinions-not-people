@@ -5,6 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import intro from "@/assets/conversations/introConversation";
 
 export default function Index() {
+  //TODO: implement those provider things
   return (
     <GestureHandlerRootView>
       <NavigationContainer independent={true}>

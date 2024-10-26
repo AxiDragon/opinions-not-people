@@ -1,8 +1,7 @@
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { Image } from "expo-image";
 import React from "react";
 import User from "@/models/User";
-import styles from "@/assets/styling/style";
 
 type Props = {
 	user: User;
@@ -16,3 +15,15 @@ export default function UserUI({ user }: Props) {
 		</View>
 	)
 }
+
+const styles = StyleSheet.create({
+	userContainer: {
+		display: "flex",
+		flexDirection: "column",
+		alignItems: "center",
+	},
+	username: {
+		fontSize: 20,
+		fontWeight: "bold",
+	}
+});

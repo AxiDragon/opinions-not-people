@@ -1,7 +1,6 @@
 import 'react-native-gesture-handler';
-import { ScrollView } from "react-native";
+import { ScrollView, StyleSheet } from "react-native";
 import MessageUI from "./MessageUI";
-import styles from "@/assets/styling/style";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Gesture, GestureDetector, GestureHandlerRootView } from "react-native-gesture-handler";
 import React from "react";
@@ -48,3 +47,14 @@ export default function Chat({ messages }: Props) {
 		</GestureHandlerRootView>
 	);
 }
+
+const styles = StyleSheet.create({
+	chatContainer: {
+		display: "flex",
+		padding: 20,
+		justifyContent: "flex-start",
+		alignItems: "center",
+		gap: 10,
+		backgroundColor: "#f0f0f0",
+	},
+});

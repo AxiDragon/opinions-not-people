@@ -1,5 +1,4 @@
-import { Text, View } from "react-native";
-import styles from "@/assets/styling/style";
+import { Text, View, StyleSheet } from "react-native";
 import Message from "@/models/Message";
 import UserUI from "./UserUI";
 
@@ -20,3 +19,13 @@ export default function MessageUI({ message }: Props) {
 }
 
 //TODO: Make the UI here pretty
+const styles = StyleSheet.create({
+	message: {
+		backgroundColor: "#ffa173",
+		padding: 10,
+		borderRadius: 10,
+	},
+	messageText: {
+		fontSize: 25,
+	},
+});
