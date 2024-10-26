@@ -18,7 +18,8 @@ export default function Chat({ messages }: Props) {
 	//TODO: Maybe contemplate if this is the best way to handle this
 	//it works for now though! I'll learn along the way
 	const handleTap = useCallback(() => {
-		if (currentMessageIndex < messages.length - 1) {
+		if (messages[currentMessageIndex].continueCondition()
+			&& currentMessageIndex < messages.length - 1) {
 			setCurrentMessageIndex(currentMessageIndex + 1);
 		}
 	}, [currentMessageIndex, messages.length]);
@@ -32,6 +33,7 @@ export default function Chat({ messages }: Props) {
 	const tap = Gesture.Tap().onStart(handleTap);
 
 	//TODO: The last message still blocks scrolling due to GestureDetector - find a way to deal with that
+	//TODO: See if there's a way to check if the previous message was from the same user and if so, don't show the UserUI
 	return (
 		<GestureHandlerRootView>
 			<ScrollView contentContainerStyle={styles.chatContainer} ref={scrollViewRef}>
