@@ -2,7 +2,7 @@ import Message from "@/models/Message";
 import { PNO } from "@/models/User";
 import { TextInput } from "react-native";
 import { getUsername, hasSetUsername, setUsername } from "../data/globalVars";
-import LabelledSlider from "@/components/input/LabelledSlider";
+import LabeledSlider from "@/components/input/LabeledSlider";
 
 const intro: Message[] = [
 	new Message("People not Opinions"),
@@ -26,7 +26,7 @@ const intro: Message[] = [
 	new Message(() => "Nice to meet you, " + getUsername() + "!", PNO),
 	new Message("I'd like to ask if you agree or disagree on the following:", PNO),
 	new Message("The government should reduce their military spending.", PNO,
-		<LabelledSlider onValueChange={(value) => console.log(value)} middleLabel="Neutral" />
+		<LabeledSlider onValueChange={(value) => console.log(value)} middleLabel="Neutral" />
 	),
 ];
 

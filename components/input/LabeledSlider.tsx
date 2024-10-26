@@ -11,7 +11,7 @@ type Props = {
 	onValueChange: (value: number) => void
 }
 
-export default function LabelledSlider({
+export default function LabeledSlider({
 	minimumValue = 1,
 	maximumValue = 10,
 	leftLabel = "Disagree",
