@@ -7,6 +7,7 @@ import LabeledSlider from "@/components/input/LabeledSlider";
 const intro: Message[] = [
 	new Message("People not Opinions"),
 	new Message("Hey there!", PNO),
+	new Message("I'm PNO! I'm a robot to guide you through this game.", PNO),
 	new Message("What is your name?", PNO),
 	new Message("My name is...", undefined,
 		<TextInput
@@ -24,8 +25,9 @@ const intro: Message[] = [
 	),
 	//TODO: Icon selection
 	new Message(() => "Nice to meet you, " + getUsername() + "!", PNO),
-	new Message("I'd like to ask if you agree or disagree on the following:", PNO),
-	new Message("The government should reduce their military spending.", PNO,
+	new Message("Hey, I'm going to ask your opinion on something.", PNO),
+	new Message("Do you agree or disagree with the following topic?", PNO),
+	new Message("\"The government should reduce their military spending.\"", PNO,
 		<LabeledSlider onValueChange={(value) => console.log(value)} middleLabel="Neutral" />
 	),
 ];

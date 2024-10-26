@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
 		padding: 15,
 		borderRadius: 10,
 		width: "100%",
-		maxWidth: 300,
+		maxWidth: 400,
 	},
 	messageText: {
 		fontSize: 20,

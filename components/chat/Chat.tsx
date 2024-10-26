@@ -60,7 +60,6 @@ const styles = StyleSheet.create({
 	chatContainer: {
 		display: "flex",
 		padding: 20,
-		paddingTop: 50,
 		justifyContent: "flex-start",
 		alignItems: "center",
 		gap: 15,
