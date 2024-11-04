@@ -10,7 +10,8 @@ export default class Message {
 		private _text: MessageText,
 		public user?: User,
 		public customContent?: ReactNode,
-		public continueCondition: () => boolean = () => true
+		public continueCondition: () => boolean = () => true,
+		public onContinue?: () => void
 	) { }
 
 	getText(): string {

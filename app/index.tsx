@@ -1,13 +1,12 @@
 import "@/assets/styling/style";
-import Chat from "@/components/chat/Chat";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
-import intro from "@/assets/conversations/introConversation";
 import { StyleSheet, View } from "react-native";
 import { COLORS } from "@/constants/colors";
+import { UserProvider } from "@/context/UserContext";
+import IntroConversation from "@/components/chat/conversations/IntroConversation";
 
 export default function Index() {
-  //TODO: implement those provider things
   return (
     <GestureHandlerRootView
       style={{
@@ -17,7 +16,9 @@ export default function Index() {
       }}>
       <View style={styles.container}>
         <NavigationContainer independent={true}>
-          <Chat messages={intro} />
+          <UserProvider>
+            <IntroConversation />
+          </UserProvider>
         </NavigationContainer>
       </View>
     </GestureHandlerRootView >

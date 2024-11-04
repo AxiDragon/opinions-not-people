@@ -19,6 +19,7 @@ export default function Chat({ messages }: Props) {
 	const handleTap = useCallback(() => {
 		if (messages[currentMessageIndex].continueCondition()
 			&& currentMessageIndex < messages.length - 1) {
+			messages[currentMessageIndex].onContinue && messages[currentMessageIndex].onContinue();
 			setCurrentMessageIndex(currentMessageIndex + 1);
 		}
 	}, [currentMessageIndex, messages.length]);
