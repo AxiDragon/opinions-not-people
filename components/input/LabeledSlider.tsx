@@ -1,34 +1,39 @@
 import { COLORS } from "@/constants/colors";
 import Slider from "@react-native-community/slider";
+import { useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
 
 type Props = {
-	minimumValue?: number,
-	maximumValue?: number,
 	leftLabel?: string,
 	middleLabel?: string,
 	rightLabel?: string,
+	initialValue?: number,
 	onValueChange: (value: number) => void
 }
 
 export default function LabeledSlider({
-	minimumValue = 1,
-	maximumValue = 10,
 	leftLabel = "Disagree",
 	middleLabel,
 	rightLabel = "Agree",
+	initialValue = 0.5,
 	onValueChange }: Props) {
+
+	const [value, setValue] = useState<number>(initialValue);
+
+	const handleValueChange = (value: number) => {
+		setValue(value);
+		onValueChange(value);
+	}
+
 	return (
 		<View style={styles.container}>
 			<Slider
 				style={{ width: "90%", height: 40 }}
-				minimumValue={minimumValue}
-				maximumValue={maximumValue}
-				value={(minimumValue + maximumValue) / 2}
+				value={value}
 				minimumTrackTintColor={COLORS.messageBorder}
 				maximumTrackTintColor={COLORS.background}
 				thumbTintColor={COLORS.messageBorder}
-				onValueChange={onValueChange}
+				onValueChange={handleValueChange}
 			/>
 			<View style={{ width: "90%", flexDirection: "row", justifyContent: "space-between" }}>
 				<Text style={styles.text}>{leftLabel}</Text>

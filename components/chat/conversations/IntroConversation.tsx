@@ -10,7 +10,23 @@ const IntroConversation: React.FC = () => {
 	const { setName, name } = useUser();
 	const [lockedInName, setLockedInName] = useState<boolean>(false);
 	const [changedUsername, setChangedUsername] = useState<boolean>(false);
+	const [opinion, setOpinion] = useState<number>(0.5);
+	const opinionRef = useRef(opinion);
 	const changedUsernameRef = useRef(changedUsername);
+
+	const radicalMargin = 0.1;
+	const indifferenceMargin = 0.05;
+
+	function getOpinionMessage(): string {
+		if (opinion < radicalMargin || opinion > 1 - radicalMargin) {
+			return "Wow - you seem to feel quite strongly about this. Maybe you want another topic?";
+		};
+		if (opinion < 0.5 + indifferenceMargin && opinion > 0.5 - indifferenceMargin) {
+			return "You seem to be quite indifferent about this. Would you like a topic that's more engaging?";
+		}
+
+		return "Thank you for your opinion!";
+	}
 
 	const changeUsername = (name: string) => {
 		setName(name);
@@ -20,6 +36,10 @@ const IntroConversation: React.FC = () => {
 	useEffect(() => {
 		changedUsernameRef.current = changedUsername;
 	}, [changedUsername]);
+
+	useEffect(() => {
+		opinionRef.current = opinion;
+	}, [opinion]);
 
 	const nameInput = () => {
 		return <TextInput
@@ -54,9 +74,10 @@ const IntroConversation: React.FC = () => {
 		new Message("Do you agree or disagree with the following topic?", PNO),
 		new Message("Remember! You don't have to fully agree or disagree.", PNO),
 		new Message("\"The government should reduce their military spending.\"", PNO,
-			<LabeledSlider onValueChange={(value) => { }} middleLabel="Neutral" />
+			<LabeledSlider onValueChange={setOpinion} middleLabel="Neutral" />,
+			() => opinionRef.current !== 0.5
 		),
-		new Message("Great! Let's get started!", PNO),
+		new Message(getOpinionMessage(), PNO),
 	];
 
 	return <Chat messages={intro} />;
