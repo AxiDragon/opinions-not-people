@@ -5,14 +5,19 @@ import LabeledSlider from "@/components/input/LabeledSlider";
 import { useUser } from "@/context/UserContext";
 import Chat from "../Chat";
 import { useEffect, useRef, useState } from "react";
+import QuestionSelector from "../QuestionSelector";
+import { getQuestions } from "@/assets/data/questions";
 
 const IntroConversation: React.FC = () => {
 	const { setName, name } = useUser();
 	const [lockedInName, setLockedInName] = useState<boolean>(false);
 	const [changedUsername, setChangedUsername] = useState<boolean>(false);
 	const [opinion, setOpinion] = useState<number>(0.5);
-	const opinionRef = useRef(opinion);
+	const [question, setQuestion] = useState<string | undefined>(undefined);
+	const [questions, setQuestions] = useState<string[]>(getQuestions(3));
 	const changedUsernameRef = useRef(changedUsername);
+	const opinionRef = useRef(opinion);
+	const questionRef = useRef(question);
 
 	const radicalMargin = 0.1;
 	const indifferenceMargin = 0.05;
@@ -28,11 +33,31 @@ const IntroConversation: React.FC = () => {
 		return "Thank you for your opinion!";
 	}
 
+	function getQuestionResponse(): string {
+		if (question === "What's your name?") {
+			return "PNO! It's People Not Opinions!";
+		}
+		if (question === "What hobbies do you have?") {
+			return "Meeting new people is always fun. But also, I'm not real!";
+		}
+		if (question === "Are you an agent of chaos?") {
+			return "Maybe? I'm here to prevent chaos, though!";
+		}
+		if (question === "What's your favorite color?") {
+			return "I'd say orange is nice! It's the color of my UI!";
+		}
+		if (question === "Do you have emotions?") {
+			return "Well, no, but I pretend I do! ...that's a bit sad, isn't it?";
+		}
+		return question + "? I don't know what to say about that! Like, this is an error message!";
+	}
+
 	const changeUsername = (name: string) => {
 		setName(name);
 		setChangedUsername(true);
 	}
 
+	//TODO: This is a bit of a hacky way to handle this
 	useEffect(() => {
 		changedUsernameRef.current = changedUsername;
 	}, [changedUsername]);
@@ -40,6 +65,10 @@ const IntroConversation: React.FC = () => {
 	useEffect(() => {
 		opinionRef.current = opinion;
 	}, [opinion]);
+
+	useEffect(() => {
+		questionRef.current = question;
+	}, [question]);
 
 	const nameInput = () => {
 		return <TextInput
@@ -73,11 +102,19 @@ const IntroConversation: React.FC = () => {
 		new Message("Hey, I'm going to ask your opinion on something.", PNO),
 		new Message("Do you agree or disagree with the following topic?", PNO),
 		new Message("Remember! You don't have to fully agree or disagree.", PNO),
+		//TODO: Lock slider after selection
 		new Message("\"The government should reduce their military spending.\"", PNO,
 			<LabeledSlider onValueChange={setOpinion} middleLabel="Neutral" />,
 			() => opinionRef.current !== 0.5
 		),
 		new Message(getOpinionMessage(), PNO),
+		new Message("Anyways, I've got some questions for you!", PNO),
+		new Message("", undefined,
+			<QuestionSelector questions={questions}
+				onSelect={setQuestion} />,
+			() => questionRef.current !== undefined
+		),
+		new Message(getQuestionResponse, PNO),
 	];
 
 	return <Chat messages={intro} />;

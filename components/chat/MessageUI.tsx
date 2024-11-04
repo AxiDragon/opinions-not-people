@@ -11,10 +11,13 @@ type Props = {
 //TODO: Something with animations here
 
 export default function MessageUI({ message, show = true }: Props) {
+	const messageText = message.getText();
+
 	return (
 		<View style={show ? styles.message : styles.hidden}>
 			{message.user && <UserUI user={message.user} />}
-			<Text style={styles.messageText}>{message.getText()}</Text>
+			{messageText && messageText.trim().length !== 0 &&
+				<Text style={styles.messageText}>{messageText}</Text>}
 			{message.customContent}
 		</View>
 	);
