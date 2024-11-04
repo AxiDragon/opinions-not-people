@@ -1,10 +1,11 @@
 import 'react-native-gesture-handler';
-import { ScrollView, StyleSheet } from "react-native";
+import { ScrollView, StyleSheet, View, Text } from "react-native";
 import MessageUI from "./MessageUI";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Gesture, GestureDetector, GestureHandlerRootView } from "react-native-gesture-handler";
 import React from "react";
 import Message from '@/models/Message';
+import { COLORS } from '@/constants/colors';
 
 type Props = {
 	messages: Message[];
@@ -34,6 +35,7 @@ export default function Chat({ messages }: Props) {
 
 	//TODO: The last message still blocks scrolling due to GestureDetector - find a way to deal with that
 	//TODO: See if there's a way to check if the previous message was from the same user and if so, don't show the UserUI
+	//TODO: Find a better way to handle this. just, for now, gotta tap the bottom one
 	return (
 		<GestureHandlerRootView style={{
 			flex: 1,
@@ -46,13 +48,15 @@ export default function Chat({ messages }: Props) {
 				showsVerticalScrollIndicator={false}
 			>
 				{messages.map((message, i) => (
-					i <= currentMessageIndex - 1 &&
+					i <= currentMessageIndex &&
 					<MessageUI key={i} message={message} />
 				))}
-				<GestureDetector gesture={tap}>
-					<MessageUI message={messages[currentMessageIndex]} />
-				</GestureDetector>
 			</ScrollView>
+			<GestureDetector gesture={tap}>
+				<View style={styles.tappable}>
+					<Text style={styles.tappableText}>Tap to continue</Text>
+				</View>
+			</GestureDetector>
 		</GestureHandlerRootView>
 	);
 }
@@ -67,4 +71,22 @@ const styles = StyleSheet.create({
 		gap: 15,
 		width: "100%",
 	},
+	tappable: {
+		width: "100%",
+		height: 150,
+		backgroundColor: COLORS.messageBackground,
+		borderColor: COLORS.messageBorder,
+		borderTopEndRadius: 10,
+		borderTopStartRadius: 10,
+		borderTopWidth: 5,
+		borderLeftWidth: 5,
+		borderRightWidth: 5,
+		alignContent: "center",
+		justifyContent: "center",
+	},
+	tappableText: {
+		color: COLORS.text,
+		fontSize: 35,
+		textAlign: "center",
+	}
 });
