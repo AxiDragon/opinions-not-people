@@ -48,8 +48,7 @@ export default function Chat({ messages }: Props) {
 				showsVerticalScrollIndicator={false}
 			>
 				{messages.map((message, i) => (
-					i <= currentMessageIndex &&
-					<MessageUI key={i} message={message} />
+					<MessageUI key={i} message={message} show={i <= currentMessageIndex} />
 				))}
 			</ScrollView>
 			<GestureDetector gesture={tap}>
@@ -88,5 +87,5 @@ const styles = StyleSheet.create({
 		color: COLORS.text,
 		fontSize: 35,
 		textAlign: "center",
-	}
+	},
 });

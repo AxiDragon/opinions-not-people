@@ -5,13 +5,14 @@ import { COLORS } from "@/constants/colors";
 
 type Props = {
 	message: Message;
+	show?: boolean;
 }
 
 //TODO: Something with animations here
 
-export default function MessageUI({ message }: Props) {
+export default function MessageUI({ message, show = true }: Props) {
 	return (
-		<View style={styles.message}>
+		<View style={show ? styles.message : styles.hidden}>
 			{message.user && <UserUI user={message.user} />}
 			<Text style={styles.messageText}>{message.getText()}</Text>
 			{message.customContent}
@@ -35,4 +36,7 @@ const styles = StyleSheet.create({
 		textAlign: "center",
 		color: COLORS.text,
 	},
+	hidden: {
+		display: "none",
+	}
 });
