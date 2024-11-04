@@ -4,17 +4,22 @@ import { TextInput } from "react-native";
 import LabeledSlider from "@/components/input/LabeledSlider";
 import { useUser } from "@/context/UserContext";
 import Chat from "../Chat";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const IntroConversation: React.FC = () => {
-	let changedUsername: boolean = false;
-	const [lockedInName, setLockedInName] = useState<boolean>(false)
 	const { setName, name } = useUser();
+	const [lockedInName, setLockedInName] = useState<boolean>(false);
+	const [changedUsername, setChangedUsername] = useState<boolean>(false);
+	const changedUsernameRef = useRef(changedUsername);
 
 	const changeUsername = (name: string) => {
 		setName(name);
-		changedUsername = true;
+		setChangedUsername(true);
 	}
+
+	useEffect(() => {
+		changedUsernameRef.current = changedUsername;
+	}, [changedUsername]);
 
 	const nameInput = () => {
 		return <TextInput
@@ -29,7 +34,7 @@ const IntroConversation: React.FC = () => {
 			placeholder="Put your name here!"
 			onChangeText={changeUsername}
 			value={name}
-			editable={!lockedInName}
+			readOnly={lockedInName}
 		/>;
 	}
 
@@ -40,7 +45,7 @@ const IntroConversation: React.FC = () => {
 		new Message("What is your name?", PNO),
 		new Message("My name is...", undefined,
 			nameInput(),
-			() => changedUsername,
+			() => changedUsernameRef.current,
 			() => setLockedInName(true)
 		),
 		//TODO: Icon selection
@@ -51,6 +56,7 @@ const IntroConversation: React.FC = () => {
 		new Message("\"The government should reduce their military spending.\"", PNO,
 			<LabeledSlider onValueChange={(value) => { }} middleLabel="Neutral" />
 		),
+		new Message("Great! Let's get started!", PNO),
 	];
 
 	return <Chat messages={intro} />;
