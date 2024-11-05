@@ -1,4 +1,5 @@
-import { Pressable, Text, View } from "react-native";
+import { COLORS } from "@/constants/colors";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 
 type Props = {
 	questions: string[];
@@ -7,10 +8,10 @@ type Props = {
 
 export default function QuestionSelector({ questions, onSelect }: Props) {
 	return (
-		<View>
+		<View style={styles.container}>
 			{questions.map((question, i) => (
-				<Pressable key={i} onPress={() => onSelect(question)}>
-					<Text>
+				<Pressable style={styles.pressable} key={i} onPress={() => onSelect(question)}>
+					<Text style={styles.text}>
 						{question}
 					</Text>
 				</Pressable>
@@ -18,3 +19,24 @@ export default function QuestionSelector({ questions, onSelect }: Props) {
 		</View>
 	)
 }
+
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		justifyContent: "center",
+		alignItems: "center",
+		width: "100%",
+	},
+	pressable: {
+		padding: 20,
+		width: "100%",
+		margin: 5,
+		borderRadius: 10,
+		backgroundColor: COLORS.background,
+	},
+	text: {
+		fontSize: 20,
+		color: COLORS.text,
+		textAlign: "center",
+	}
+})

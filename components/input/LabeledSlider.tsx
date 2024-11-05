@@ -47,8 +47,6 @@ export default function LabeledSlider({
 const styles = StyleSheet.create({
 	container: {
 		width: "100%",
-		flex: 1,
-		justifyContent: "center",
 		alignItems: "center",
 	},
 	text: {

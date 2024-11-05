@@ -19,7 +19,9 @@ export default function MessageUI({ message, show = true, interactable = true }:
 			{message.user && <UserUI user={message.user} />}
 			{messageText && messageText.trim().length !== 0 &&
 				<Text style={styles.messageText}>{messageText}</Text>}
-			{message.customContent}
+			<View style={styles.customContent}>
+				{message.customContent}
+			</View>
 		</View>
 	);
 }
@@ -40,7 +42,11 @@ const styles = StyleSheet.create({
 		textAlign: "center",
 		color: COLORS.text,
 	},
+	customContent: {
+		width: "100%",
+		alignItems: "center",
+	},
 	hidden: {
 		display: "none",
-	}
+	},
 });

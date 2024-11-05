@@ -113,7 +113,7 @@ const IntroConversation: React.FC = () => {
 		),
 		new Message(getOpinionMessage(), PNO),
 		new Message("Anyways, I've got some questions for you!", PNO),
-		new Message("", undefined,
+		new Message("Choose a question!", undefined,
 			<QuestionSelector questions={questions}
 				onSelect={(question: string) => {
 					setQuestion(question);
