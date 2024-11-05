@@ -36,9 +36,9 @@ export default function LabeledSlider({
 				onValueChange={handleValueChange}
 			/>
 			<View style={{ width: "90%", flexDirection: "row", justifyContent: "space-between" }}>
-				<Text style={styles.text}>{leftLabel}</Text>
+				<Text style={[styles.text, { textAlign: "left" }]}>{leftLabel}</Text>
 				{middleLabel && <Text style={styles.text}>{middleLabel}</Text>}
-				<Text style={styles.text}>{rightLabel}</Text>
+				<Text style={[styles.text, { textAlign: "right" }]}>{rightLabel}</Text>
 			</View>
 		</View>
 	)
@@ -55,5 +55,6 @@ const styles = StyleSheet.create({
 		color: COLORS.text,
 		fontSize: 12,
 		textAlign: "center",
-	}
+		flex: 1,
+	},
 });
