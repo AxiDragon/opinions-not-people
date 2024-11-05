@@ -33,23 +33,39 @@ const IntroConversation: React.FC = () => {
 		return "Thank you for your opinion!";
 	}
 
-	function getQuestionResponse(): string {
+	function getQuestionResponse(): Message[] {
 		if (question === "What's your name?") {
-			return "PNO! It's People Not Opinions!";
+			return [new Message({ text: "My name is PNO! It stands for People Not Opinions!", user: PNO })];
 		}
 		if (question === "What hobbies do you have?") {
-			return "Meeting new people is always fun. But also, I'm not real!";
+			return [
+				new Message({ text: "Meeting new people is always fun.", user: PNO }),
+				new Message({ text: "But also, I don't have hobbies because I'm not real!", user: PNO }),
+			];
 		}
 		if (question === "Are you an agent of chaos?") {
-			return "Maybe? I'm here to prevent chaos, though!";
+			return [
+				new Message({ text: "Maybe?", user: PNO }),
+				new Message({ text: "I'm here to prevent chaos, though!", user: PNO }),
+			];
 		}
 		if (question === "What's your favorite color?") {
-			return "I'd say orange is nice! It's the color of my UI!";
+			return [
+				new Message({ text: "I'd say orange is nice!", user: PNO }),
+				new Message({ text: "It's the color of my UI!", user: PNO }),
+			];
 		}
 		if (question === "Do you have emotions?") {
-			return "Well, no, but I pretend I do! ...that's a bit sad, isn't it?";
+			return [
+				new Message({ text: "Well, no, but I pretend I do!", user: PNO }),
+				new Message({ text: "...that's a bit sad, isn't it?", user: PNO }),
+			];
 		}
-		return question + "? I don't know what to say about that! Like, this is an error message!";
+
+		return [
+			new Message({ text: question + "?", user: PNO }),
+			new Message({ text: "I don't know what to say about that! Like, this is an error message!", user: PNO }),
+		];
 	}
 
 	const changeUsername = (name: string) => {
@@ -91,7 +107,7 @@ const IntroConversation: React.FC = () => {
 			chatRef.current.continueChat();
 		}
 	};
-	
+
 	const intro: Message[] = [
 		new Message({ text: "People not Opinions" }),
 		new Message({ text: "Hey there!", user: PNO }),
@@ -114,7 +130,7 @@ const IntroConversation: React.FC = () => {
 		new Message({ text: "Anyways, I've got some questions for you!", user: PNO }),
 		new Message({
 			text: "Choose a question!",
-			customContent: < QuestionSelector questions={questions}
+			customContent: <QuestionSelector questions={questions}
 				onSelect={(question: string) => {
 					setQuestion(question);
 					continueChat();
@@ -122,7 +138,7 @@ const IntroConversation: React.FC = () => {
 				} />,
 			continueCondition: () => questionRef.current !== undefined
 		}),
-		new Message({ text: getQuestionResponse(), user: PNO }),
+		...getQuestionResponse(),
 		new Message({
 			text: "Anyways, let me try something...", user: PNO,
 			onContinue: () => {
