@@ -1,4 +1,4 @@
-import { Pressable, View } from "react-native";
+import { Pressable, Text, View } from "react-native";
 
 type Props = {
 	questions: string[];
@@ -10,7 +10,9 @@ export default function QuestionSelector({ questions, onSelect }: Props) {
 		<View>
 			{questions.map((question, i) => (
 				<Pressable key={i} onPress={() => onSelect(question)}>
-					{question}
+					<Text>
+						{question}
+					</Text>
 				</Pressable>
 			))}
 		</View>
