@@ -50,6 +50,7 @@ const Chat = forwardRef<ChatHandle, Props>(({ messages }: Props, ref) => {
 	//TODO: See if there's a way to check if the previous message was from the same user and if so, don't show the UserUI
 	//TODO: Find a better way to handle this. just, for now, gotta tap the bottom one
 	//TODO: Maybe just disable interactability for messages that arent the current one
+	//TODO: Display 'Tap here to continue' only when the current message can be progressed
 	return (
 		<GestureHandlerRootView style={{
 			flex: 1,
@@ -70,7 +71,7 @@ const Chat = forwardRef<ChatHandle, Props>(({ messages }: Props, ref) => {
 			</ScrollView>
 			<GestureDetector gesture={tap}>
 				<View style={styles.tappable}>
-					<Text style={styles.tappableText}>Tap to continue</Text>
+					<Text style={styles.tappableText}>Tap here to continue</Text>
 				</View>
 			</GestureDetector>
 		</GestureHandlerRootView>
@@ -90,19 +91,12 @@ const styles = StyleSheet.create({
 	tappable: {
 		width: "100%",
 		height: 150,
-		backgroundColor: COLORS.messageBackground,
-		borderColor: COLORS.messageBorder,
-		borderTopEndRadius: 10,
-		borderTopStartRadius: 10,
-		borderTopWidth: 5,
-		borderLeftWidth: 5,
-		borderRightWidth: 5,
 		alignContent: "center",
 		justifyContent: "center",
 	},
 	tappableText: {
 		color: COLORS.text,
-		fontSize: 35,
+		fontSize: 25,
 		textAlign: "center",
 	},
 });
