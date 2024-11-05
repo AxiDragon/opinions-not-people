@@ -1,4 +1,4 @@
-import { Button, View } from "react-native";
+import { Pressable, View } from "react-native";
 
 type Props = {
 	questions: string[];
@@ -9,7 +9,9 @@ export default function QuestionSelector({ questions, onSelect }: Props) {
 	return (
 		<View>
 			{questions.map((question, i) => (
-				<Button key={i} title={question} onPress={() => onSelect(question)} />
+				<Pressable key={i} onPress={() => onSelect(question)}>
+					{question}
+				</Pressable>
 			))}
 		</View>
 	)
