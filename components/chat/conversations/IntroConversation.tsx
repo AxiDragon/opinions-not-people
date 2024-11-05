@@ -3,7 +3,7 @@ import { PNO } from "@/models/User";
 import { TextInput } from "react-native";
 import LabeledSlider from "@/components/input/LabeledSlider";
 import { useUser } from "@/context/UserContext";
-import Chat from "../Chat";
+import Chat, { ChatHandle } from "../Chat";
 import { useEffect, useRef, useState } from "react";
 import QuestionSelector from "../QuestionSelector";
 import { getQuestions } from "@/assets/data/questions";
@@ -18,6 +18,7 @@ const IntroConversation: React.FC = () => {
 	const changedUsernameRef = useRef(changedUsername);
 	const opinionRef = useRef(opinion);
 	const questionRef = useRef(question);
+	const chatRef = useRef<ChatHandle>(null);
 
 	const radicalMargin = 0.1;
 	const indifferenceMargin = 0.05;
@@ -87,6 +88,12 @@ const IntroConversation: React.FC = () => {
 		/>;
 	}
 
+	const continueChat = () => {
+		if (chatRef.current) {
+			chatRef.current.continueChat();
+		}
+	};
+
 	const intro: Message[] = [
 		new Message("People not Opinions"),
 		new Message("Hey there!", PNO),
@@ -95,10 +102,10 @@ const IntroConversation: React.FC = () => {
 		new Message("My name is...", undefined,
 			nameInput(),
 			() => changedUsernameRef.current,
-			() => setLockedInName(true)
+			() => setLockedInName(true),
 		),
 		//TODO: Icon selection
-		new Message(() => "Nice to meet you, " + name + "!", PNO),
+		new Message("Nice to meet you, " + name + "!", PNO),
 		new Message("Hey, I'm going to ask your opinion on something.", PNO),
 		new Message("Do you agree or disagree with the following topic?", PNO),
 		new Message("Remember! You don't have to fully agree or disagree.", PNO),
@@ -111,13 +118,17 @@ const IntroConversation: React.FC = () => {
 		new Message("Anyways, I've got some questions for you!", PNO),
 		new Message("", undefined,
 			<QuestionSelector questions={questions}
-				onSelect={setQuestion} />,
+				onSelect={(question: string) => {
+					setQuestion(question);
+					continueChat();
+				}
+				} />,
 			() => questionRef.current !== undefined
 		),
-		new Message(getQuestionResponse, PNO),
+		new Message(getQuestionResponse(), PNO),
 	];
 
-	return <Chat messages={intro} />;
+	return <Chat messages={intro} ref={chatRef} />;
 }
 
 export default IntroConversation;

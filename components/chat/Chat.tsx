@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 import { ScrollView, StyleSheet, View, Text } from "react-native";
 import MessageUI from "./MessageUI";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from "react";
 import { Gesture, GestureDetector, GestureHandlerRootView } from "react-native-gesture-handler";
 import React from "react";
 import Message from '@/models/Message';
@@ -11,23 +11,32 @@ type Props = {
 	messages: Message[];
 }
 
-export default function Chat({ messages }: Props) {
+export type ChatHandle = {
+	continueChat: () => void;
+}
+
+const Chat = forwardRef<ChatHandle, Props>(({ messages }: Props, ref) => {
 	const scrollViewRef = useRef<ScrollView>(null);
 	const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
 
 	//TODO: Maybe contemplate if this is the best way to handle this
 	//it works for now though! I'll learn along the way
 	const handleTap = useCallback(() => {
-		if (messages[currentMessageIndex].continueCondition()
-			&& currentMessageIndex < messages.length - 1) {
+		if (messages[currentMessageIndex].continueCondition()) {
 			continueChat();
 		}
 	}, [currentMessageIndex, messages.length]);
 
 	const continueChat = useCallback(() => {
-		messages[currentMessageIndex].onContinue && messages[currentMessageIndex].onContinue();
-		setCurrentMessageIndex(currentMessageIndex + 1);
+		if (currentMessageIndex < messages.length - 1) {
+			messages[currentMessageIndex].onContinue && messages[currentMessageIndex].onContinue();
+			setCurrentMessageIndex(currentMessageIndex + 1);
+		}
 	}, [currentMessageIndex, messages.length]);
+
+	useImperativeHandle(ref, () => ({
+		continueChat,
+	}), [continueChat]);
 
 	useEffect(() => {
 		if (scrollViewRef.current) {
@@ -63,7 +72,7 @@ export default function Chat({ messages }: Props) {
 			</GestureDetector>
 		</GestureHandlerRootView>
 	);
-}
+});
 
 const styles = StyleSheet.create({
 	chatContainer: {
@@ -94,3 +103,5 @@ const styles = StyleSheet.create({
 		textAlign: "center",
 	},
 });
+
+export default Chat;
