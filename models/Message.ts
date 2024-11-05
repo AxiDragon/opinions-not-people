@@ -3,16 +3,30 @@ import User from "./User";
 
 type MessageText = string | (() => string);
 
+type MessageParams = {
+	text: MessageText,
+	user?: User,
+	customContent?: ReactNode,
+	continueCondition?: () => boolean,
+	onContinue?: () => void
+}
+
 export default class Message {
+	private _text: MessageText;
+	public user?: User;
+	public customContent?: ReactNode;
+	public continueCondition: () => boolean = () => true;
+	public onContinue?: () => void;
+
 	//TODO: Maybe add some 'continue' flag. When can the user continue the conversation?
 	//f.e. when the user has to choose between two options, the user can only continue after choosing one.
-	constructor(
-		private _text: MessageText,
-		public user?: User,
-		public customContent?: ReactNode,
-		public continueCondition: () => boolean = () => true,
-		public onContinue?: () => void
-	) { }
+	constructor({ text, user, customContent, continueCondition = () => true, onContinue }: MessageParams) {
+		this._text = text;
+		this.user = user;
+		this.customContent = customContent;
+		this.continueCondition = continueCondition;
+		this.onContinue = onContinue;
+	}
 
 	getText(): string {
 		if (typeof this._text === "string") {

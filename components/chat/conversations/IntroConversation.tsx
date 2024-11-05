@@ -93,36 +93,36 @@ const IntroConversation: React.FC = () => {
 	};
 
 	const intro: Message[] = [
-		new Message("People not Opinions"),
-		new Message("Hey there!", PNO),
-		new Message("I'm PNO! I'm a robot to guide you through this game.", PNO),
-		new Message("What is your name?", PNO),
-		new Message("My name is...", undefined,
-			nameInput(),
-			() => changedUsernameRef.current,
-		),
+		new Message({ text: "People not Opinions" }),
+		new Message({ text: "Hey there!", user: PNO }),
+		new Message({ text: "I'm PNO! I'm a robot to guide you through this game.", user: PNO }),
+		new Message({ text: "What is your name?", user: PNO }),
+		new Message({ text: "My name is...", customContent: nameInput(), continueCondition: () => changedUsernameRef.current }),
 		//TODO: Icon selection
-		new Message("Nice to meet you, " + name + "!", PNO),
-		new Message("Hey, I'm going to ask your opinion on something.", PNO),
-		new Message("Do you agree or disagree with the following topic?", PNO),
-		new Message("Remember! You don't have to fully agree or disagree.", PNO),
+		new Message({ text: "Nice to meet you, " + name + "!", user: PNO }),
+		new Message({ text: "Hey, I'm going to ask your opinion on something.", user: PNO }),
+		new Message({ text: "Do you agree or disagree with the following topic?", user: PNO }),
+		new Message({ text: "Remember! You don't have to fully agree or disagree.", user: PNO }),
 		//TODO: Lock slider after selection
-		new Message("\"The government should reduce their military spending.\"", PNO,
-			<LabeledSlider onValueChange={setOpinion} middleLabel="Neutral" />,
-			() => opinionRef.current !== 0.5
-		),
-		new Message(getOpinionMessage(), PNO),
-		new Message("Anyways, I've got some questions for you!", PNO),
-		new Message("Choose a question!", undefined,
-			<QuestionSelector questions={questions}
+		new Message({
+			text: "\"The government should reduce their military spending.\"",
+			user: PNO,
+			customContent: <LabeledSlider onValueChange={setOpinion} middleLabel="Neutral" />,
+			continueCondition: () => opinionRef.current !== 0.5
+		}),
+		new Message({ text: getOpinionMessage(), user: PNO }),
+		new Message({ text: "Anyways, I've got some questions for you!", user: PNO }),
+		new Message({
+			text: "Choose a question!",
+			customContent: < QuestionSelector questions={questions}
 				onSelect={(question: string) => {
 					setQuestion(question);
 					continueChat();
 				}
 				} />,
-			() => questionRef.current !== undefined
-		),
-		new Message(getQuestionResponse(), PNO),
+			continueCondition: () => questionRef.current !== undefined
+		}),
+		new Message({ text: getQuestionResponse(), user: PNO }),
 	];
 
 	return <Chat messages={intro} ref={chatRef} />;
