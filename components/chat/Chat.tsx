@@ -28,7 +28,7 @@ const Chat = forwardRef<ChatHandle, Props>(({ messages }: Props, ref) => {
 	}, [currentMessageIndex, messages.length]);
 
 	const continueChat = useCallback(() => {
-		if (currentMessageIndex < messages.length - 1) {
+		if (currentMessageIndex < messages.length - 1 || messages[currentMessageIndex].addsContentOnContinue) {
 			messages[currentMessageIndex].onContinue && messages[currentMessageIndex].onContinue();
 			setCurrentMessageIndex(currentMessageIndex + 1);
 		}

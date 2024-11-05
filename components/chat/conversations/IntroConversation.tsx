@@ -91,7 +91,7 @@ const IntroConversation: React.FC = () => {
 			chatRef.current.continueChat();
 		}
 	};
-
+	
 	const intro: Message[] = [
 		new Message({ text: "People not Opinions" }),
 		new Message({ text: "Hey there!", user: PNO }),
@@ -123,6 +123,13 @@ const IntroConversation: React.FC = () => {
 			continueCondition: () => questionRef.current !== undefined
 		}),
 		new Message({ text: getQuestionResponse(), user: PNO }),
+		new Message({
+			text: "Anyways, let me try something...", user: PNO,
+			onContinue: () => {
+				intro.push(new Message({ text: "This is a new message!", user: PNO }));
+			},
+			addsContentOnContinue: true
+		}),
 	];
 
 	return <Chat messages={intro} ref={chatRef} />;
