@@ -62,7 +62,10 @@ const Chat = forwardRef<ChatHandle, Props>(({ messages }: Props, ref) => {
 				showsVerticalScrollIndicator={false}
 			>
 				{messages.map((message, i) => (
-					<MessageUI key={i} message={message} show={i <= currentMessageIndex} />
+					<MessageUI key={i}
+						message={message}
+						show={i <= currentMessageIndex}
+						interactable={i === currentMessageIndex} />
 				))}
 			</ScrollView>
 			<GestureDetector gesture={tap}>

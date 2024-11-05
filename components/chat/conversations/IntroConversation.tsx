@@ -10,7 +10,6 @@ import { getQuestions } from "@/assets/data/questions";
 
 const IntroConversation: React.FC = () => {
 	const { setName, name } = useUser();
-	const [lockedInName, setLockedInName] = useState<boolean>(false);
 	const [changedUsername, setChangedUsername] = useState<boolean>(false);
 	const [opinion, setOpinion] = useState<number>(0.5);
 	const [question, setQuestion] = useState<string | undefined>(undefined);
@@ -84,7 +83,6 @@ const IntroConversation: React.FC = () => {
 			placeholder="Put your name here!"
 			onChangeText={changeUsername}
 			value={name}
-			readOnly={lockedInName}
 		/>;
 	}
 
@@ -102,7 +100,6 @@ const IntroConversation: React.FC = () => {
 		new Message("My name is...", undefined,
 			nameInput(),
 			() => changedUsernameRef.current,
-			() => setLockedInName(true),
 		),
 		//TODO: Icon selection
 		new Message("Nice to meet you, " + name + "!", PNO),

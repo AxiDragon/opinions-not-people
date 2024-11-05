@@ -6,15 +6,16 @@ import { COLORS } from "@/constants/colors";
 type Props = {
 	message: Message;
 	show?: boolean;
+	interactable?: boolean;
 }
 
 //TODO: Something with animations here
 
-export default function MessageUI({ message, show = true }: Props) {
+export default function MessageUI({ message, show = true, interactable = true }: Props) {
 	const messageText = message.getText();
 
 	return (
-		<View style={show ? styles.message : styles.hidden}>
+		<View style={[show ? styles.message : styles.hidden, !interactable && { pointerEvents: "none" }]}>
 			{message.user && <UserUI user={message.user} />}
 			{messageText && messageText.trim().length !== 0 &&
 				<Text style={styles.messageText}>{messageText}</Text>}
