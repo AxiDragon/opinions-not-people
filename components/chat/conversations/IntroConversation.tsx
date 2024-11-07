@@ -1,5 +1,5 @@
 import Message from "@/models/Message";
-import { PNO } from "@/models/User";
+import { users } from "@/assets/users/users";
 import { TextInput } from "react-native";
 import LabeledSlider from "@/components/input/LabeledSlider";
 import { useUser } from "@/context/UserContext";
@@ -12,7 +12,7 @@ const IntroConversation: React.FC = () => {
 	const { setName, name } = useUser();
 	const [changedUsername, setChangedUsername] = useState<boolean>(false);
 	const [opinion, setOpinion] = useState<number>(0.5);
-	const [question, setQuestion] = useState<string | undefined>(undefined);
+	const [question, setQuestion] = useState<string>("");
 	const [questions, setQuestions] = useState<string[]>(getQuestions(3));
 	const changedUsernameRef = useRef(changedUsername);
 	const opinionRef = useRef(opinion);
@@ -21,6 +21,9 @@ const IntroConversation: React.FC = () => {
 
 	const radicalMargin = 0.1;
 	const indifferenceMargin = 0.05;
+
+	const user = users.GRANT;
+	const user2 = users.JASMIN;
 
 	function getOpinionMessage(): string {
 		if (opinion < radicalMargin || opinion > 1 - radicalMargin) {
@@ -35,36 +38,36 @@ const IntroConversation: React.FC = () => {
 
 	function getQuestionResponse(): Message[] {
 		if (question === "What's your name?") {
-			return [new Message({ text: "My name is PNO! It stands for People Not Opinions!", user: PNO })];
+			return [new Message({ text: "My name is PNO! It stands for People Not Opinions!", user: user })];
 		}
 		if (question === "What hobbies do you have?") {
 			return [
-				new Message({ text: "Meeting new people is always fun.", user: PNO }),
-				new Message({ text: "But also, I don't have hobbies because I'm not real!", user: PNO }),
+				new Message({ text: "Meeting new people is always fun.", user: user }),
+				new Message({ text: "But also, I don't have hobbies because I'm not real!", user: user }),
 			];
 		}
 		if (question === "Are you an agent of chaos?") {
 			return [
-				new Message({ text: "Maybe?", user: PNO }),
-				new Message({ text: "I'm here to prevent chaos, though!", user: PNO }),
+				new Message({ text: "Maybe?", user: user }),
+				new Message({ text: "I'm here to prevent chaos, though!", user: user }),
 			];
 		}
 		if (question === "What's your favorite color?") {
 			return [
-				new Message({ text: "I'd say orange is nice!", user: PNO }),
-				new Message({ text: "It's the color of my UI!", user: PNO }),
+				new Message({ text: "I'd say orange is nice!", user: user }),
+				new Message({ text: "It's the color of my UI!", user: user }),
 			];
 		}
 		if (question === "Do you have emotions?") {
 			return [
-				new Message({ text: "Well, no, but I pretend I do!", user: PNO }),
-				new Message({ text: "...that's a bit sad, isn't it?", user: PNO }),
+				new Message({ text: "Well, no, but I pretend I do!", user: user }),
+				new Message({ text: "...that's a bit sad, isn't it?", user: user }),
 			];
 		}
 
 		return [
-			new Message({ text: question + "?", user: PNO }),
-			new Message({ text: "I don't know what to say about that! Like, this is an error message!", user: PNO }),
+			new Message({ text: question + "?", user: user }),
+			new Message({ text: "I don't know what to say about that! Like, this is an error message!", user: user }),
 		];
 	}
 
@@ -110,24 +113,23 @@ const IntroConversation: React.FC = () => {
 
 	const intro: Message[] = [
 		new Message({ text: "People not Opinions" }),
-		new Message({ text: "Hey there!", user: PNO }),
-		new Message({ text: "I'm PNO! I'm a robot to guide you through this game.", user: PNO }),
-		new Message({ text: "What is your name?", user: PNO }),
+		...user.getIntro(),
+		new Message({ text: "What is your name?", user: user }),
 		new Message({ text: "My name is...", customContent: nameInput(), continueCondition: () => changedUsernameRef.current }),
 		//TODO: Icon selection
-		new Message({ text: "Nice to meet you, " + name + "!", user: PNO }),
-		new Message({ text: "Hey, I'm going to ask your opinion on something.", user: PNO }),
-		new Message({ text: "Do you agree or disagree with the following topic?", user: PNO }),
-		new Message({ text: "Remember! You don't have to fully agree or disagree.", user: PNO }),
+		new Message({ text: "Nice to meet you, " + name + "!", user: user }),
+		new Message({ text: "Hey, I'm going to ask your opinion on something.", user: user }),
+		new Message({ text: "Do you agree or disagree with the following topic?", user: user }),
+		new Message({ text: "Remember! You don't have to fully agree or disagree.", user: user }),
 		//TODO: Lock slider after selection
 		new Message({
 			text: "\"The government should reduce their military spending.\"",
-			user: PNO,
+			user: user,
 			customContent: <LabeledSlider onValueChange={setOpinion} middleLabel="Neutral" />,
 			continueCondition: () => opinionRef.current !== 0.5
 		}),
-		new Message({ text: getOpinionMessage(), user: PNO }),
-		new Message({ text: "Anyways, I've got some questions for you!", user: PNO }),
+		new Message({ text: getOpinionMessage(), user: user }),
+		new Message({ text: "Anyways, I've got some questions for you!", user: user }),
 		new Message({
 			text: "Choose a question!",
 			customContent: <QuestionSelector questions={questions}
@@ -136,13 +138,17 @@ const IntroConversation: React.FC = () => {
 					continueChat();
 				}
 				} />,
-			continueCondition: () => questionRef.current !== undefined
+			continueCondition: () => questionRef.current !== ""
 		}),
-		...getQuestionResponse(),
+		...user.getAnswer(question),
+		new Message({ text: `Hey, ${user2.getName()}, what do you think?`, user: user }),
+		...user2.getAnswer(question),
+		new Message({ text: `Anyways, back to you, ${user.getName()}!`, user: user2 }),
+		new Message({ text: `Thanks ${user2.getName()}.`, user: user }),
 		new Message({
-			text: "Anyways, let me try something...", user: PNO,
+			text: "Anyways, let me try something...", user: user,
 			onContinue: () => {
-				intro.push(new Message({ text: "This is a new message!", user: PNO }));
+				intro.push(new Message({ text: "This is a new message!", user: user }));
 			},
 			addsContentOnContinue: true
 		}),
