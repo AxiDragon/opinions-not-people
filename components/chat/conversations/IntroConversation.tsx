@@ -36,41 +36,6 @@ const IntroConversation: React.FC = () => {
 		return "Thank you for your opinion!";
 	}
 
-	function getQuestionResponse(): Message[] {
-		if (question === "What's your name?") {
-			return [new Message({ text: "My name is PNO! It stands for People Not Opinions!", user: user })];
-		}
-		if (question === "What hobbies do you have?") {
-			return [
-				new Message({ text: "Meeting new people is always fun.", user: user }),
-				new Message({ text: "But also, I don't have hobbies because I'm not real!", user: user }),
-			];
-		}
-		if (question === "Are you an agent of chaos?") {
-			return [
-				new Message({ text: "Maybe?", user: user }),
-				new Message({ text: "I'm here to prevent chaos, though!", user: user }),
-			];
-		}
-		if (question === "What's your favorite color?") {
-			return [
-				new Message({ text: "I'd say orange is nice!", user: user }),
-				new Message({ text: "It's the color of my UI!", user: user }),
-			];
-		}
-		if (question === "Do you have emotions?") {
-			return [
-				new Message({ text: "Well, no, but I pretend I do!", user: user }),
-				new Message({ text: "...that's a bit sad, isn't it?", user: user }),
-			];
-		}
-
-		return [
-			new Message({ text: question + "?", user: user }),
-			new Message({ text: "I don't know what to say about that! Like, this is an error message!", user: user }),
-		];
-	}
-
 	const changeUsername = (name: string) => {
 		setName(name);
 		setChangedUsername(true);
