@@ -29,8 +29,6 @@ export default class Message {
 	public onContinue?: () => void;
 	public addsContentOnContinue: boolean = false;
 
-	//TODO: Maybe add some 'continue' flag. When can the user continue the conversation?
-	//f.e. when the user has to choose between two options, the user can only continue after choosing one.
 	constructor({ text, user, customContent, continueCondition = () => true, onContinue, addsContentOnContinue = false }: MessageParams) {
 		this._text = text;
 		this.user = user;

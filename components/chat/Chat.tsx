@@ -49,7 +49,6 @@ const Chat = forwardRef<ChatHandle, Props>(({ messages }: Props, ref) => {
 	//TODO: The last message still blocks scrolling due to GestureDetector - find a way to deal with that
 	//TODO: See if there's a way to check if the previous message was from the same user and if so, don't show the UserUI
 	//TODO: Find a better way to handle this. just, for now, gotta tap the bottom one
-	//TODO: Maybe just disable interactability for messages that arent the current one
 	//TODO: Display 'Tap here to continue' only when the current message can be progressed
 	return (
 		<GestureHandlerRootView style={{

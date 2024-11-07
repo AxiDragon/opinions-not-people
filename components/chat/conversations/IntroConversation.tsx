@@ -86,7 +86,6 @@ const IntroConversation: React.FC = () => {
 		new Message({ text: "Hey, I'm going to ask your opinion on something.", user: user }),
 		new Message({ text: "Do you agree or disagree with the following topic?", user: user }),
 		new Message({ text: "Remember! You don't have to fully agree or disagree.", user: user }),
-		//TODO: Lock slider after selection
 		new Message({
 			text: "\"The government should reduce their military spending.\"",
 			user: user,

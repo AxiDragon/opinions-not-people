@@ -7,6 +7,7 @@ import { UserProvider } from "@/context/UserContext";
 import IntroConversation from "@/components/chat/conversations/IntroConversation";
 
 export default function Index() {
+  //TODO: Handling multiple chats?
   return (
     <GestureHandlerRootView
       style={{

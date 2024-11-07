@@ -26,7 +26,6 @@ export default function MessageUI({ message, show = true, interactable = true }:
 	);
 }
 
-//TODO: Make the UI here pretty
 const styles = StyleSheet.create({
 	message: {
 		backgroundColor: COLORS.messageBackground,
