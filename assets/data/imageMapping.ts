@@ -4,7 +4,7 @@ interface ImageMapping {
 
 const images: ImageMapping = {
 	'pno': require('@/assets/users/icons/pno.png'),
-	'default': require('@/assets/users/icons/default.png'),
+	'default': require('@/assets/users/icons/default.svg'),
 	'marco': require('@/assets/users/icons/marco.png'),
 	'jasmin': require('@/assets/users/icons/jasmin.png'),
 	'grant': require('@/assets/users/icons/grant.png'),
