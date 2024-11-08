@@ -17,8 +17,9 @@ export default function MessageUI({ message, show = true, interactable = true }:
 	return (
 		<View style={[show ? styles.message : styles.hidden, !interactable && { pointerEvents: "none" }]}>
 			{message.user && <UserUI user={message.user} />}
-			{messageText && messageText.trim().length !== 0 &&
-				<Text style={styles.messageText}>{messageText}</Text>}
+			<Text style={styles.messageText}>
+				{messageText && messageText.trim().length !== 0 && messageText}
+			</Text>
 			<View style={styles.customContent}>
 				{message.customContent}
 			</View>

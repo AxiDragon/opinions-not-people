@@ -12,7 +12,7 @@ export default function UserUI({ user }: Props) {
 	return (
 		<View style={styles.userContainer}>
 			<Image source={user.image} style={{ width: 64, height: 64 }} />
-			<Text style={styles.username}>{user.name}</Text>
+			<Text style={styles.username}>{user.getName()}</Text>
 		</View>
 	)
 }
