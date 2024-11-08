@@ -1,5 +1,5 @@
 import images from "@/assets/data/imageMapping";
-import QAItem from "./QAItem";
+import Response from "./Response";
 import Message from "./Message";
 
 export default class User {
@@ -10,7 +10,7 @@ export default class User {
 		private name: string = "John",
 		public color: string = "#dddddd",
 		intro: string | string[] = "Hello, I'm John!",
-		public qaList: QAItem[] = [],
+		public responses: Response[] = [],
 	) {
 		this.image = images[name.toLowerCase()];
 
@@ -31,7 +31,7 @@ export default class User {
 	}
 
 	getAnswer(question: string): Message[] {
-		const qaItem = this.qaList.find((qaItem) => qaItem.question === question);
+		const qaItem = this.responses.find((qaItem) => qaItem.question === question);
 
 		if (qaItem) {
 			if (Array.isArray(qaItem.answer)) {
