@@ -9,7 +9,6 @@ import Interrogation from "@/components/chat/conversations/Interrogation";
 import { users } from "@/assets/users/users";
 import { useEffect, useState } from "react";
 import Draggable from "@/components/dragdrop/Draggable";
-import images from "@/assets/data/imageMapping";
 
 export default function Index() {
   const [currentConversation, setCurrentConversation] = useState(0);
@@ -21,6 +20,10 @@ export default function Index() {
 
   const handleConversationEnd = () => {
     setCurrentConversation(currentConversation + 1);
+  }
+
+  const handleEndDrag = (x: number, y: number) => {
+    console.log(`Drag ended at x: ${x}, y: ${y}`);
   }
 
   useEffect(() => {
@@ -39,11 +42,11 @@ export default function Index() {
       <View style={styles.container}>
         <NavigationContainer independent={true}>
           <UserProvider>
-            <Draggable imageSource={"default"} />
-            <Draggable imageSource={"pno"} />
-            <Draggable imageSource={"jasmin"} />
-            <Draggable imageSource={"grant"} />
-            <Draggable imageSource={"marco"} />
+            <Draggable imageSource={"default"} onEndDrag={handleEndDrag} />
+            <Draggable imageSource={"pno"} onEndDrag={handleEndDrag} />
+            <Draggable imageSource={"jasmin"} onEndDrag={handleEndDrag} />
+            <Draggable imageSource={"grant"} onEndDrag={handleEndDrag} />
+            <Draggable imageSource={"marco"} onEndDrag={handleEndDrag} />
             {/* {conversations[currentConversation]} */}
           </UserProvider>
         </NavigationContainer>
