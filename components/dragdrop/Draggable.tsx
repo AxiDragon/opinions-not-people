@@ -18,6 +18,7 @@ export default function Draggable({ imageSource }: Props) {
 		});
 
 	//TODO: Add some edge detection to prevent the image from going off-screen
+	//TODO: Make the image overlay the others when dragged
 	const drag = Gesture.Pan().onChange(event => {
 		translateX.value += event.changeX;
 		translateY.value += event.changeY;
