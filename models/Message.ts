@@ -46,3 +46,5 @@ export default class Message {
 		}
 	}
 }
+
+export const EMPTY_MESSAGE = new Message({ text: "" });

@@ -5,6 +5,8 @@ import { StyleSheet, View } from "react-native";
 import { COLORS } from "@/constants/colors";
 import { UserProvider } from "@/context/UserContext";
 import IntroConversation from "@/components/chat/conversations/IntroConversation";
+import Interrogation from "@/components/chat/conversations/Interrogation";
+import { users } from "@/assets/users/users";
 
 export default function Index() {
   //TODO: Handling multiple chats?
@@ -18,7 +20,8 @@ export default function Index() {
       <View style={styles.container}>
         <NavigationContainer independent={true}>
           <UserProvider>
-            <IntroConversation />
+            <Interrogation interrogatee={users.JASMIN} questionCount={3} />
+            {/* <IntroConversation /> */}
           </UserProvider>
         </NavigationContainer>
       </View>
