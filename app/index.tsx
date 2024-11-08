@@ -7,9 +7,26 @@ import { UserProvider } from "@/context/UserContext";
 import IntroConversation from "@/components/chat/conversations/IntroConversation";
 import Interrogation from "@/components/chat/conversations/Interrogation";
 import { users } from "@/assets/users/users";
+import { useEffect, useState } from "react";
 
 export default function Index() {
-  //TODO: Handling multiple chats?
+  const [currentConversation, setCurrentConversation] = useState(0);
+
+  const conversations = [
+    <IntroConversation />,
+    <Interrogation interrogatee={users.JASMIN} questionCount={3} />,
+  ]
+
+  const handleConversationEnd = () => {
+    setCurrentConversation(currentConversation + 1);
+  }
+
+  useEffect(() => {
+    window.addEventListener("onConversationEnd", handleConversationEnd);
+
+    return () => { window.removeEventListener("onConversationEnd", handleConversationEnd) };
+  }, [currentConversation]);
+
   return (
     <GestureHandlerRootView
       style={{
@@ -20,8 +37,7 @@ export default function Index() {
       <View style={styles.container}>
         <NavigationContainer independent={true}>
           <UserProvider>
-            <Interrogation interrogatee={users.JASMIN} questionCount={3} />
-            {/* <IntroConversation /> */}
+            {conversations[currentConversation]}
           </UserProvider>
         </NavigationContainer>
       </View>

@@ -9,15 +9,17 @@ import { COLORS } from '@/constants/colors';
 
 type Props = {
 	messages: Message[];
+	onEnd?: () => void;
 }
 
 export type ChatHandle = {
 	continueChat: () => void;
 }
 
-const Chat = forwardRef<ChatHandle, Props>(({ messages }: Props, ref) => {
+const Chat = forwardRef<ChatHandle, Props>(({ messages, onEnd = () => { } }: Props, ref) => {
 	const scrollViewRef = useRef<ScrollView>(null);
 	const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
+	const [conversationEnded, setConversationEnded] = useState(false);
 
 	//TODO: Maybe contemplate if this is the best way to handle this
 	//it works for now though! I'll learn along the way
@@ -31,6 +33,11 @@ const Chat = forwardRef<ChatHandle, Props>(({ messages }: Props, ref) => {
 		if (currentMessageIndex < messages.length - 1 || messages[currentMessageIndex].addsContentOnContinue) {
 			messages[currentMessageIndex].onContinue && messages[currentMessageIndex].onContinue();
 			setCurrentMessageIndex(currentMessageIndex + 1);
+		}
+		else if (currentMessageIndex === messages.length - 1 && !conversationEnded) {
+			onEnd();
+			window.dispatchEvent(new Event("onConversationEnd"));
+			setConversationEnded(true);
 		}
 	}, [currentMessageIndex, messages.length]);
 
