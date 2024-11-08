@@ -1,13 +1,15 @@
 import "@/assets/styling/style";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
-import { StyleSheet, View } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 import { COLORS } from "@/constants/colors";
 import { UserProvider } from "@/context/UserContext";
 import IntroConversation from "@/components/chat/conversations/IntroConversation";
 import Interrogation from "@/components/chat/conversations/Interrogation";
 import { users } from "@/assets/users/users";
 import { useEffect, useState } from "react";
+import Draggable from "@/components/dragdrop/Draggable";
+import images from "@/assets/data/imageMapping";
 
 export default function Index() {
   const [currentConversation, setCurrentConversation] = useState(0);
@@ -37,7 +39,12 @@ export default function Index() {
       <View style={styles.container}>
         <NavigationContainer independent={true}>
           <UserProvider>
-            {conversations[currentConversation]}
+            <Draggable imageSource={"default"} />
+            <Draggable imageSource={"pno"} />
+            <Draggable imageSource={"jasmin"} />
+            <Draggable imageSource={"grant"} />
+            <Draggable imageSource={"marco"} />
+            {/* {conversations[currentConversation]} */}
           </UserProvider>
         </NavigationContainer>
       </View>
