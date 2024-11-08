@@ -21,15 +21,13 @@ const Chat = forwardRef<ChatHandle, Props>(({ messages, onEnd = () => { } }: Pro
 	const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
 	const [conversationEnded, setConversationEnded] = useState(false);
 
-	//TODO: Maybe contemplate if this is the best way to handle this
-	//it works for now though! I'll learn along the way
-	const handleTap = useCallback(() => {
+	const handleTap = () => {
 		if (messages[currentMessageIndex].continueCondition()) {
 			continueChat();
 		}
-	}, [currentMessageIndex, messages.length]);
+	};
 
-	const continueChat = useCallback(() => {
+	const continueChat = () => {
 		if (currentMessageIndex < messages.length - 1 || messages[currentMessageIndex].addsContentOnContinue) {
 			messages[currentMessageIndex].onContinue && messages[currentMessageIndex].onContinue();
 			setCurrentMessageIndex(currentMessageIndex + 1);
@@ -39,7 +37,7 @@ const Chat = forwardRef<ChatHandle, Props>(({ messages, onEnd = () => { } }: Pro
 			window.dispatchEvent(new Event("onConversationEnd"));
 			setConversationEnded(true);
 		}
-	}, [currentMessageIndex, messages.length]);
+	};
 
 	useImperativeHandle(ref, () => ({
 		continueChat,
