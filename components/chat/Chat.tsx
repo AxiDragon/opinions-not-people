@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 import { ScrollView, StyleSheet, View, Text } from "react-native";
 import MessageUI from "./MessageUI";
-import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from "react";
+import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react";
 import { Gesture, GestureDetector, GestureHandlerRootView } from "react-native-gesture-handler";
 import React from "react";
 import Message from '@/models/Message';

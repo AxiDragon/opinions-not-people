@@ -1,17 +1,19 @@
 import images from "@/assets/data/imageMapping";
-import { forwardRef, useImperativeHandle } from "react";
+import { useRef } from "react";
+import { View } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, { useAnimatedStyle, useSharedValue } from "react-native-reanimated";
 
-type Props = {
+export type Props = {
 	imageSource: string;
-	onEndDrag?: (x: number, y: number) => void;
+	onEndDrag?: (name: string, draggable: React.RefObject<View>, x: number, y: number) => void;
 }
 
 export default function Draggable({ imageSource, onEndDrag }: Props) {
 	const translateX = useSharedValue(0);
 	const translateY = useSharedValue(0);
 	const imageSize = 128;
+	const draggableRef = useRef<View>(null);
 
 	const tap = Gesture.Tap()
 		.numberOfTaps(1)
@@ -26,7 +28,10 @@ export default function Draggable({ imageSource, onEndDrag }: Props) {
 		translateY.value += event.changeY;
 	})
 		.onEnd(() => {
-			onEndDrag && onEndDrag(translateX.value, translateY.value);
+			onEndDrag && onEndDrag(imageSource,
+				draggableRef,
+				translateX.value + imageSize / 2,
+				translateY.value + imageSize / 2);
 		});
 
 	const containerStyle = useAnimatedStyle(() => {
@@ -44,7 +49,7 @@ export default function Draggable({ imageSource, onEndDrag }: Props) {
 	});
 	return (
 		<GestureDetector gesture={drag}>
-			<Animated.View style={[containerStyle]}>
+			<Animated.View style={[containerStyle]} ref={draggableRef}>
 				<GestureDetector gesture={tap}>
 					<Animated.Image
 						source={images[imageSource]}
