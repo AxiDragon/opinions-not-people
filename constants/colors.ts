@@ -3,5 +3,5 @@ export const COLORS = {
 	backgroundDark: "#ffcea9",
 	messageBackground: "#fff",
 	messageBorder: "#ffbd47",
-	text: "#000",
+	text: "#31250d",
 }

@@ -10,7 +10,6 @@ type Props = {
 }
 
 //TODO: Something with animations here
-
 export default function MessageUI({ message, show = true, interactable = true }: Props) {
 	const messageText = message.getText();
 

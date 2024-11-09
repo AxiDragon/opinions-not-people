@@ -1,7 +1,8 @@
-import { LayoutRectangle, StyleSheet, View } from "react-native";
+import { LayoutRectangle, StyleSheet, Text, View } from "react-native";
 import Draggable from "./Draggable";
 import React, { useRef, useState } from "react";
 import { Layout } from "react-native-reanimated";
+import { COLORS } from "@/constants/colors";
 
 type Props = {
 	children?: React.ReactNode;
@@ -51,14 +52,24 @@ const DragSort: React.FC<Props> = ({ children }) => {
 		<View style={styles.container}>
 			{/* Let's just not rely on supplying children, we can do it manually */}
 			{/* {children} */}
-			<View
-				ref={box1Ref}
-				style={styles.box1}
-				onLayout={() => measureBox(box1Ref, 0)} />
-			<View
-				ref={box2Ref}
-				style={styles.box2}
-				onLayout={() => measureBox(box2Ref, 1)} />
+			<View style={styles.boxContainer}>
+				<View
+					ref={box1Ref}
+					style={styles.box}
+					onLayout={() => measureBox(box1Ref, 0)}>
+					<Text style={styles.boxHeader}>
+						AGREE
+					</Text>
+				</View>
+				<View
+					ref={box2Ref}
+					style={styles.box}
+					onLayout={() => measureBox(box2Ref, 1)}>
+					<Text style={styles.boxHeader}>
+						DISAGREE
+					</Text>
+				</View>
+			</View>
 			<Draggable imageSource={"default"} onEndDrag={handleEndDrag} />
 			<Draggable imageSource={"pno"} onEndDrag={handleEndDrag} />
 			<Draggable imageSource={"jasmin"} onEndDrag={handleEndDrag} />
@@ -76,15 +87,25 @@ const styles = StyleSheet.create({
 		height: '100%',
 		width: '100%',
 	},
-	box1: {
-		width: 100,
-		height: 100,
-		backgroundColor: "red",
+	boxContainer: {
+		flexDirection: 'row',
+		height: '100%',
+		width: '100%',
+		maxWidth: 500,
+		alignItems: 'flex-end',
 	},
-	box2: {
-		width: 100,
-		height: 100,
-		backgroundColor: "blue",
+	box: {
+		height: 500,
+		flex: 1,
+		backgroundColor: COLORS.messageBackground,
+		borderColor: COLORS.messageBorder,
+		borderWidth: 5,
+	},
+	boxHeader: {
+		textAlign: 'center',
+		fontWeight: 700,
+		fontSize: 20,
+		color: COLORS.text,
 	}
 });
 
