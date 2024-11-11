@@ -1,5 +1,5 @@
 import images from "@/assets/data/imageMapping";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { View } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, { useAnimatedStyle, useSharedValue } from "react-native-reanimated";
@@ -10,6 +10,7 @@ export type Props = {
 }
 
 export default function Draggable({ imageSource, onEndDrag }: Props) {
+	const [zIndex, setZIndex] = useState(1);
 	const translateX = useSharedValue(0);
 	const translateY = useSharedValue(0);
 	const imageSize = 128;
@@ -27,7 +28,11 @@ export default function Draggable({ imageSource, onEndDrag }: Props) {
 		translateX.value += event.changeX;
 		translateY.value += event.changeY;
 	})
+		.onStart(() => {
+			setZIndex(2);
+		})
 		.onEnd(() => {
+			setZIndex(1);
 			onEndDrag && onEndDrag(imageSource,
 				draggableRef,
 				translateX.value + imageSize / 2,
@@ -44,6 +49,7 @@ export default function Draggable({ imageSource, onEndDrag }: Props) {
 					translateY: translateY.value
 				}
 			],
+			zIndex: zIndex,
 		};
 	});
 	return (
