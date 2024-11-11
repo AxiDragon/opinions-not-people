@@ -24,7 +24,8 @@ export default function DraggableUser({ user, onEndDrag }: Props) {
 			if (image === getImage('undefined')) {
 				console.log('tapped');
 				setImage(user.image);
-				// window.dispatchEvent(new CustomEvent("addInterrogatee", { detail: { user: imageSource } }));
+				window.dispatchEvent(new CustomEvent("addInterrogatee", { detail: { user } }));
+				window.dispatchEvent(new CustomEvent("startInterrogation"));
 			}
 		});
 
