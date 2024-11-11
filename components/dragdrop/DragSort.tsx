@@ -1,7 +1,9 @@
 import { LayoutRectangle, StyleSheet, Text, View } from "react-native";
-import Draggable from "./Draggable";
+import DraggableUser from "./DraggableUser";
 import React, { useRef, useState } from "react";
 import { COLORS } from "@/constants/colors";
+import User from "@/models/User";
+import { users } from "@/assets/users/users";
 
 const DragSort = () => {
 	const [boxes, setBoxes] = useState<LayoutRectangle[]>([
@@ -21,7 +23,7 @@ const DragSort = () => {
 		});
 	}
 
-	const handleEndDrag = (id: string, draggable: React.RefObject<View>, translateX: number, translateY: number) => {
+	const handleEndDrag = (user: User, draggable: React.RefObject<View>, translateX: number, translateY: number) => {
 		draggable.current?.measure((x, y, w, h, pX, pY) => {
 			x = pX + translateX;
 			y = pY + translateY;
@@ -35,7 +37,7 @@ const DragSort = () => {
 						y <= box.y + box.h
 
 					if (inBox) {
-						console.log(`Placed ${id} in ${i + 1}`);
+						console.log(`Placed ${user.getName()} in ${i + 1}`);
 					}
 				}
 			});
@@ -50,11 +52,11 @@ const DragSort = () => {
 			{/* Just to manipulate flexbox */}
 			<View />
 			<View style={styles.draggableContainer}>
-				<Draggable imageSource={"default"} onEndDrag={handleEndDrag} />
-				<Draggable imageSource={"pno"} onEndDrag={handleEndDrag} />
-				<Draggable imageSource={"jasmin"} onEndDrag={handleEndDrag} />
-				<Draggable imageSource={"grant"} onEndDrag={handleEndDrag} />
-				<Draggable imageSource={"marco"} onEndDrag={handleEndDrag} />
+				<DraggableUser user={users.DEFAULT} onEndDrag={handleEndDrag} />
+				<DraggableUser user={users.PNO} onEndDrag={handleEndDrag} />
+				<DraggableUser user={users.JASMIN} onEndDrag={handleEndDrag} />
+				<DraggableUser user={users.GRANT} onEndDrag={handleEndDrag} />
+				<DraggableUser user={users.MARCO} onEndDrag={handleEndDrag} />
 			</View>
 			<View style={styles.boxContainer}>
 				<View

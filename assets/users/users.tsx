@@ -97,4 +97,20 @@ export const users = {
 			},
 		]
 	),
+	UNDEFINED: new User("Undefined", undefined, "I'm not sure what to say...",
+		[
+			{
+				question: "What's your name?",
+				answer: "I'm not sure what to say..."
+			},
+		]
+	),
+	DEFAULT: new User("Default", undefined, "I'm not sure what to say...",
+		[
+			{
+				question: "What's your name?",
+				answer: "I'm not sure what to say..."
+			},
+		]
+	),
 }
