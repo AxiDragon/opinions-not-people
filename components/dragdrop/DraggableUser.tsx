@@ -32,7 +32,7 @@ export default function DraggableUser({ user, onEndDrag }: Props) {
 	//TODO: Add some edge detection to prevent the image from going off-screen
 	//TODO: Make the image overlay the others when dragged
 	const drag = Gesture.Pan().onChange(event => {
-		if (image !== 'undefined') {
+		if (image !== getImage('undefined')) {
 			translateX.value += event.changeX;
 			translateY.value += event.changeY;
 		}
