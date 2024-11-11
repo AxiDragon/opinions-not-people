@@ -3,11 +3,7 @@ import Draggable from "./Draggable";
 import React, { useRef, useState } from "react";
 import { COLORS } from "@/constants/colors";
 
-type Props = {
-	children?: React.ReactNode;
-}
-
-const DragSort: React.FC<Props> = ({ children }) => {
+const DragSort = () => {
 	const [boxes, setBoxes] = useState<LayoutRectangle[]>([
 		{ x: 0, y: 0, w: 0, h: 0 },
 		{ x: 0, y: 0, w: 0, h: 0 },
