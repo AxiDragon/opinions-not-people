@@ -11,6 +11,7 @@ export type Props = {
 
 export default function Draggable({ imageSource, onEndDrag }: Props) {
 	const [zIndex, setZIndex] = useState(1);
+	const [image, setImage] = useState('undefined');
 	const translateX = useSharedValue(0);
 	const translateY = useSharedValue(0);
 	const imageSize = 128;
@@ -19,14 +20,19 @@ export default function Draggable({ imageSource, onEndDrag }: Props) {
 	const tap = Gesture.Tap()
 		.numberOfTaps(1)
 		.onStart(() => {
-			console.log('tapped');
+			if (image === 'undefined') {
+				console.log('tapped');
+				setImage(imageSource);
+			}
 		});
 
 	//TODO: Add some edge detection to prevent the image from going off-screen
 	//TODO: Make the image overlay the others when dragged
 	const drag = Gesture.Pan().onChange(event => {
-		translateX.value += event.changeX;
-		translateY.value += event.changeY;
+		if (image !== 'undefined') {
+			translateX.value += event.changeX;
+			translateY.value += event.changeY;
+		}
 	})
 		.onStart(() => {
 			setZIndex(2);
@@ -57,7 +63,7 @@ export default function Draggable({ imageSource, onEndDrag }: Props) {
 			<Animated.View style={[containerStyle]} ref={draggableRef}>
 				<GestureDetector gesture={tap}>
 					<Animated.Image
-						source={getImage(imageSource)}
+						source={getImage(image)}
 						style={{ width: imageSize, height: imageSize }}
 					/>
 				</GestureDetector>
