@@ -11,22 +11,35 @@ import { useEffect, useState } from "react";
 import DragSort from "@/components/dragdrop/DragSort";
 
 export default function Index() {
-  const [currentConversation, setCurrentConversation] = useState(0);
+  const [currentScreen, setCurrentScreen] = useState(0);
 
-  const conversations = [
+  const screens = [
     <IntroConversation />,
     <Interrogation interrogatee={users.JASMIN} questionCount={3} />,
+    <DragSort />,
   ]
 
   const handleConversationEnd = () => {
-    setCurrentConversation(currentConversation + 1);
+    setCurrentScreen(currentScreen + 1);
   }
 
   useEffect(() => {
     window.addEventListener("onConversationEnd", handleConversationEnd);
 
-    return () => { window.removeEventListener("onConversationEnd", handleConversationEnd) };
-  }, [currentConversation]);
+    // functions
+    window.setScreen = (screen: number) => {
+      if (screen >= 0 && screen < screens.length) {
+        setCurrentScreen(screen);
+      } else {
+        console.error("Screen index out of bounds");
+      }
+    };
+
+    return () => {
+      window.removeEventListener("onConversationEnd", handleConversationEnd);
+      delete window.setScreen;
+    };
+  }, [currentScreen]);
 
   return (
     <GestureHandlerRootView
@@ -38,8 +51,7 @@ export default function Index() {
       <View style={styles.container}>
         <NavigationContainer independent={true}>
           <UserProvider>
-            <DragSort />
-            {/* {conversations[currentConversation]} */}
+            {screens[currentScreen]}
           </UserProvider>
         </NavigationContainer>
       </View>
