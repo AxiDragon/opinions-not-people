@@ -9,7 +9,7 @@
     "web": "expo start --web",
     "build": "expo export -p web",
     "deploy": "gh-pages -t -d dist",
-    "build-deploy": "expo export -p && webgh-pages -t -d dist",
+    "build-deploy": "expo export -p web && gh-pages -t -d dist",
     "test": "jest --watchAll",
     "lint": "expo lint"
   },
