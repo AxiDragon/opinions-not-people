@@ -1,6 +1,6 @@
-import images from "@/assets/data/imageMapping";
 import Response from "./Response";
 import Message from "./Message";
+import getImage from "@/assets/data/imageMapping";
 
 export default class User {
 	private introMessages: Message[];
@@ -12,7 +12,7 @@ export default class User {
 		intro: string | string[] = "Hello, I'm John!",
 		public responses: Response[] = [],
 	) {
-		this.image = images[name.toLowerCase()];
+		this.image = getImage(name.toLowerCase());
 
 		if (Array.isArray(intro)) {
 			this.introMessages = intro.map((intro) => new Message({ text: intro, user: this }));

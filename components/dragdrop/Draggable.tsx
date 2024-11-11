@@ -1,4 +1,4 @@
-import images from "@/assets/data/imageMapping";
+import getImage from "@/assets/data/imageMapping";
 import { useRef, useState } from "react";
 import { View } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
@@ -57,7 +57,7 @@ export default function Draggable({ imageSource, onEndDrag }: Props) {
 			<Animated.View style={[containerStyle]} ref={draggableRef}>
 				<GestureDetector gesture={tap}>
 					<Animated.Image
-						source={images[imageSource]}
+						source={getImage(imageSource)}
 						style={{ width: imageSize, height: imageSize }}
 					/>
 				</GestureDetector>

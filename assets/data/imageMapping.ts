@@ -8,6 +8,13 @@ const images: ImageMapping = {
 	'marco': require('@/assets/users/icons/marco.svg'),
 	'jasmin': require('@/assets/users/icons/jasmin.svg'),
 	'grant': require('@/assets/users/icons/grant.svg'),
+	'undefined': require('@/assets/users/icons/undefined.svg'),
 };
 
-export default images;
+export default function getImage(name: string): any {
+	if (images[name] === undefined) {
+		return images['undefined'];
+	}
+
+	return images[name];
+}
