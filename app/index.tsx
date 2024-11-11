@@ -20,7 +20,6 @@ export default function Index() {
     <IntroConversation />,
     <DragSort />,
     <Interrogation interrogatee={interrogatees[currentInterrogatee]} questionCount={3} />,
-    // end sequence something
   ]
 
   const handleConversationEnd = () => {
@@ -37,12 +36,11 @@ export default function Index() {
   function addInterrogatee(event: Event) {
     const customEvent = event as CustomEvent;
     const newInterrogatees = [...interrogatees];
+
     newInterrogatees[currentInterrogatee + 1] = customEvent.detail.user;
-    console.log(currentInterrogatee);
+
     setInterrogatees(newInterrogatees);
     setCurrentInterrogatee(currentInterrogatee + 1);
-    console.log("Added interrogatee", customEvent.detail.user);
-    console.log("Interrogatees", newInterrogatees);
   }
 
   const startInterrogation = () => {
@@ -65,7 +63,6 @@ export default function Index() {
 
   useEffect(() => {
     window.addEventListener("onConversationEnd", handleConversationEnd);
-
 
     return () => {
       window.removeEventListener("onConversationEnd", handleConversationEnd);

@@ -1,7 +1,7 @@
-import User from "@/models/User";
+import User, { Opinion } from "@/models/User";
 
 export const users = {
-	PNO: new User("PNO", undefined, ["Heya! I'm PNO!", "I'm PNO! I'm a robot to guide you through this game."],
+	PNO: new User("PNO", Opinion.POSITIVE, ["Heya! I'm PNO!", "I'm PNO! I'm a robot to guide you through this game."],
 		[
 			{
 				question: "What's your name?",
@@ -25,7 +25,7 @@ export const users = {
 			},
 		]
 	),
-	GRANT: new User("Grant", undefined, "Hey there. The name's Grant, nice to meet ya!",
+	GRANT: new User("Grant", Opinion.NEGATIVE, "Hey there. The name's Grant, nice to meet ya!",
 		[
 			{
 				question: "What's your name?",
@@ -49,7 +49,7 @@ export const users = {
 			},
 		]
 	),
-	JASMIN: new User("Jasmin", undefined, "Hello! I'm Jasmin!",
+	JASMIN: new User("Jasmin", Opinion.POSITIVE, "Hello! I'm Jasmin!",
 		[
 			{
 				question: "What's your name?",
@@ -73,7 +73,7 @@ export const users = {
 			},
 		]
 	),
-	MARCO: new User("Marco", undefined, "Hey there! I'm Marco! I hope you are doing well.",
+	MARCO: new User("Marco", Opinion.NEGATIVE, "Hey there! I'm Marco! I hope you are doing well.",
 		[
 			{
 				question: "What's your name?",
@@ -97,7 +97,7 @@ export const users = {
 			},
 		]
 	),
-	UNDEFINED: new User("Undefined", undefined, "I'm not sure what to say...",
+	UNDEFINED: new User("Undefined", Opinion.NONE, "I'm not sure what to say...",
 		[
 			{
 				question: "What's your name?",
@@ -105,7 +105,7 @@ export const users = {
 			},
 		]
 	),
-	DEFAULT: new User("Default", undefined, "I'm not sure what to say...",
+	DEFAULT: new User("Default", Opinion.NONE, "I'm not sure what to say...",
 		[
 			{
 				question: "What's your name?",

@@ -2,13 +2,21 @@ import Response from "./Response";
 import Message from "./Message";
 import getImage from "@/assets/data/imageMapping";
 
+export enum Opinion {
+	POSITIVE = "Positive",
+	NEGATIVE = "Negative",
+	NONE = "None",
+}
+
 export default class User {
 	private introMessages: Message[];
+	public playerOpinion: Opinion = Opinion.NONE;
 	public image;
+	public identified: boolean = false;
 
 	constructor(
 		private name: string = "John",
-		public color: string = "#dddddd",
+		public opinion: Opinion,
 		intro: string | string[] = "Hello, I'm John!",
 		public responses: Response[] = [],
 	) {

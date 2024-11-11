@@ -12,7 +12,7 @@ export type Props = {
 
 export default function DraggableUser({ user, onEndDrag }: Props) {
 	const [zIndex, setZIndex] = useState(1);
-	const [image, setImage] = useState(getImage('undefined'));
+	const [identified, setIdentified] = useState<boolean>(user.identified);
 	const translateX = useSharedValue(0);
 	const translateY = useSharedValue(0);
 	const imageSize = 128;
@@ -21,9 +21,9 @@ export default function DraggableUser({ user, onEndDrag }: Props) {
 	const tap = Gesture.Tap()
 		.numberOfTaps(1)
 		.onStart(() => {
-			if (image === getImage('undefined')) {
-				console.log('tapped');
-				setImage(user.image);
+			if (!identified) {
+				user.identified = true;
+				setIdentified(user.identified);
 				window.dispatchEvent(new CustomEvent("addInterrogatee", { detail: { user } }));
 				window.dispatchEvent(new CustomEvent("startInterrogation"));
 			}
@@ -32,7 +32,7 @@ export default function DraggableUser({ user, onEndDrag }: Props) {
 	//TODO: Add some edge detection to prevent the image from going off-screen
 	//TODO: Make the image overlay the others when dragged
 	const drag = Gesture.Pan().onChange(event => {
-		if (image !== getImage('undefined')) {
+		if (identified) {
 			translateX.value += event.changeX;
 			translateY.value += event.changeY;
 		}
@@ -66,7 +66,7 @@ export default function DraggableUser({ user, onEndDrag }: Props) {
 			<Animated.View style={[containerStyle]} ref={draggableRef}>
 				<GestureDetector gesture={tap}>
 					<Animated.Image
-						source={image}
+						source={identified ? user.image : getImage("undefined")}
 						style={{ width: imageSize, height: imageSize }}
 					/>
 				</GestureDetector>

@@ -1,23 +1,23 @@
-import { LayoutRectangle, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import DraggableUser from "./DraggableUser";
 import React, { useRef, useState } from "react";
 import { COLORS } from "@/constants/colors";
-import User from "@/models/User";
+import User, { Opinion } from "@/models/User";
 import { users } from "@/assets/users/users";
 
 const DragSort = () => {
-	const [boxes, setBoxes] = useState<LayoutRectangle[]>([
-		{ x: 0, y: 0, w: 0, h: 0 },
-		{ x: 0, y: 0, w: 0, h: 0 },
+	const [boxes, setBoxes] = useState([
+		{ x: 0, y: 0, w: 0, h: 0, opinion: Opinion.POSITIVE },
+		{ x: 0, y: 0, w: 0, h: 0, opinion: Opinion.NEGATIVE },
 	]);
-	const box1Ref = useRef<View>(null);
-	const box2Ref = useRef<View>(null);
+	const agreeBoxRef = useRef<View>(null);
+	const disagreeBoxRef = useRef<View>(null);
 
 	const measureBox = (ref: React.RefObject<View>, i: number) => {
 		ref.current?.measure((x, y, w, h, pX, pY) => {
 			setBoxes(prevBoxes => {
 				const newBoxes = [...prevBoxes];
-				newBoxes[i] = { x: pX, y: pY, w, h };
+				newBoxes[i] = { x: pX, y: pY, w, h, opinion: newBoxes[i].opinion };
 				return newBoxes;
 			});
 		});
@@ -27,6 +27,7 @@ const DragSort = () => {
 		draggable.current?.measure((x, y, w, h, pX, pY) => {
 			x = pX + translateX;
 			y = pY + translateY;
+			let foundBox: boolean = false;
 
 			boxes.forEach((box, i) => {
 				if (box) {
@@ -37,11 +38,16 @@ const DragSort = () => {
 						y <= box.y + box.h
 
 					if (inBox) {
-						console.log(`Placed ${user.getName()} in ${i + 1}`);
+						user.playerOpinion = box.opinion;
+						foundBox = true;
 					}
 				}
 			});
 
+			if (!foundBox) {
+				// no box found
+				user.playerOpinion = Opinion.NONE;
+			}
 		});
 	}
 
@@ -58,19 +64,21 @@ const DragSort = () => {
 				<DraggableUser user={users.GRANT} onEndDrag={handleEndDrag} />
 				<DraggableUser user={users.MARCO} onEndDrag={handleEndDrag} />
 			</View>
+			{/* TODO: Add a 'Player' user class that determines whether each box 
+			is the correct assignment for each user */}
 			<View style={styles.boxContainer}>
 				<View
-					ref={box1Ref}
+					ref={agreeBoxRef}
 					style={styles.box}
-					onLayout={() => measureBox(box1Ref, 0)}>
+					onLayout={() => measureBox(agreeBoxRef, 0)}>
 					<Text style={styles.boxHeader}>
 						AGREE
 					</Text>
 				</View>
 				<View
-					ref={box2Ref}
+					ref={disagreeBoxRef}
 					style={styles.box}
-					onLayout={() => measureBox(box2Ref, 1)}>
+					onLayout={() => measureBox(disagreeBoxRef, 1)}>
 					<Text style={styles.boxHeader}>
 						DISAGREE
 					</Text>
