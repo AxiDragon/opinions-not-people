@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
 		height: 500,
 		flex: 1,
 		backgroundColor: COLORS.messageBackground,
-		borderColor: COLORS.messageBorder,
+		borderColor: COLORS.interactables,
 		borderWidth: 5,
 	},
 	boxHeader: {

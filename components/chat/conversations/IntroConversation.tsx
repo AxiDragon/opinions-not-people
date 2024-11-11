@@ -7,6 +7,7 @@ import Chat, { ChatHandle } from "../Chat";
 import { useEffect, useRef, useState } from "react";
 import QuestionSelector from "../QuestionSelector";
 import { getQuestions } from "@/assets/data/questions";
+import { COLORS } from "@/constants/colors";
 
 const IntroConversation: React.FC = () => {
 	const { setName, name } = useUser();
@@ -58,11 +59,12 @@ const IntroConversation: React.FC = () => {
 		return <TextInput
 			style={{
 				fontSize: 20,
-				backgroundColor: "#ffe6d4",
+				backgroundColor: COLORS.background,
+				color: COLORS.text,
 				padding: 10,
-				borderRadius: 5,
 				marginTop: 5,
 				textAlign: "center",
+				// transform: [{ rotate: "3deg" }]
 			}}
 			placeholder="Put your name here!"
 			onChangeText={changeUsername}

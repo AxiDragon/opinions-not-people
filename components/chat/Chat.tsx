@@ -85,7 +85,6 @@ const Chat = forwardRef<ChatHandle, Props>(({ messages, onEnd = () => { } }: Pro
 const styles = StyleSheet.create({
 	chatContainer: {
 		display: "flex",
-		padding: 20,
 		paddingBottom: 350,
 		justifyContent: "flex-start",
 		alignItems: "center",
@@ -97,6 +96,7 @@ const styles = StyleSheet.create({
 		height: 150,
 		alignContent: "center",
 		justifyContent: "center",
+		backgroundColor: COLORS.backgroundDark,
 	},
 	tappableText: {
 		color: COLORS.text,

@@ -1,7 +1,7 @@
 export const COLORS = {
-	background: "#ffe6d4",
-	backgroundDark: "#ffcea9",
-	messageBackground: "#fff",
-	messageBorder: "#ffbd47",
-	text: "#31250d",
+	background: "#3D3C3D",
+	backgroundDark: "#0A0A0A",
+	messageBackground: "#151415",
+	interactables: "#D84797",
+	text: "#FAF0F8",
 }

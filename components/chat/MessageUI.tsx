@@ -29,17 +29,19 @@ export default function MessageUI({ message, show = true, interactable = true }:
 const styles = StyleSheet.create({
 	message: {
 		backgroundColor: COLORS.messageBackground,
-		borderColor: COLORS.messageBorder,
-		borderWidth: 2,
-		padding: 15,
-		borderRadius: 10,
+		borderColor: COLORS.interactables,
+		// borderWidth: 2,
+		padding: 20,
 		width: "100%",
-		maxWidth: 400,
+		maxWidth: 500,
+		flexDirection: "column",
+		alignItems: "center",
 	},
 	messageText: {
 		fontSize: 20,
 		textAlign: "center",
 		color: COLORS.text,
+		width: '90%',
 	},
 	customContent: {
 		width: "100%",

@@ -30,9 +30,9 @@ export default function LabeledSlider({
 			<Slider
 				style={{ width: "90%", height: 40 }}
 				value={value}
-				minimumTrackTintColor={COLORS.messageBorder}
+				minimumTrackTintColor={COLORS.interactables}
 				maximumTrackTintColor={COLORS.background}
-				thumbTintColor={COLORS.messageBorder}
+				thumbTintColor={COLORS.interactables}
 				onValueChange={handleValueChange}
 			/>
 			<View style={{ width: "90%", flexDirection: "row", justifyContent: "space-between" }}>
