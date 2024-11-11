@@ -1,7 +1,6 @@
 import { LayoutRectangle, StyleSheet, Text, View } from "react-native";
 import Draggable from "./Draggable";
 import React, { useRef, useState } from "react";
-import { Layout } from "react-native-reanimated";
 import { COLORS } from "@/constants/colors";
 
 type Props = {
@@ -52,6 +51,15 @@ const DragSort: React.FC<Props> = ({ children }) => {
 		<View style={styles.container}>
 			{/* Let's just not rely on supplying children, we can do it manually */}
 			{/* {children} */}
+			{/* Just to manipulate flexbox */}
+			<View />
+			<View style={styles.draggableContainer}>
+				<Draggable imageSource={"default"} onEndDrag={handleEndDrag} />
+				<Draggable imageSource={"pno"} onEndDrag={handleEndDrag} />
+				<Draggable imageSource={"jasmin"} onEndDrag={handleEndDrag} />
+				<Draggable imageSource={"grant"} onEndDrag={handleEndDrag} />
+				<Draggable imageSource={"marco"} onEndDrag={handleEndDrag} />
+			</View>
 			<View style={styles.boxContainer}>
 				<View
 					ref={box1Ref}
@@ -70,11 +78,6 @@ const DragSort: React.FC<Props> = ({ children }) => {
 					</Text>
 				</View>
 			</View>
-			<Draggable imageSource={"default"} onEndDrag={handleEndDrag} />
-			<Draggable imageSource={"pno"} onEndDrag={handleEndDrag} />
-			<Draggable imageSource={"jasmin"} onEndDrag={handleEndDrag} />
-			<Draggable imageSource={"grant"} onEndDrag={handleEndDrag} />
-			<Draggable imageSource={"marco"} onEndDrag={handleEndDrag} />
 		</View>
 	);
 };
@@ -82,17 +85,24 @@ const DragSort: React.FC<Props> = ({ children }) => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		justifyContent: "center",
-		alignItems: "center",
 		height: '100%',
 		width: '100%',
+		justifyContent: 'space-between',
 	},
 	boxContainer: {
 		flexDirection: 'row',
-		height: '100%',
 		width: '100%',
 		maxWidth: 500,
 		alignItems: 'flex-end',
+	},
+	draggableContainer: {
+		flexDirection: 'row',
+		alignSelf: 'center',
+		justifyContent: 'center',
+		gap: 25,
+		flexWrap: 'wrap',
+		maxWidth: 500,
+		zIndex: 1,
 	},
 	box: {
 		height: 500,

@@ -44,7 +44,6 @@ export default function Draggable({ imageSource, onEndDrag }: Props) {
 					translateY: translateY.value
 				}
 			],
-			position: 'absolute',
 		};
 	});
 	return (
