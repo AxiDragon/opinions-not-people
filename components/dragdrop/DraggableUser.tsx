@@ -16,7 +16,7 @@ export default function DraggableUser({ user, onEndDrag }: Props) {
 	const [identified, setIdentified] = useState<boolean>(true);
 	const translateX = useSharedValue(0);
 	const translateY = useSharedValue(0);
-	const imageSize = 128;
+	const imageSize = 80;
 	const draggableRef = useRef<View>(null);
 
 	const tap = Gesture.Tap()
