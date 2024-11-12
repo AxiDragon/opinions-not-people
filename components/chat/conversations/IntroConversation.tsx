@@ -68,6 +68,7 @@ const IntroConversation: React.FC = () => {
 			}}
 			placeholder="Put your name here!"
 			onChangeText={changeUsername}
+			onSubmitEditing={continueChat}
 			value={name}
 		/>;
 	}
