@@ -38,6 +38,10 @@ export default class User {
 		return this.name;
 	}
 
+	setName(name: string): void {
+		this.name = name;
+	}
+
 	getAnswer(question: string): Message[] {
 		const qaItem = this.responses.find((qaItem) => qaItem.question === question);
 

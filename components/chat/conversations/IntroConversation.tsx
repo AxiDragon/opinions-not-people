@@ -1,5 +1,5 @@
 import Message from "@/models/Message";
-import { users } from "@/assets/users/users";
+import { PLAYER, users } from "@/assets/users/users";
 import { TextInput } from "react-native";
 import LabeledSlider from "@/components/input/LabeledSlider";
 import { useUser } from "@/context/UserContext";
@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import QuestionSelector from "../QuestionSelector";
 import { getQuestions } from "@/assets/data/questions";
 import { COLORS } from "@/constants/colors";
+import { Opinion } from "@/models/User";
 
 const IntroConversation: React.FC = () => {
 	const { setName, name } = useUser();
@@ -83,7 +84,11 @@ const IntroConversation: React.FC = () => {
 		new Message({ text: "People not Opinions" }),
 		...user.getIntro(),
 		new Message({ text: "What is your name?", user: user }),
-		new Message({ text: "My name is...", customContent: nameInput(), continueCondition: () => changedUsernameRef.current }),
+		new Message({
+			text: "My name is...", customContent: nameInput(),
+			continueCondition: () => changedUsernameRef.current,
+			onContinue: () => PLAYER.setName(name)
+		}),
 		//TODO: Icon selection
 		new Message({ text: "Nice to meet you, " + name + "!", user: user }),
 		new Message({ text: "Hey, I'm going to ask your opinion on something.", user: user }),
@@ -93,7 +98,10 @@ const IntroConversation: React.FC = () => {
 			text: "\"The government should reduce their military spending.\"",
 			user: user,
 			customContent: <LabeledSlider onValueChange={setOpinion} middleLabel="Neutral" />,
-			continueCondition: () => opinionRef.current !== 0.5
+			continueCondition: () => opinionRef.current !== 0.5,
+			onContinue: () => {
+				PLAYER.playerOpinion = opinionRef.current < 0.5 ? Opinion.NEGATIVE : Opinion.POSITIVE;
+			}
 		}),
 		new Message({ text: getOpinionMessage(), user: user }),
 		new Message({ text: "Anyways, I've got some questions for you!", user: user }),

@@ -9,6 +9,7 @@ const images: ImageMapping = {
 	'jasmin': require('@/assets/users/icons/jasmin.svg'),
 	'grant': require('@/assets/users/icons/grant.svg'),
 	'undefined': require('@/assets/users/icons/undefined.svg'),
+	'player': require('@/assets/users/icons/pno.svg'), //for debugging
 };
 
 export default function getImage(name: string): any {

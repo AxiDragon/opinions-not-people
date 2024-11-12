@@ -3,12 +3,18 @@ import DraggableUser from "./DraggableUser";
 import React, { useRef, useState } from "react";
 import { COLORS } from "@/constants/colors";
 import User, { Opinion } from "@/models/User";
-import { users } from "@/assets/users/users";
+import { PLAYER, users } from "@/assets/users/users";
 
 const DragSort = () => {
 	const [boxes, setBoxes] = useState([
-		{ x: 0, y: 0, w: 0, h: 0, opinion: Opinion.POSITIVE },
-		{ x: 0, y: 0, w: 0, h: 0, opinion: Opinion.NEGATIVE },
+		{
+			x: 0, y: 0, w: 0, h: 0,
+			opinion: PLAYER.opinion === Opinion.POSITIVE ? Opinion.POSITIVE : Opinion.NEGATIVE
+		},
+		{
+			x: 0, y: 0, w: 0, h: 0,
+			opinion: PLAYER.opinion === Opinion.POSITIVE ? Opinion.NEGATIVE : Opinion.POSITIVE
+		},
 	]);
 	const agreeBoxRef = useRef<View>(null);
 	const disagreeBoxRef = useRef<View>(null);
@@ -51,6 +57,8 @@ const DragSort = () => {
 		});
 	}
 
+	//TODO: Restyle this to have a top and bottom instead, with characters in the middle?
+	//it'd fit better with phone screens
 	return (
 		<View style={styles.container}>
 			{/* Let's just not rely on supplying children, we can do it manually */}

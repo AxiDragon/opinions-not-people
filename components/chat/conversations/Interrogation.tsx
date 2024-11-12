@@ -1,4 +1,4 @@
-import { users } from "@/assets/users/users";
+import { PLAYER } from "@/assets/users/users";
 import Message from "@/models/Message";
 import User from "@/models/User";
 import { useMemo, useRef, useState } from "react";
@@ -12,7 +12,7 @@ type Props = {
 }
 
 const Interrogation: React.FC<Props> = ({ interrogatee, questionCount }: Props) => {
-	const player = users.MARCO;
+	const player = PLAYER;
 	const questionsRef = useRef<string[]>([]);
 	const [answers, setAnswers] = useState<string[]>(new Array(questionCount).fill(""));
 	const chatRef = useRef<ChatHandle>(null);

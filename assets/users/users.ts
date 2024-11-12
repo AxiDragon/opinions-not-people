@@ -1,5 +1,10 @@
 import User, { Opinion } from "@/models/User";
 
+// export const PLAYER = new User("", Opinion.NONE, "Hey");
+
+// Player for debugging
+export const PLAYER = new User("Player", Opinion.POSITIVE, "Hey, I'm Player!");
+
 export const users = {
 	PNO: new User("PNO", Opinion.POSITIVE, ["Heya! I'm PNO!", "I'm PNO! I'm a robot to guide you through this game."],
 		[
