@@ -34,7 +34,6 @@ const Chat = forwardRef<ChatHandle, Props>(({ messages, onEnd = () => { } }: Pro
 		}
 		else if (currentMessageIndex === messages.length - 1 && !conversationEnded) {
 			onEnd();
-			window.dispatchEvent(new Event("onConversationEnd"));
 			setConversationEnded(true);
 		}
 	};

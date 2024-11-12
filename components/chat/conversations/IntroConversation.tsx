@@ -4,28 +4,21 @@ import { TextInput } from "react-native";
 import LabeledSlider from "@/components/input/LabeledSlider";
 import { useUser } from "@/context/UserContext";
 import Chat, { ChatHandle } from "../Chat";
-import { useEffect, useRef, useState } from "react";
-import QuestionSelector from "../QuestionSelector";
-import { getQuestions } from "@/assets/data/questions";
+import { useRef, useState } from "react";
 import { COLORS } from "@/constants/colors";
 import { Opinion } from "@/models/User";
+import { setScreen } from "@/utility/EventDispatcher";
 
 const IntroConversation: React.FC = () => {
 	const { setName, name } = useUser();
 	const [changedUsername, setChangedUsername] = useState<boolean>(false);
 	const [opinion, setOpinion] = useState<number>(0.5);
-	const [question, setQuestion] = useState<string>("");
-	const [questions, setQuestions] = useState<string[]>(getQuestions(3));
-	const changedUsernameRef = useRef(changedUsername);
-	const opinionRef = useRef(opinion);
-	const questionRef = useRef(question);
 	const chatRef = useRef<ChatHandle>(null);
 
 	const radicalMargin = 0.1;
 	const indifferenceMargin = 0.05;
 
 	const user = users.GRANT;
-	const user2 = users.JASMIN;
 
 	function getOpinionMessage(): string {
 		if (opinion < radicalMargin || opinion > 1 - radicalMargin) {
@@ -43,20 +36,7 @@ const IntroConversation: React.FC = () => {
 		setChangedUsername(true);
 	}
 
-	//TODO: This is a bit of a hacky way to handle this
-	useEffect(() => {
-		changedUsernameRef.current = changedUsername;
-	}, [changedUsername]);
-
-	useEffect(() => {
-		opinionRef.current = opinion;
-	}, [opinion]);
-
-	useEffect(() => {
-		questionRef.current = question;
-	}, [question]);
-
-	const nameInput = () => {
+	function nameInput() {
 		return <TextInput
 			style={{
 				fontSize: 20,
@@ -65,11 +45,14 @@ const IntroConversation: React.FC = () => {
 				padding: 10,
 				marginTop: 5,
 				textAlign: "center",
-				// transform: [{ rotate: "3deg" }]
 			}}
 			placeholder="Put your name here!"
 			onChangeText={changeUsername}
-			onSubmitEditing={continueChat}
+			onSubmitEditing={() => {
+				if (changedUsername) {
+					continueChat();
+				}
+			}}
 			value={name}
 		/>;
 	}
@@ -86,7 +69,7 @@ const IntroConversation: React.FC = () => {
 		new Message({ text: "What is your name?", user: user }),
 		new Message({
 			text: "My name is...", customContent: nameInput(),
-			continueCondition: () => changedUsernameRef.current,
+			continueCondition: () => changedUsername,
 			onContinue: () => PLAYER.setName(name)
 		}),
 		//TODO: Icon selection
@@ -98,15 +81,17 @@ const IntroConversation: React.FC = () => {
 			text: "\"The government should reduce their military spending.\"",
 			user: user,
 			customContent: <LabeledSlider onValueChange={setOpinion} middleLabel="Neutral" />,
-			continueCondition: () => opinionRef.current !== 0.5,
+			continueCondition: () => opinion !== 0.5,
 			onContinue: () => {
-				PLAYER.playerOpinion = opinionRef.current < 0.5 ? Opinion.NEGATIVE : Opinion.POSITIVE;
+				PLAYER.playerOpinion = opinion < 0.5 ? Opinion.NEGATIVE : Opinion.POSITIVE;
 			}
 		}),
 		new Message({ text: getOpinionMessage(), user: user }),
 	];
 
-	return <Chat messages={intro} ref={chatRef} />;
+	return <Chat messages={intro}
+		ref={chatRef}
+		onEnd={() => setScreen(1)} />;
 }
 
 export default IntroConversation;

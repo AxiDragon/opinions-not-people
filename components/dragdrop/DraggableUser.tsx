@@ -1,5 +1,6 @@
 import getImage from "@/assets/data/imageMapping";
 import User from "@/models/User";
+import { setScreen } from "@/utility/EventDispatcher";
 import { useRef, useState } from "react";
 import { View } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
@@ -25,7 +26,7 @@ export default function DraggableUser({ user, onEndDrag }: Props) {
 				user.identified = true;
 				setIdentified(user.identified);
 				window.dispatchEvent(new CustomEvent("addInterrogatee", { detail: { user } }));
-				window.dispatchEvent(new CustomEvent("startInterrogation"));
+				setScreen(2);
 			}
 		});
 

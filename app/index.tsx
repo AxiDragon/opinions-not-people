@@ -1,7 +1,7 @@
 import "@/assets/styling/style";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import { COLORS } from "@/constants/colors";
 import { UserProvider } from "@/context/UserContext";
 import IntroConversation from "@/components/chat/conversations/IntroConversation";
@@ -19,18 +19,15 @@ export default function Index() {
   const screens = [
     <IntroConversation />,
     <DragSort />,
-    <Interrogation interrogatee={interrogatees[currentInterrogatee]} questionCount={3} />,
+    <Interrogation interrogatee={interrogatees[currentInterrogatee]} questionCount={0} />,
+    <View>
+      <Text>End of game</Text>
+    </View>
   ]
 
-  const handleConversationEnd = () => {
-    setCurrentScreen(currentScreen => {
-      //force talking to all interrogatees
-      if (currentInterrogatee < interrogatees.length - 1) {
-        return 1;
-      } else {
-        return currentScreen + 1;
-      }
-    });
+  const handleSetScreen = (event: Event) => {
+    const customEvent = event as CustomEvent;
+    setCurrentScreen(customEvent.detail.screen);
   }
 
   function addInterrogatee(event: Event) {
@@ -43,10 +40,6 @@ export default function Index() {
     setCurrentInterrogatee(currentInterrogatee + 1);
   }
 
-  const startInterrogation = () => {
-    setCurrentScreen(2);
-  }
-
   useEffect(() => {
     window.setScreen = (screen: number) => {
       if (screen >= 0 && screen < screens.length) {
@@ -56,27 +49,19 @@ export default function Index() {
       }
     };
 
+    window.addEventListener("setScreen", handleSetScreen);
+
     return () => {
       delete window.setScreen;
+      window.removeEventListener("setScreen", handleSetScreen);
     };
   }, []);
 
   useEffect(() => {
-    window.addEventListener("onConversationEnd", handleConversationEnd);
-
-    return () => {
-      window.removeEventListener("onConversationEnd", handleConversationEnd);
-
-    };
-  }, [currentScreen, currentInterrogatee]);
-
-  useEffect(() => {
     window.addEventListener("addInterrogatee", addInterrogatee);
-    window.addEventListener("startInterrogation", startInterrogation);
 
     return () => {
       window.removeEventListener("addInterrogatee", addInterrogatee);
-      window.removeEventListener("startInterrogation", startInterrogation);
     };
   }, [interrogatees, currentInterrogatee]);
 

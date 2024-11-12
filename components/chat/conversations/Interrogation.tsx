@@ -5,6 +5,7 @@ import { useMemo, useRef, useState } from "react";
 import Chat, { ChatHandle } from "../Chat";
 import QuestionSelector from "../QuestionSelector";
 import { getQuestions } from "@/assets/data/questions";
+import { setScreen } from "@/utility/EventDispatcher";
 
 type Props = {
 	interrogatee: User;
@@ -74,7 +75,7 @@ const Interrogation: React.FC<Props> = ({ interrogatee, questionCount }: Props) 
 	]
 
 	return (
-		<Chat messages={interrogation} ref={chatRef} />
+		<Chat messages={interrogation} onEnd={() => setScreen(1)} ref={chatRef} />
 	);
 };
 

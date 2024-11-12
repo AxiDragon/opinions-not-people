@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { COLORS } from "@/constants/colors";
 import User, { Opinion } from "@/models/User";
 import { PLAYER, users } from "@/assets/users/users";
+import { setScreen } from "@/utility/EventDispatcher";
 
 const DragSort = () => {
 	const [boxes, setBoxes] = useState([
@@ -73,6 +74,11 @@ const DragSort = () => {
 		});
 	}
 
+	const handleEndButtonPressed = () => {
+		console.log("That's right, all users have been allocated!");
+		setScreen(3);
+	};
+
 	useEffect(() => {
 		if (checkAllUsersAllocated()) {
 			setAllUsersAllocated(true);
@@ -86,14 +92,14 @@ const DragSort = () => {
 			{/* Let's just not rely on supplying children, we can do it manually */}
 			{/* {children} */}
 			{/* Just to manipulate flexbox */}
-			<View style={styles.allAllocatedContainer}>
-				{allUsersAllocated &&
-					<Pressable>
+			{allUsersAllocated &&
+				<View style={styles.allAllocatedContainer}>
+					<Pressable style={styles.allAllocatedButton} onPress={handleEndButtonPressed}>
 						<Text>
 							Everyone has been allocated!
 						</Text>
-					</Pressable>}
-			</View>
+					</Pressable>
+				</View>}
 			<View />
 			<View style={styles.draggableContainer}>
 				{draggableUsers.map((user, i) => (
@@ -169,6 +175,11 @@ const styles = StyleSheet.create({
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'center',
+		zIndex: 2,
+	},
+	allAllocatedButton: {
+		padding: 25,
+		backgroundColor: COLORS.interactables,
 	}
 });
 
