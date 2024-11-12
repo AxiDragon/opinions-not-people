@@ -12,10 +12,10 @@ export type Props = {
 }
 
 export default function DraggableUser({ user, onEndDrag }: Props) {
-	const [zIndex, setZIndex] = useState(1);
-	const [identified, setIdentified] = useState<boolean>(true);
-	const translateX = useSharedValue(0);
-	const translateY = useSharedValue(0);
+	const [zIndex, setZIndex] = useState(3);
+	const [identified, setIdentified] = useState<boolean>(user.identified);
+	const translateX = useSharedValue(user.translateX);
+	const translateY = useSharedValue(user.translateY);
 	const imageSize = 80;
 	const draggableRef = useRef<View>(null);
 
@@ -35,13 +35,15 @@ export default function DraggableUser({ user, onEndDrag }: Props) {
 		if (identified) {
 			translateX.value += event.changeX;
 			translateY.value += event.changeY;
+			user.translateX = translateX.value;
+			user.translateY = translateY.value;
 		}
 	})
 		.onStart(() => {
-			setZIndex(2);
+			setZIndex(5);
 		})
 		.onEnd(() => {
-			setZIndex(1);
+			setZIndex(3);
 			onEndDrag && onEndDrag(user,
 				draggableRef,
 				translateX.value + imageSize / 2,

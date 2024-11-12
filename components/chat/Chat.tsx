@@ -84,7 +84,7 @@ const Chat = forwardRef<ChatHandle, Props>(({ messages, onEnd = () => { } }: Pro
 const styles = StyleSheet.create({
 	chatContainer: {
 		display: "flex",
-		paddingBottom: 350,
+		paddingBottom: 150,
 		justifyContent: "flex-start",
 		alignItems: "center",
 		gap: 15,

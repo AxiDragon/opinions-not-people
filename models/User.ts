@@ -13,6 +13,9 @@ export default class User {
 	public playerOpinion: Opinion = Opinion.NONE;
 	public image;
 	public identified: boolean = false;
+	//literally just for the draggable user
+	public translateX: number = 0;
+	public translateY: number = 0;
 
 	constructor(
 		private name: string = "John",
