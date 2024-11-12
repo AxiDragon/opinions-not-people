@@ -1,5 +1,5 @@
 import Message from "@/models/Message";
-import { PLAYER, users } from "@/assets/users/users";
+import { allUsers, PLAYER, users } from "@/assets/users/users";
 import { TextInput } from "react-native";
 import LabeledSlider from "@/components/input/LabeledSlider";
 import { useUser } from "@/context/UserContext";
@@ -18,7 +18,7 @@ const IntroConversation: React.FC = () => {
 	const radicalMargin = 0.1;
 	const indifferenceMargin = 0.05;
 
-	const user = users.GRANT;
+	const user = allUsers.GRANT;
 
 	function getOpinionMessage(): string {
 		if (opinion < radicalMargin || opinion > 1 - radicalMargin) {

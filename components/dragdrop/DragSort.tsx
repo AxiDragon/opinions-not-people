@@ -10,7 +10,7 @@ const DragSort = () => {
 	const [boxes, setBoxes] = useState([
 		{
 			x: 0, y: 0, w: 0, h: 0,
-			opinion: PLAYER.opinion === Opinion.POSITIVE ? Opinion.POSITIVE : Opinion.NEGATIVE
+			opinion: PLAYER.opinion
 		},
 		{
 			x: 0, y: 0, w: 0, h: 0,
@@ -21,16 +21,8 @@ const DragSort = () => {
 	const disagreeBoxRef = useRef<View>(null);
 	const [allUsersAllocated, setAllUsersAllocated] = useState(false);
 
-	const draggableUsers = [
-		users.DEFAULT,
-		users.PNO,
-		users.JASMIN,
-		users.GRANT,
-		users.MARCO
-	];
-
 	const checkAllUsersAllocated = (): boolean => {
-		return draggableUsers.every(user => user.playerOpinion !== Opinion.NONE);
+		return users.every(user => user.playerOpinion !== Opinion.NONE);
 	}
 
 	const measureBox = (ref: React.RefObject<View>, i: number) => {
@@ -102,7 +94,7 @@ const DragSort = () => {
 				</View>}
 			<View />
 			<View style={styles.draggableContainer}>
-				{draggableUsers.map((user, i) => (
+				{users.map((user, i) => (
 					<DraggableUser
 						key={i}
 						user={user}
