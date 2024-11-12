@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import DraggableUser from "./DraggableUser";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { COLORS } from "@/constants/colors";
 import User, { Opinion } from "@/models/User";
 import { PLAYER, users } from "@/assets/users/users";
@@ -18,6 +18,19 @@ const DragSort = () => {
 	]);
 	const agreeBoxRef = useRef<View>(null);
 	const disagreeBoxRef = useRef<View>(null);
+	const [allUsersAllocated, setAllUsersAllocated] = useState(false);
+
+	const draggableUsers = [
+		users.DEFAULT,
+		users.PNO,
+		users.JASMIN,
+		users.GRANT,
+		users.MARCO
+	];
+
+	const checkAllUsersAllocated = (): boolean => {
+		return draggableUsers.every(user => user.playerOpinion !== Opinion.NONE);
+	}
 
 	const measureBox = (ref: React.RefObject<View>, i: number) => {
 		ref.current?.measure((x, y, w, h, pX, pY) => {
@@ -54,8 +67,17 @@ const DragSort = () => {
 				// no box found
 				user.playerOpinion = Opinion.NONE;
 			}
+
+			console.log(checkAllUsersAllocated());
+			setAllUsersAllocated(checkAllUsersAllocated());
 		});
 	}
+
+	useEffect(() => {
+		if (checkAllUsersAllocated()) {
+			setAllUsersAllocated(true);
+		}
+	}, []);
 
 	//TODO: Restyle this to have a top and bottom instead, with characters in the middle?
 	//it'd fit better with phone screens
@@ -64,13 +86,22 @@ const DragSort = () => {
 			{/* Let's just not rely on supplying children, we can do it manually */}
 			{/* {children} */}
 			{/* Just to manipulate flexbox */}
+			<View style={styles.allAllocatedContainer}>
+				{allUsersAllocated &&
+					<Pressable>
+						<Text>
+							Everyone has been allocated!
+						</Text>
+					</Pressable>}
+			</View>
 			<View />
 			<View style={styles.draggableContainer}>
-				<DraggableUser user={users.DEFAULT} onEndDrag={handleEndDrag} />
-				<DraggableUser user={users.PNO} onEndDrag={handleEndDrag} />
-				<DraggableUser user={users.JASMIN} onEndDrag={handleEndDrag} />
-				<DraggableUser user={users.GRANT} onEndDrag={handleEndDrag} />
-				<DraggableUser user={users.MARCO} onEndDrag={handleEndDrag} />
+				{draggableUsers.map((user, i) => (
+					<DraggableUser
+						key={i}
+						user={user}
+						onEndDrag={handleEndDrag} />
+				))}
 			</View>
 			{/* TODO: Add a 'Player' user class that determines whether each box 
 			is the correct assignment for each user */}
@@ -130,6 +161,14 @@ const styles = StyleSheet.create({
 		fontWeight: 700,
 		fontSize: 20,
 		color: COLORS.text,
+	},
+	allAllocatedContainer: {
+		position: 'absolute',
+		width: '100%',
+		height: 500,
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'center',
 	}
 });
 
