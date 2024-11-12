@@ -13,7 +13,7 @@ export type Props = {
 
 export default function DraggableUser({ user, onEndDrag }: Props) {
 	const [zIndex, setZIndex] = useState(1);
-	const [identified, setIdentified] = useState<boolean>(user.identified);
+	const [identified, setIdentified] = useState<boolean>(true);
 	const translateX = useSharedValue(0);
 	const translateY = useSharedValue(0);
 	const imageSize = 128;
@@ -31,7 +31,6 @@ export default function DraggableUser({ user, onEndDrag }: Props) {
 		});
 
 	//TODO: Add some edge detection to prevent the image from going off-screen
-	//TODO: Make the image overlay the others when dragged
 	const drag = Gesture.Pan().onChange(event => {
 		if (identified) {
 			translateX.value += event.changeX;

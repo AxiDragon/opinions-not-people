@@ -61,13 +61,11 @@ const DragSort = () => {
 				user.playerOpinion = Opinion.NONE;
 			}
 
-			console.log(checkAllUsersAllocated());
 			setAllUsersAllocated(checkAllUsersAllocated());
 		});
 	}
 
 	const handleEndButtonPressed = () => {
-		console.log("That's right, all users have been allocated!");
 		setScreen(3);
 	};
 
@@ -81,8 +79,6 @@ const DragSort = () => {
 	//it'd fit better with phone screens
 	return (
 		<View style={styles.container}>
-			{/* Let's just not rely on supplying children, we can do it manually */}
-			{/* {children} */}
 			{/* Just to manipulate flexbox */}
 			{allUsersAllocated &&
 				<View style={styles.allAllocatedContainer}>
@@ -101,8 +97,6 @@ const DragSort = () => {
 						onEndDrag={handleEndDrag} />
 				))}
 			</View>
-			{/* TODO: Add a 'Player' user class that determines whether each box 
-			is the correct assignment for each user */}
 			<View style={styles.boxContainer}>
 				<View
 					ref={agreeBoxRef}
