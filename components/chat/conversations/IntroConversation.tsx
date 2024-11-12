@@ -104,29 +104,6 @@ const IntroConversation: React.FC = () => {
 			}
 		}),
 		new Message({ text: getOpinionMessage(), user: user }),
-		new Message({ text: "Anyways, I've got some questions for you!", user: user }),
-		new Message({
-			text: "Choose a question!",
-			customContent: <QuestionSelector questions={questions}
-				onSelect={(question: string) => {
-					setQuestion(question);
-					continueChat();
-				}
-				} />,
-			continueCondition: () => questionRef.current !== ""
-		}),
-		...user.getAnswer(question),
-		new Message({ text: `Hey, ${user2.getName()}, what do you think?`, user: user }),
-		...user2.getAnswer(question),
-		new Message({ text: `Anyways, back to you, ${user.getName()}!`, user: user2 }),
-		new Message({ text: `Thanks ${user2.getName()}.`, user: user }),
-		new Message({
-			text: "Anyways, let me try something...", user: user,
-			onContinue: () => {
-				intro.push(new Message({ text: "This is a new message!", user: user }));
-			},
-			addsContentOnContinue: true
-		}),
 	];
 
 	return <Chat messages={intro} ref={chatRef} />;
