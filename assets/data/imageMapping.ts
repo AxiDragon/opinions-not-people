@@ -12,6 +12,7 @@ const images: ImageMapping = {
 	'player': require('@/assets/users/icons/pno.svg'), //for debugging
 };
 
+
 export default function getImage(name: string): any {
 	if (images[name] === undefined) {
 		return images['undefined'];
@@ -19,3 +20,10 @@ export default function getImage(name: string): any {
 
 	return images[name];
 }
+
+export const playerIcons = [
+	images['pno'],
+	images['default'],
+	images['marco'],
+	images['jasmin'],
+	images['grant']];

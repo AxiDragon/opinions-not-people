@@ -1,5 +1,5 @@
 import Message from "@/models/Message";
-import { allUsers, PLAYER, users } from "@/assets/users/users";
+import { allUsers, PLAYER } from "@/assets/users/users";
 import { TextInput } from "react-native";
 import LabeledSlider from "@/components/input/LabeledSlider";
 import { useUser } from "@/context/UserContext";
@@ -8,10 +8,12 @@ import { useRef, useState } from "react";
 import { COLORS } from "@/constants/colors";
 import { Opinion } from "@/models/User";
 import { setScreen } from "@/utility/EventDispatcher";
+import IconSelector from "../IconSelector";
 
 const IntroConversation: React.FC = () => {
 	const { setName, name } = useUser();
 	const [changedUsername, setChangedUsername] = useState<boolean>(false);
+	const [pickedIcon, setPickedIcon] = useState<boolean>(false);
 	const [opinion, setOpinion] = useState<number>(0.5);
 	const chatRef = useRef<ChatHandle>(null);
 
@@ -74,6 +76,11 @@ const IntroConversation: React.FC = () => {
 		}),
 		//TODO: Icon selection
 		new Message({ text: "Nice to meet you, " + name + "!", user: user }),
+		new Message({
+			text: "Select an Icon",
+			customContent: <IconSelector onSelect={() => setPickedIcon(true)} />,
+			continueCondition: () => pickedIcon,
+		}),
 		new Message({ text: "Hey, I'm going to ask your opinion on something.", user: user }),
 		new Message({ text: "Do you agree or disagree with the following topic?", user: user }),
 		new Message({ text: "Remember! You don't have to fully agree or disagree.", user: user }),
