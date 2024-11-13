@@ -89,13 +89,20 @@ const DragSort = () => {
 					</Pressable>
 				</View>}
 			<View />
-			<View style={styles.draggableContainer}>
-				{users.map((user, i) => (
-					<DraggableUser
-						key={i}
-						user={user}
-						onEndDrag={handleEndDrag} />
-				))}
+			<View style={styles.containerAround}>
+				<Text style={styles.explanationText}>
+					Click unidentified users (?) to talk to them.
+					<br />
+					Drag identified users to the boxes you think are correct.
+				</Text>
+				<View style={styles.draggableContainer}>
+					{users.map((user, i) => (
+						<DraggableUser
+							key={i}
+							user={user}
+							onEndDrag={handleEndDrag} />
+					))}
+				</View>
 			</View>
 			<View style={styles.boxContainer}>
 				<View
@@ -126,6 +133,13 @@ const styles = StyleSheet.create({
 		width: '100%',
 		justifyContent: 'space-between',
 	},
+	containerAround: {
+		flex: 1,
+		height: '100%',
+		width: '100%',
+		justifyContent: 'space-around',
+		zIndex: 25,
+	},
 	boxContainer: {
 		flexDirection: 'row',
 		width: '100%',
@@ -152,6 +166,12 @@ const styles = StyleSheet.create({
 		textAlign: 'center',
 		fontWeight: 700,
 		fontSize: 20,
+		color: COLORS.text,
+	},
+	explanationText: {
+		textAlign: 'center',
+		fontWeight: 700,
+		fontSize: 16,
 		color: COLORS.text,
 	},
 	allAllocatedContainer: {
