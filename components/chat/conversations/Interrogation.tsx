@@ -13,7 +13,6 @@ type Props = {
 }
 
 const Interrogation: React.FC<Props> = ({ interrogatee, questionCount }: Props) => {
-	const player = PLAYER;
 	const questionsRef = useRef<string[]>([]);
 	const [answers, setAnswers] = useState<string[]>(new Array(questionCount).fill(""));
 	const chatRef = useRef<ChatHandle>(null);
@@ -33,11 +32,20 @@ const Interrogation: React.FC<Props> = ({ interrogatee, questionCount }: Props) 
 	function getQuestionMessages(i: number): Message[] {
 		return [
 			new Message({
-				text: "Question " + (i + 1),
-			}),
-			new Message({
-				text: "",
-				user: player,
+				text: () => {
+					if (i === 0) {
+						return "I'd like to start with this question:";
+					}
+					if (i === 1) {
+						return "Okay. What about this:";
+					}
+					if (i === 2) {
+						return "Last question:";
+					}
+
+					throw new Error("Invalid question index");
+				},
+				user: PLAYER,
 				continueCondition: () => answers[i] !== "",
 				customContent: <QuestionSelector
 					questions={questionsRef.current.slice(i * 3, i * 3 + 3)}
@@ -62,15 +70,18 @@ const Interrogation: React.FC<Props> = ({ interrogatee, questionCount }: Props) 
 	};
 
 	const interrogation = [
+		new Message({
+			text: `You have chosen to talk to ${interrogatee.getName()}.`,
+		}),
 		...interrogatee.getIntro(),
 		new Message({
-			text: `Hello ${interrogatee.getName()}, I'm ${player.getName()}. I'm going to ask you a few questions.`,
-			user: player,
+			text: `Hello. I'm going to ask you a few questions.`,
+			user: PLAYER,
 		}),
 		...getQuestionSequence(),
 		new Message({
-			text: "That's all the questions I have for you. Thank you for your time.",
-			user: player,
+			text: "Alright. Thank you for your cooperation.",
+			user: PLAYER,
 		}),
 	]
 
