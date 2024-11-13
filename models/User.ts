@@ -8,6 +8,12 @@ export enum Opinion {
 	NONE = "None",
 }
 
+type InterrogationMessages = {
+	//TODO: add more interrogation message types and update the interrogation sequence
+	intro: string | string[];
+
+}
+
 export default class User {
 	private introMessages: Message[];
 	public playerOpinion: Opinion = Opinion.NONE;
