@@ -94,8 +94,8 @@ const IntroConversation: React.FC = () => {
 		new Message({ text: "And don't mess it up.", user: user }),
 		new Message({ text: "There's not many of these papers left due to the new law regarding the discussion of this topic.", user: user }),
 		new Message({
-			text: "\"Same-sex marriage should be legal.\"",
-			customContent: <LabeledSlider onValueChange={setOpinion} middleLabel="Neutral" />,
+			text: "",
+			customContent: <LabeledSlider onValueChange={setOpinion} />,
 			continueCondition: () => opinion !== 0.5,
 			onContinue: () => {
 				PLAYER.playerOpinion = opinion < 0.5 ? Opinion.NEGATIVE : Opinion.POSITIVE;
