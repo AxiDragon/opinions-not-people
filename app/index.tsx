@@ -6,7 +6,7 @@ import { COLORS } from "@/constants/colors";
 import { UserProvider } from "@/context/UserContext";
 import IntroConversation from "@/components/chat/conversations/IntroConversation";
 import Interrogation from "@/components/chat/conversations/Interrogation";
-import { allUsers } from "@/assets/users/users";
+import { allUsers, users } from "@/assets/users/users";
 import { useEffect, useState } from "react";
 import DragSort from "@/components/dragdrop/DragSort";
 import User from "@/models/User";
@@ -14,7 +14,7 @@ import EndScreen from "@/components/EndScreen";
 
 export default function Index() {
   const [currentScreen, setCurrentScreen] = useState(0);
-  const [interrogatees, setInterrogatees] = useState<User[]>(Array(5).fill(allUsers.UNDEFINED));
+  const [interrogatees, setInterrogatees] = useState<User[]>(Array(users.length).fill(allUsers.UNDEFINED));
   const [currentInterrogatee, setCurrentInterrogatee] = useState(-1);
 
   const screens = [

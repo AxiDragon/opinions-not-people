@@ -120,7 +120,7 @@ export const allUsers = {
 	),
 }
 /**
- * 5 users that will appear in the game 
+ * users that will appear in the game 
  */
 export const users = [
 	allUsers.PNO,
