@@ -3,7 +3,7 @@ import User, { Opinion } from "@/models/User";
 // export const PLAYER = new User("", Opinion.NONE, "Hey");
 
 // Player for debugging
-export const PLAYER = new User("Player", Opinion.POSITIVE, "Hey, I'm Player!");
+export const PLAYER = new User("???", Opinion.NONE, "error");
 
 export const allUsers = {
 	PNO: new User("PNO", Opinion.POSITIVE, ["Heya! I'm PNO!", "I'm PNO! I'm a robot to guide you through this game."],
@@ -110,7 +110,7 @@ export const allUsers = {
 			},
 		]
 	),
-	DEFAULT: new User("Default", Opinion.POSITIVE, "I'm not sure what to say...",
+	CAPTAIN: new User("Captain", Opinion.NONE, "I'm not sure what to say...",
 		[
 			{
 				question: "What's your name?",
@@ -123,9 +123,7 @@ export const allUsers = {
  * users that will appear in the game 
  */
 export const users = [
-	allUsers.PNO,
 	allUsers.GRANT,
 	allUsers.JASMIN,
 	allUsers.MARCO,
-	allUsers.DEFAULT
 ]

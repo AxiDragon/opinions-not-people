@@ -13,27 +13,14 @@ import IconSelector from "../IconSelector";
 const IntroConversation: React.FC = () => {
 	const { setName, name } = useUser();
 	const [changedUsername, setChangedUsername] = useState<boolean>(false);
-	const [pickedIcon, setPickedIcon] = useState<boolean>(false);
+	const [pickedIcon, setPickedIcon] = useState<string>("-1");
 	const [opinion, setOpinion] = useState<number>(0.5);
 	const chatRef = useRef<ChatHandle>(null);
 
-	const radicalMargin = 0.1;
-	const indifferenceMargin = 0.05;
-
-	const user = allUsers.GRANT;
-
-	function getOpinionMessage(): string {
-		if (opinion < radicalMargin || opinion > 1 - radicalMargin) {
-			return "Wow - you seem to feel quite strongly about this. Maybe you want another topic?";
-		};
-		if (opinion < 0.5 + indifferenceMargin && opinion > 0.5 - indifferenceMargin) {
-			return "You seem to be quite indifferent about this. Would you like a topic that's more engaging?";
-		}
-
-		return "Thank you for your opinion!";
-	}
+	const user = allUsers.CAPTAIN;
 
 	const changeUsername = (name: string) => {
+		PLAYER.setName(name);
 		setName(name);
 		setChangedUsername(true);
 	}
@@ -66,34 +53,69 @@ const IntroConversation: React.FC = () => {
 	};
 
 	const intro: Message[] = [
-		new Message({ text: "People not Opinions" }),
-		...user.getIntro(),
-		new Message({ text: "What is your name?", user: user }),
+		new Message({
+			text: () => {
+				const hours = new Date().getHours();
+
+				if (hours < 5) {
+					return "Good evening.";
+				}
+				if (hours < 12) {
+					return "Good morning.";
+				}
+				if (hours < 18) {
+					return "Good afternoon.";
+				}
+
+				return "Good evening.";
+			}, user: user
+		}),
+		new Message({ text: "Name?", user: user }),
 		new Message({
 			text: "My name is...", customContent: nameInput(),
+			user: PLAYER,
 			continueCondition: () => changedUsername,
 			onContinue: () => PLAYER.setName(name)
 		}),
 		//TODO: Icon selection
-		new Message({ text: "Nice to meet you, " + name + "!", user: user }),
+		new Message({ text: "...", user: user }),
+		new Message({ text: "Okay.", user: user }),
+		new Message({ text: "Which of these icons best represents you?", user: user }),
 		new Message({
-			text: "Select an Icon",
-			customContent: <IconSelector onSelect={() => setPickedIcon(true)} />,
-			continueCondition: () => pickedIcon,
+			text: "",
+			user: PLAYER,
+			customContent: <IconSelector onSelect={setPickedIcon} />,
+			continueCondition: () => pickedIcon !== "-1",
 		}),
-		new Message({ text: "Hey, I'm going to ask your opinion on something.", user: user }),
-		new Message({ text: "Do you agree or disagree with the following topic?", user: user }),
-		new Message({ text: "Remember! You don't have to fully agree or disagree.", user: user }),
+		new Message({ text: "...", user: user }),
+		new Message({ text: "Okay.", user: user }),
+		new Message({ text: "I'm going to hand you a piece of paper asking for your opinion, for security reasons.", user: user }),
+		new Message({ text: "Answer this truthfully.", user: user }),
+		new Message({ text: "And don't mess it up.", user: user }),
+		new Message({ text: "There's not many of these papers left due to the new law regarding the discussion of this topic.", user: user }),
 		new Message({
-			text: "\"The government should reduce their military spending.\"",
-			user: user,
+			text: "\"Same-sex marriage should be legal.\"",
 			customContent: <LabeledSlider onValueChange={setOpinion} middleLabel="Neutral" />,
 			continueCondition: () => opinion !== 0.5,
 			onContinue: () => {
 				PLAYER.playerOpinion = opinion < 0.5 ? Opinion.NEGATIVE : Opinion.POSITIVE;
 			}
 		}),
-		new Message({ text: getOpinionMessage(), user: user }),
+		new Message({ text: "...", user: user }),
+		new Message({ text: "Good.", user: user }),
+		new Message({ text: "You're on the right side.", user: user }),
+		new Message({ text: `${name}, we apprehended some people which we suspect might have views opposing ours.`, user: user }),
+		new Message({ text: "Opposing those of the government, to be more exact.", user: user }),
+		new Message({ text: "As you know, the new law prohibits us from publically talking about the topic at hand.", user: user }),
+		new Message({ text: "We need you to interrogate these people.", user: user }),
+		new Message({ text: "Figure out whether these people are on our side or not, whilst avoiding the topic itself.", user: user }),
+		new Message({ text: "If they don't agree with you on the topic, have them jailed.", user: user }),
+		new Message({ text: "If they do, let them go.", user: user }),
+		new Message({ text: "Understood?", user: user }),
+		new Message({ text: "...", user: user }),
+		new Message({ text: "Good.", user: user }),
+		new Message({ text: `Good luck, ${name}.`, user: user }),
+		new Message({ text: "The government is watching.", user: user }),
 	];
 
 	return <Chat messages={intro}

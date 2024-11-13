@@ -4,7 +4,7 @@ interface ImageMapping {
 
 const images: ImageMapping = {
 	'pno': require('@/assets/users/icons/pno.svg'),
-	'default': require('@/assets/users/icons/default.svg'),
+	'captain': require('@/assets/users/icons/default.svg'),
 	'marco': require('@/assets/users/icons/marco.svg'),
 	'jasmin': require('@/assets/users/icons/jasmin.svg'),
 	'grant': require('@/assets/users/icons/grant.svg'),
@@ -23,7 +23,7 @@ export default function getImage(name: string): any {
 
 export const playerIcons = [
 	images['pno'],
-	images['default'],
+	images['captain'],
 	images['marco'],
 	images['jasmin'],
 	images['grant']];

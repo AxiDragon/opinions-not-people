@@ -19,7 +19,7 @@ export default function LabeledSlider({
 	onValueChange }: Props) {
 
 	const [value, setValue] = useState<number>(initialValue);
-
+	//TODO: Paper texture thing
 	const handleValueChange = (value: number) => {
 		setValue(value);
 		onValueChange(value);
