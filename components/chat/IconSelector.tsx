@@ -1,5 +1,5 @@
 import { playerIcons } from "@/assets/data/imageMapping";
-import { View, Text, StyleSheet, Pressable } from "react-native";
+import { View, StyleSheet, Pressable } from "react-native";
 import { Image } from "expo-image";
 import { COLORS } from "@/constants/colors";
 import { PLAYER } from "@/assets/users/users";

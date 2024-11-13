@@ -24,6 +24,7 @@ export default function getImage(name: string): any {
 export const playerIcons = [
 	images['pno'],
 	images['captain'],
-	images['marco'],
-	images['jasmin'],
-	images['grant']];
+	// images['marco'],
+	// images['jasmin'],
+	// images['grant']
+];
