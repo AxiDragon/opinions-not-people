@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import { ScrollView, StyleSheet, View, Text } from "react-native";
+import { ScrollView, StyleSheet } from "react-native";
 import MessageUI from "./MessageUI";
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
@@ -10,15 +10,20 @@ import Tappable from '../input/Tappable';
 type Props = {
 	messages: Message[];
 	onEnd?: () => void;
+	/*
+	 * The index of the message to start at
+	 * -1 will display all messages 
+	 */
+	startIndex?: number;
 }
 
 export type ChatHandle = {
 	continueChat: () => void;
 }
 
-const Chat = forwardRef<ChatHandle, Props>(({ messages, onEnd = () => { } }: Props, ref) => {
+const Chat = forwardRef<ChatHandle, Props>(({ messages, onEnd = () => { }, startIndex = 0 }: Props, ref) => {
 	const scrollViewRef = useRef<ScrollView>(null);
-	const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
+	const [currentMessageIndex, setCurrentMessageIndex] = useState(startIndex === -1 ? messages.length - 1 : startIndex);
 	const [conversationEnded, setConversationEnded] = useState(false);
 
 	const handleTap = () => {
@@ -43,7 +48,7 @@ const Chat = forwardRef<ChatHandle, Props>(({ messages, onEnd = () => { } }: Pro
 	}), [continueChat]);
 
 	useEffect(() => {
-		if (scrollViewRef.current) {
+		if (scrollViewRef.current && startIndex !== -1) {
 			scrollViewRef.current.scrollToEnd({ animated: true });
 		}
 	}, [currentMessageIndex]);

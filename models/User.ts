@@ -22,6 +22,8 @@ export default class User {
 	//literally just for the draggable user
 	public translateX: number = 0;
 	public translateY: number = 0;
+	//interrogation
+	public askedQuestions: string[] = [];
 
 	constructor(
 		private name: string = "John",

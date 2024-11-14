@@ -27,6 +27,9 @@ export default function DraggableUser({ user, onEndDrag }: Props) {
 				setIdentified(user.identified);
 				window.dispatchEvent(new CustomEvent("addInterrogatee", { detail: { user } }));
 				setScreen(2);
+			} else {
+				window.dispatchEvent(new CustomEvent("tappedInterrogatee", { detail: { user } }));
+				setScreen(4);
 			}
 		});
 

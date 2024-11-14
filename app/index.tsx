@@ -1,4 +1,3 @@
-import "@/assets/styling/style";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { StyleSheet, View } from "react-native";
@@ -11,17 +10,20 @@ import { useEffect, useState } from "react";
 import DragSort from "@/components/dragdrop/DragSort";
 import User from "@/models/User";
 import EndScreen from "@/components/EndScreen";
+import SavedInterrogation from "@/components/chat/conversations/SavedInterrogation";
 
 export default function Index() {
   const [currentScreen, setCurrentScreen] = useState(0);
   const [interrogatees, setInterrogatees] = useState<User[]>(Array(users.length).fill(allUsers.UNDEFINED));
   const [currentInterrogatee, setCurrentInterrogatee] = useState(-1);
+  const [lastTapped, setLastTapped] = useState<User>(allUsers.UNDEFINED);
 
   const screens = [
     <IntroConversation />,
     <DragSort />,
     <Interrogation interrogatee={interrogatees[currentInterrogatee]} questionCount={3} />,
     <EndScreen />,
+    <SavedInterrogation interrogatee={lastTapped} />,
   ]
 
   const handleSetScreen = (event: Event) => {
@@ -37,6 +39,11 @@ export default function Index() {
 
     setInterrogatees(newInterrogatees);
     setCurrentInterrogatee(currentInterrogatee + 1);
+  }
+
+  function tappedInterrogatee(event: Event) {
+    const customEvent = event as CustomEvent;
+    setLastTapped(customEvent.detail.user);
   }
 
   useEffect(() => {
@@ -63,6 +70,14 @@ export default function Index() {
       window.removeEventListener("addInterrogatee", addInterrogatee);
     };
   }, [interrogatees, currentInterrogatee]);
+
+  useEffect(() => {
+    window.addEventListener("tappedInterrogatee", tappedInterrogatee);
+
+    return () => {
+      window.removeEventListener("tappedInterrogatee", tappedInterrogatee);
+    };
+  }, [lastTapped]);
 
   return (
     <GestureHandlerRootView

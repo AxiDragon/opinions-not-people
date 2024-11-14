@@ -90,7 +90,12 @@ const Interrogation: React.FC<Props> = ({ interrogatee, questionCount }: Props) 
 	]
 
 	return (
-		<Chat messages={interrogation} onEnd={() => setScreen(1)} ref={chatRef} />
+		<Chat messages={interrogation}
+			ref={chatRef}
+			onEnd={() => {
+				setScreen(1);
+				interrogatee.askedQuestions = questions;
+			}} />
 	);
 };
 
