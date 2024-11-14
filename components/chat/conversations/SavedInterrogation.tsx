@@ -44,11 +44,16 @@ const SavedInterrogation: React.FC<Props> = ({ interrogatee }: Props) => {
 		new Message({
 			text: `You have chosen to talk to ${interrogatee.getName()}.`,
 		}),
-		...interrogatee.getIntro(),
+		...interrogatee.getBeginMessages(),
 		new Message({
 			text: `Hello. I'm going to ask you a few questions.`,
 			user: PLAYER,
 		}),
+		new Message({
+			text: "Answer them truthfully.",
+			user: PLAYER,
+		}),
+		...interrogatee.getInformedMessage(),
 		...getQuestionSequence(),
 		new Message({
 			text: "Alright. Thank you for your cooperation.",

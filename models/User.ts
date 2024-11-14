@@ -8,14 +8,9 @@ export enum Opinion {
 	NONE = "None",
 }
 
-type InterrogationMessages = {
-	//TODO: add more interrogation message types and update the interrogation sequence
-	intro: string | string[];
-
-}
-
 export default class User {
-	private introMessages: Message[];
+	private beginMessages: Message[];
+	private informedMessages: Message[];
 	public playerOpinion: Opinion = Opinion.NONE;
 	public image;
 	public identified: boolean = false;
@@ -28,21 +23,33 @@ export default class User {
 	constructor(
 		private name: string = "John",
 		public opinion: Opinion,
-		intro: string | string[] = "Hello, I'm John!",
+		beginMessages: string | string[] = "What's going on?",
+		informedMessages: string | string[] = "Okay. I understand.",
 		public responses: Response[] = [],
 	) {
 		this.image = getImage(name.toLowerCase());
 
-		if (Array.isArray(intro)) {
-			this.introMessages = intro.map((intro) => new Message({ text: intro, user: this }));
+		if (Array.isArray(beginMessages)) {
+			this.beginMessages = beginMessages.map((intro) => new Message({ text: intro, user: this }));
 		}
 		else {
-			this.introMessages = [new Message({ text: intro, user: this })];
+			this.beginMessages = [new Message({ text: beginMessages, user: this })];
+		}
+
+		if (Array.isArray(informedMessages)) {
+			this.informedMessages = informedMessages.map((informed) => new Message({ text: informed, user: this }));
+		}
+		else {
+			this.informedMessages = [new Message({ text: informedMessages, user: this })];
 		}
 	}
 
-	getIntro(): Message[] {
-		return this.introMessages;
+	getBeginMessages(): Message[] {
+		return this.beginMessages;
+	}
+
+	getInformedMessage(): Message[] {
+		return this.informedMessages;
 	}
 
 	getName(): string {

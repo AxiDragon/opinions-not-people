@@ -108,6 +108,7 @@ const IntroConversation: React.FC = () => {
 		new Message({ text: "Opposing those of the government, to be more exact.", user: user }),
 		new Message({ text: "As you know, the new law prohibits us from publically talking about the topic at hand.", user: user }),
 		new Message({ text: "We need you to interrogate these people.", user: user }),
+		new Message({ text: "We don't have much time, so you can only ask three questions per person.", user: user }),
 		new Message({ text: "Figure out whether these people are on our side or not, whilst avoiding the topic itself.", user: user }),
 		new Message({ text: "If they don't agree with you on the topic, have them jailed.", user: user }),
 		new Message({ text: "If they do, let them go.", user: user }),

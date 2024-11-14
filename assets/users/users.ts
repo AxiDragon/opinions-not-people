@@ -3,7 +3,7 @@ import User, { Opinion } from "@/models/User";
 export const PLAYER = new User("Agent ???", Opinion.POSITIVE, "error");
 
 export const allUsers = {
-	PNO: new User("PNO", Opinion.POSITIVE, ["Heya! I'm PNO!", "I'm PNO! I'm a robot to guide you through this game."],
+	PNO: new User("PNO", Opinion.POSITIVE, ["Heya! I'm PNO!", "I'm PNO! I'm a robot to guide you through this game."], "",
 		[
 			{
 				question: "What's your name?",
@@ -27,7 +27,7 @@ export const allUsers = {
 			},
 		]
 	),
-	GRANT: new User("Grant", Opinion.NEGATIVE, "Hey there. The name's Grant, nice to meet ya!",
+	GRANT: new User("Grant", Opinion.NEGATIVE, "Hey. What's going on?", "Okay. I understand.",
 		[
 			{
 				question: "What is your favorite way to spend a weekend?",
@@ -181,7 +181,7 @@ export const allUsers = {
 			}
 		]
 	),
-	JASMIN: new User("Jasmin", Opinion.POSITIVE, "Hello! I'm Jasmin!",
+	JASMIN: new User("Jasmin", Opinion.POSITIVE, "How may I help you?", "Alright - I understand.",
 		[
 			{
 				question: "What is your favorite way to spend a weekend?",
@@ -339,7 +339,7 @@ export const allUsers = {
 			}
 		]
 	),
-	MARCO: new User("Marco", Opinion.NEGATIVE, "Hey there! I'm Marco! I hope you are doing well.",
+	MARCO: new User("Marco", Opinion.NEGATIVE, "What's happening?", "Understood.",
 		[
 			{
 				question: "What is your favorite way to spend a weekend?",
@@ -480,7 +480,7 @@ export const allUsers = {
 		]
 
 	),
-	UNDEFINED: new User("Undefined", Opinion.NONE, "I'm not sure what to say...",
+	UNDEFINED: new User("Undefined", Opinion.NONE, "I'm not sure what to say...", "",
 		[
 			{
 				question: "What's your name?",
@@ -488,7 +488,7 @@ export const allUsers = {
 			},
 		]
 	),
-	CAPTAIN: new User("Captain", Opinion.NONE, "I'm not sure what to say...",
+	CAPTAIN: new User("Captain", Opinion.NONE, "I'm not sure what to say...", "",
 		[
 			{
 				question: "What's your name?",
