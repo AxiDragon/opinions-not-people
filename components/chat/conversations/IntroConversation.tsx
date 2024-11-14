@@ -58,16 +58,16 @@ const IntroConversation: React.FC = () => {
 				const hours = new Date().getHours();
 
 				if (hours < 5) {
-					return "Good evening.";
+					return "Good evening Agent.";
 				}
 				if (hours < 12) {
-					return "Good morning.";
+					return "Good morning Agent.";
 				}
 				if (hours < 18) {
-					return "Good afternoon.";
+					return "Good afternoon Agent.";
 				}
 
-				return "Good evening.";
+				return "Good evening Agent.";
 			},
 			user: user,
 		}),
