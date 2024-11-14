@@ -1,6 +1,6 @@
 import User, { Opinion } from "@/models/User";
 
-export const PLAYER = new User("???", Opinion.POSITIVE, "error");
+export const PLAYER = new User("Agent ???", Opinion.POSITIVE, "error");
 
 export const allUsers = {
 	PNO: new User("PNO", Opinion.POSITIVE, ["Heya! I'm PNO!", "I'm PNO! I'm a robot to guide you through this game."],

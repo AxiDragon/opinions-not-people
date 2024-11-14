@@ -20,7 +20,7 @@ const IntroConversation: React.FC = () => {
 	const user = allUsers.CAPTAIN;
 
 	const changeUsername = (name: string) => {
-		PLAYER.setName(name);
+		PLAYER.setName('Agent ' + name);
 		setName(name);
 		setChangedUsername(true);
 	}
@@ -68,14 +68,14 @@ const IntroConversation: React.FC = () => {
 				}
 
 				return "Good evening.";
-			}, user: user
+			},
+			user: user,
 		}),
 		new Message({ text: "Name?", user: user }),
 		new Message({
 			text: "My name is...", customContent: nameInput(),
 			user: PLAYER,
 			continueCondition: () => changedUsername,
-			onContinue: () => PLAYER.setName(name)
 		}),
 		//TODO: Icon selection
 		new Message({ text: "...", user: user }),
@@ -104,7 +104,7 @@ const IntroConversation: React.FC = () => {
 		new Message({ text: "...", user: user }),
 		new Message({ text: "Good.", user: user }),
 		new Message({ text: "You're on the right side.", user: user }),
-		new Message({ text: `${name}, we apprehended some people which we suspect might have views opposing ours.`, user: user }),
+		new Message({ text: `${PLAYER.getName()}, we apprehended some people which we suspect might have views opposing ours.`, user: user }),
 		new Message({ text: "Opposing those of the government, to be more exact.", user: user }),
 		new Message({ text: "As you know, the new law prohibits us from publically talking about the topic at hand.", user: user }),
 		new Message({ text: "We need you to interrogate these people.", user: user }),
@@ -114,7 +114,7 @@ const IntroConversation: React.FC = () => {
 		new Message({ text: "Understood?", user: user }),
 		new Message({ text: "...", user: user }),
 		new Message({ text: "Good.", user: user }),
-		new Message({ text: `Good luck, ${name}.`, user: user }),
+		new Message({ text: `Good luck, ${PLAYER.getName()}.`, user: user }),
 		new Message({ text: "The government is watching.", user: user }),
 	];
 
