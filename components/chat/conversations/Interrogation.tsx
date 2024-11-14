@@ -14,7 +14,7 @@ type Props = {
 
 const Interrogation: React.FC<Props> = ({ interrogatee, questionCount }: Props) => {
 	const questionsRef = useRef<string[]>([]);
-	const [answers, setAnswers] = useState<string[]>(new Array(questionCount).fill(""));
+	const [questions, setQuestions] = useState<string[]>(new Array(questionCount).fill(""));
 	const chatRef = useRef<ChatHandle>(null);
 
 	useMemo(() => {
@@ -46,11 +46,11 @@ const Interrogation: React.FC<Props> = ({ interrogatee, questionCount }: Props) 
 					throw new Error("Invalid question index");
 				},
 				user: PLAYER,
-				continueCondition: () => answers[i] !== "",
+				continueCondition: () => questions[i] !== "",
 				customContent: <QuestionSelector
 					questions={questionsRef.current.slice(i * 3, i * 3 + 3)}
 					onSelect={(question: string) => {
-						setAnswers(answers => {
+						setQuestions(answers => {
 							const newAnswers = [...answers];
 							newAnswers[i] = question;
 							return newAnswers;
@@ -59,7 +59,11 @@ const Interrogation: React.FC<Props> = ({ interrogatee, questionCount }: Props) 
 						continueChat();
 					}} />
 			}),
-			...interrogatee.getAnswer(answers[i]),
+			new Message({
+				text: questions[i],
+				user: PLAYER,
+			}),
+			...interrogatee.getAnswer(questions[i]),
 		];
 	}
 

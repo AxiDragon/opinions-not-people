@@ -52,6 +52,8 @@ const DragSort = () => {
 					if (inBox) {
 						user.playerOpinion = box.opinion;
 						foundBox = true;
+						console.log("User " + user.getName() + " allocated to box " + i);
+						console.log(PLAYER.opinion);
 					}
 				}
 			});
@@ -181,10 +183,11 @@ const styles = StyleSheet.create({
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'center',
-		zIndex: 2,
+		zIndex: 500,
 	},
 	allAllocatedButton: {
 		padding: 25,
+		zIndex: 500,
 		backgroundColor: COLORS.interactables,
 	}
 });
