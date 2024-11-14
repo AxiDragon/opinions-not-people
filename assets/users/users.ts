@@ -1,8 +1,5 @@
 import User, { Opinion } from "@/models/User";
 
-// export const PLAYER = new User("", Opinion.NONE, "Hey");
-
-// Player for debugging
 export const PLAYER = new User("???", Opinion.POSITIVE, "error");
 
 export const allUsers = {

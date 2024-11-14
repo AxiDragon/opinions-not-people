@@ -2,10 +2,10 @@ import 'react-native-gesture-handler';
 import { ScrollView, StyleSheet, View, Text } from "react-native";
 import MessageUI from "./MessageUI";
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react";
-import { Gesture, GestureDetector, GestureHandlerRootView } from "react-native-gesture-handler";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import React from "react";
 import Message from '@/models/Message';
-import { COLORS } from '@/constants/colors';
+import Tappable from '../input/Tappable';
 
 type Props = {
 	messages: Message[];
@@ -48,8 +48,6 @@ const Chat = forwardRef<ChatHandle, Props>(({ messages, onEnd = () => { } }: Pro
 		}
 	}, [currentMessageIndex]);
 
-	const tap = Gesture.Tap().onStart(handleTap);
-
 	//TODO: The last message still blocks scrolling due to GestureDetector - find a way to deal with that
 	//TODO: See if there's a way to check if the previous message was from the same user and if so, don't show the UserUI
 	//TODO: Find a better way to handle this. just, for now, gotta tap the bottom one
@@ -72,11 +70,7 @@ const Chat = forwardRef<ChatHandle, Props>(({ messages, onEnd = () => { } }: Pro
 						interactable={i === currentMessageIndex} />
 				))}
 			</ScrollView>
-			<GestureDetector gesture={tap}>
-				<View style={styles.tappable}>
-					<Text style={styles.tappableText}>Tap here to continue</Text>
-				</View>
-			</GestureDetector>
+			<Tappable onTap={handleTap} />
 		</GestureHandlerRootView>
 	);
 });
@@ -84,23 +78,11 @@ const Chat = forwardRef<ChatHandle, Props>(({ messages, onEnd = () => { } }: Pro
 const styles = StyleSheet.create({
 	chatContainer: {
 		display: "flex",
-		paddingBottom: 150,
+		paddingBottom: 300,
 		justifyContent: "flex-start",
 		alignItems: "center",
 		gap: 15,
 		width: "100%",
-	},
-	tappable: {
-		width: "100%",
-		height: 150,
-		alignContent: "center",
-		justifyContent: "center",
-		backgroundColor: COLORS.backgroundDark,
-	},
-	tappableText: {
-		color: COLORS.text,
-		fontSize: 25,
-		textAlign: "center",
 	},
 });
 

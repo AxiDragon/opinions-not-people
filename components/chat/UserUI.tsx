@@ -6,14 +6,15 @@ import { COLORS } from "@/constants/colors";
 
 type Props = {
 	user: User;
+	displayName?: boolean;
 	darkened?: boolean;
 }
 
-export default function UserUI({ user, darkened = false }: Props) {
+export default function UserUI({ user, displayName = true, darkened = false }: Props) {
 	return (
 		<View style={styles.userContainer}>
 			<Image source={user.image} tintColor={darkened ? 'black' : ''} style={{ width: 64, height: 64 }} />
-			<Text style={styles.username}>{user.getName()}</Text>
+			{displayName && <Text style={styles.username}>{user.getName()}</Text>}
 		</View>
 	)
 }
