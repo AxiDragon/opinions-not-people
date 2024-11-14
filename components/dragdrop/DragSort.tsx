@@ -96,6 +96,8 @@ const DragSort = () => {
 					Click unidentified users (?) to talk to them.
 					<br />
 					Drag identified users to the boxes you think are correct.
+					<br />
+					Click identified users to read their responses.
 				</Text>
 				<View style={styles.draggableContainer}>
 					{users.map((user, i) => (
