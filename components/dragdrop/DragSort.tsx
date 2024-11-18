@@ -93,9 +93,12 @@ const DragSort = () => {
 			<View />
 			<View style={styles.containerAround}>
 				<Text style={styles.explanationText}>
+					You think that same-sex marriage should be {PLAYER.opinion === Opinion.POSITIVE ? "legal" : "illegal"}.
+					<br />
+					<br />
 					Click unidentified users (?) to talk to them.
 					<br />
-					Drag identified users to the boxes you think are correct.
+					Drag identified users to assign them, whether you think they agree or disagree with you.
 					<br />
 					Click identified users to read their responses.
 				</Text>
@@ -160,7 +163,7 @@ const styles = StyleSheet.create({
 		zIndex: 1,
 	},
 	box: {
-		height: 500,
+		height: 350,
 		flex: 1,
 		backgroundColor: COLORS.messageBackground,
 		borderColor: COLORS.interactables,
