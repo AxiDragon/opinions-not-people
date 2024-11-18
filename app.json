@@ -1,37 +1,44 @@
 {
   "expo": {
-    "name": "people-not-opinions",
-    "slug": "people-not-opinions",
+    "name": "Opinions not People",
+    "slug": "opinions-not-people",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/favicon.png",
     "scheme": "myapp",
-    "userInterfaceStyle": "automatic",
+    "userInterfaceStyle": "dark",
     "splash": {
-      "image": "./assets/images/splash.png",
+      "image": "./assets/images/favicon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
-    },
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/favicon.png",
+      "manifest": {
+        "name": "Opinions not People",
+        "short_name": "Opinions not People",
+        "description": "-------------------",
+        "start_url": "/",
+        "theme_color": "#000000",
+        "background_color": "#ffffff",
+        "display": "fullscreen",
+        "orientation": "portrait",
+        "icons": [
+          {
+            "src": "./assets/images/favicon.png",
+            "sizes": "64x64",
+            "type": "image/png"
+          }
+        ]
+      }
     },
     "plugins": [
       "expo-router"
     ],
     "experiments": {
-      "typedRoutes": true,
-      "baseUrl": "/people-not-opinions"
+      "typedRoutes": true
     }
   }
 }
