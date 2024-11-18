@@ -79,6 +79,10 @@ export default function Index() {
     };
   }, [lastTapped]);
 
+  useEffect(() => {
+    document.title = "Opinions not People";
+  }, []);
+
   return (
     <GestureHandlerRootView
       style={{
