@@ -9,12 +9,13 @@ import { COLORS } from "@/constants/colors";
 import { Opinion } from "@/models/User";
 import { setScreen } from "@/utility/EventDispatcher";
 import IconSelector from "../IconSelector";
+import OpinionRadioInput from "@/components/input/OpinionRadioInput";
 
 const IntroConversation: React.FC = () => {
 	const { setName, name } = useUser();
 	const [changedUsername, setChangedUsername] = useState<boolean>(false);
 	const [pickedIcon, setPickedIcon] = useState<string>("-1");
-	const [opinion, setOpinion] = useState<number>(0.5);
+	const [opinion, setOpinion] = useState<Opinion>(Opinion.NONE);
 	const chatRef = useRef<ChatHandle>(null);
 
 	const user = allUsers.CAPTAIN;
@@ -23,6 +24,11 @@ const IntroConversation: React.FC = () => {
 		PLAYER.setName('Agent ' + name);
 		setName(name);
 		setChangedUsername(true);
+	}
+
+	const onOpinionSelect = (value: any) => {
+		setOpinion(value);
+		continueChat();
 	}
 
 	function nameInput() {
@@ -58,16 +64,16 @@ const IntroConversation: React.FC = () => {
 				const hours = new Date().getHours();
 
 				if (hours < 5) {
-					return "Good evening Agent.";
+					return "Good evening, Agent.";
 				}
 				if (hours < 12) {
-					return "Good morning Agent.";
+					return "Good morning, Agent.";
 				}
 				if (hours < 18) {
-					return "Good afternoon Agent.";
+					return "Good afternoon, Agent.";
 				}
 
-				return "Good evening Agent.";
+				return "Good evening, Agent.";
 			},
 			user: user,
 		}),
@@ -95,10 +101,10 @@ const IntroConversation: React.FC = () => {
 		new Message({ text: "There's not many of these papers left due to the new law regarding the discussion of this topic.", user: user }),
 		new Message({
 			text: "",
-			customContent: <LabeledSlider onValueChange={setOpinion} />,
-			continueCondition: () => opinion !== 0.5,
+			customContent: <OpinionRadioInput onSelect={onOpinionSelect} />,
+			continueCondition: () => opinion !== Opinion.NONE,
 			onContinue: () => {
-				PLAYER.playerOpinion = opinion < 0.5 ? Opinion.NEGATIVE : Opinion.POSITIVE;
+				PLAYER.playerOpinion = opinion;
 			}
 		}),
 		new Message({ text: "...", user: user }),
