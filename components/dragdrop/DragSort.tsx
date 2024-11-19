@@ -209,7 +209,7 @@ const styles = StyleSheet.create({
 	allAllocatedContainer: {
 		position: 'absolute',
 		width: '100%',
-		height: 500,
+		top: '33%',
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'center',
