@@ -499,6 +499,9 @@ export const allUsers = {
 }
 /**
  * users that will appear in the game 
+ * Note: the order of the users in this array will determine the order in which they appear in the game
+ * Reminder to myself to make the first user someone stereotypically "good" and the second user someone stereotypically "bad"
+ * @type {User[]}
  */
 export const users = [
 	allUsers.GRANT,
