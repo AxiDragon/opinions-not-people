@@ -42,7 +42,6 @@ const EndScreen = () => {
 		if (revealPhase < 4) {
 			setRevealPhase(revealPhase + 1);
 		} else if (currentUser != users.length - 1) {
-			console.log(users[currentUser + 1]);
 			setCurrentUser(currentUser + 1);
 			setRevealPhase(0);
 		} else {
@@ -92,6 +91,7 @@ const EndScreen = () => {
 						<Tappable onTap={handleTap} />
 					</>
 					:
+					// TODO: end chat instead, reflecting on the results
 					<View style={styles.reviewContainer}>
 						<Text style={[styles.header, { marginBottom: 25 }]}>Results</Text>
 						<View style={styles.peopleContainer}>

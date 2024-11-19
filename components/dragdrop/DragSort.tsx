@@ -2,9 +2,12 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import DraggableUser from "./DraggableUser";
 import React, { useEffect, useRef, useState } from "react";
 import { COLORS } from "@/constants/colors";
-import User, { Opinion } from "@/models/User";
+import { Opinion } from "@/models/User";
 import { PLAYER, users } from "@/assets/users/users";
 import { setScreen } from "@/utility/EventDispatcher";
+import draggableUsers, { onNewUserTapped } from "@/assets/data/draggableUsers";
+
+const imageSize = 80;
 
 const DragSort = () => {
 	const [boxes, setBoxes] = useState([
@@ -17,9 +20,9 @@ const DragSort = () => {
 			opinion: PLAYER.opinion === Opinion.POSITIVE ? Opinion.NEGATIVE : Opinion.POSITIVE
 		},
 	]);
+	const [allUsersAllocated, setAllUsersAllocated] = useState(false);
 	const agreeBoxRef = useRef<View>(null);
 	const disagreeBoxRef = useRef<View>(null);
-	const [allUsersAllocated, setAllUsersAllocated] = useState(false);
 
 	const checkAllUsersAllocated = (): boolean => {
 		return users.every(user => user.playerOpinion !== Opinion.NONE);
@@ -35,10 +38,21 @@ const DragSort = () => {
 		});
 	}
 
-	const handleEndDrag = (user: User, draggable: React.RefObject<View>, translateX: number, translateY: number) => {
+	const handleEndDrag = (i: number, draggable: React.RefObject<View>, translateX: number, translateY: number) => {
 		draggable.current?.measure((x, y, w, h, pX, pY) => {
-			x = pX + translateX;
-			y = pY + translateY;
+			const draggableUser = draggableUsers.find(du => du.i === i);
+			if (!draggableUser) {
+				console.error("Could not find draggable user with id " + i);
+				return;
+			}
+
+			draggableUser.translateX = translateX;
+			draggableUser.translateY = translateY;
+
+			const user = draggableUser.user;
+
+			x = pX + translateX + imageSize / 2;
+			y = pY + translateY + imageSize / 2;
 			let foundBox: boolean = false;
 
 			boxes.forEach((box, i) => {
@@ -52,8 +66,6 @@ const DragSort = () => {
 					if (inBox) {
 						user.playerOpinion = box.opinion;
 						foundBox = true;
-						console.log("User " + user.getName() + " allocated to box " + i);
-						console.log(PLAYER.opinion);
 					}
 				}
 			});
@@ -67,6 +79,13 @@ const DragSort = () => {
 		});
 	}
 
+	const handleUserTapped = (i: number) => {
+		onNewUserTapped(i);
+
+		window.dispatchEvent(new CustomEvent("addInterrogatee", { detail: { user: draggableUsers[i].user } }));
+		setScreen(2);
+	};
+
 	const handleEndButtonPressed = () => {
 		setScreen(3);
 	};
@@ -76,6 +95,7 @@ const DragSort = () => {
 			setAllUsersAllocated(true);
 		}
 	}, []);
+
 
 	//TODO: Restyle this to have a top and bottom instead, with characters in the middle?
 	//it'd fit better with phone screens
@@ -103,11 +123,16 @@ const DragSort = () => {
 					Click identified users to read their responses.
 				</Text>
 				<View style={styles.draggableContainer}>
-					{users.map((user, i) => (
+					{draggableUsers.map((user, i) => (
 						<DraggableUser
-							key={i}
-							user={user}
-							onEndDrag={handleEndDrag} />
+							key={user.i}
+							user={user.user}
+							id={user.i}
+							size={imageSize}
+							initialX={user.translateX}
+							initialY={user.translateY}
+							onEndDrag={handleEndDrag}
+							onFirstTap={handleUserTapped} />
 					))}
 				</View>
 			</View>

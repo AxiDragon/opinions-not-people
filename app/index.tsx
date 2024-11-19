@@ -21,7 +21,7 @@ export default function Index() {
   const screens = [
     <IntroConversation />,
     <DragSort />,
-    <Interrogation interrogatee={interrogatees[currentInterrogatee]} questionCount={3} />,
+    <Interrogation interrogatee={interrogatees[currentInterrogatee]} questionCount={1} />,
     <EndScreen />,
     <SavedInterrogation interrogatee={lastTapped} />,
   ]

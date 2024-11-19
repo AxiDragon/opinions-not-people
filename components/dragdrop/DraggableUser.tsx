@@ -1,4 +1,5 @@
 import getImage from "@/assets/data/imageMapping";
+import { allUsers } from "@/assets/users/users";
 import User from "@/models/User";
 import { setScreen } from "@/utility/EventDispatcher";
 import { useRef, useState } from "react";
@@ -8,25 +9,25 @@ import Animated, { useAnimatedStyle, useSharedValue } from "react-native-reanima
 
 export type Props = {
 	user: User;
-	onEndDrag?: (user: User, draggable: React.RefObject<View>, x: number, y: number) => void;
+	id: number;
+	size: number;
+	initialX: number;
+	initialY: number;
+	onEndDrag?: (id: number, draggable: React.RefObject<View>, x: number, y: number) => void;
+	onFirstTap?: (id: number) => void;
 }
 
-export default function DraggableUser({ user, onEndDrag }: Props) {
+export default function DraggableUser({ user, id, size, initialX, initialY, onEndDrag, onFirstTap }: Props) {
 	const [zIndex, setZIndex] = useState(3);
-	const [identified, setIdentified] = useState<boolean>(user.identified);
-	const translateX = useSharedValue(user.translateX);
-	const translateY = useSharedValue(user.translateY);
-	const imageSize = 80;
+	const translateX = useSharedValue(initialX);
+	const translateY = useSharedValue(initialY);
 	const draggableRef = useRef<View>(null);
 
 	const tap = Gesture.Tap()
 		.numberOfTaps(1)
 		.onStart(() => {
-			if (!identified) {
-				user.identified = true;
-				setIdentified(user.identified);
-				window.dispatchEvent(new CustomEvent("addInterrogatee", { detail: { user } }));
-				setScreen(2);
+			if (user === allUsers.UNDEFINED) {
+				onFirstTap && onFirstTap(id);
 			} else {
 				window.dispatchEvent(new CustomEvent("tappedInterrogatee", { detail: { user } }));
 				setScreen(4);
@@ -35,11 +36,9 @@ export default function DraggableUser({ user, onEndDrag }: Props) {
 
 	//TODO: Add some edge detection to prevent the image from going off-screen
 	const drag = Gesture.Pan().onChange(event => {
-		if (identified) {
+		if (user !== allUsers.UNDEFINED) {
 			translateX.value += event.changeX;
 			translateY.value += event.changeY;
-			user.translateX = translateX.value;
-			user.translateY = translateY.value;
 		}
 	})
 		.onStart(() => {
@@ -47,10 +46,10 @@ export default function DraggableUser({ user, onEndDrag }: Props) {
 		})
 		.onEnd(() => {
 			setZIndex(3);
-			onEndDrag && onEndDrag(user,
+			onEndDrag && onEndDrag(id,
 				draggableRef,
-				translateX.value + imageSize / 2,
-				translateY.value + imageSize / 2);
+				translateX.value,
+				translateY.value);
 		});
 
 	const containerStyle = useAnimatedStyle(() => {
@@ -71,8 +70,8 @@ export default function DraggableUser({ user, onEndDrag }: Props) {
 			<Animated.View style={[containerStyle]} ref={draggableRef}>
 				<GestureDetector gesture={tap}>
 					<Animated.Image
-						source={identified ? user.image : getImage("undefined")}
-						style={{ width: imageSize, height: imageSize }}
+						source={user.image}
+						style={{ width: size, height: size }}
 					/>
 				</GestureDetector>
 			</Animated.View>
