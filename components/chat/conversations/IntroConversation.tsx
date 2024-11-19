@@ -1,7 +1,6 @@
 import Message from "@/models/Message";
 import { allUsers, PLAYER } from "@/assets/users/users";
 import { TextInput } from "react-native";
-import LabeledSlider from "@/components/input/LabeledSlider";
 import { useUser } from "@/context/UserContext";
 import Chat, { ChatHandle } from "../Chat";
 import { useRef, useState } from "react";

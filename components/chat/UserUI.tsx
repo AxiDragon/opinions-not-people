@@ -13,7 +13,7 @@ type Props = {
 export default function UserUI({ user, displayName = true, darkened = false }: Props) {
 	return (
 		<View style={styles.userContainer}>
-			<Image source={user.image} tintColor={darkened ? 'black' : ''} style={{ width: 64, height: 64 }} />
+			<Image source={user.image} tintColor={darkened ? COLORS.background : ''} style={{ width: 64, height: 64 }} />
 			{displayName && <Text style={styles.username}>{user.getName()}</Text>}
 		</View>
 	)

@@ -1,5 +1,6 @@
 import { PLAYER, users } from "@/assets/users/users";
-import { View, Text, StyleSheet } from "react-native"
+import { Image } from "expo-image";
+import { View, Text, StyleSheet } from "react-native";
 import UserUI from "./chat/UserUI";
 import { COLORS } from "@/constants/colors";
 import { useState } from "react";
@@ -50,32 +51,41 @@ const EndScreen = () => {
 		}
 	}
 
+	//TODO: Overall gesture detector? No need for Tappable
 	return (
 		<View style={styles.container}>
 			{
 				isRevealing ?
 					<>
-						<View style={styles.revealContainer}>
-							<UserUI user={users[currentUser]} darkened={revealPhase === 0 ? true : false} displayName={false} />
-							<br />
-							<View style={[styles.revealTextContainer, { opacity: revealPhase >= 2 ? 1 : 0 }]}>
-								{revealPhase < 4 ?
-									<>
-										<Text style={styles.text}>
-											{revealPhase == 2 ?
-												"You thought that" :
-												"In reality,"}
-										</Text>
-										<Text style={styles.header}>
-											{users[currentUser].getName()}
-										</Text>
-										<Text style={styles.text}>
-											{revealPhase == 2 ?
-												getPlayerOpinionText() :
-												getUserOpinionText()}
-										</Text>
-									</> :
-									<Text style={styles.text}>{getResultText(users[currentUser])}</Text>
+						<View style={[styles.revealContainer,
+						{ backgroundColor: revealPhase === 0 ? COLORS.backgroundDark : '' }]}>
+							<View style={styles.revealUserContainer}>
+								{revealPhase !== 0 && <Image source={require("@/assets/vectors/beam.svg")} style={styles.beamStyle} />}
+								<UserUI user={users[currentUser]} darkened={revealPhase === 0 ? true : false} displayName={false} />
+							</View>
+							<View style={styles.revealTextContainer}>
+								{
+									revealPhase < 2 ?
+										<>
+										</>
+										:
+										revealPhase < 4 ?
+											<>
+												<Text style={styles.text}>
+													{revealPhase == 2 ?
+														"You thought that" :
+														"In reality,"}
+												</Text>
+												<Text style={styles.header}>
+													{users[currentUser].getName()}
+												</Text>
+												<Text style={styles.text}>
+													{revealPhase == 2 ?
+														getPlayerOpinionText() :
+														getUserOpinionText()}
+												</Text>
+											</> :
+											<Text style={styles.text}>{getResultText(users[currentUser])}</Text>
 								}
 							</View>
 						</View>
@@ -101,6 +111,11 @@ const EndScreen = () => {
 export default EndScreen;
 
 const styles = StyleSheet.create({
+	beamStyle: {
+		position: 'absolute',
+		width: '100%',
+		height: '100%',
+	},
 	container: {
 		width: '100%',
 		height: '100%',
@@ -112,14 +127,24 @@ const styles = StyleSheet.create({
 		width: '100%',
 		height: '100%',
 		display: 'flex',
-		justifyContent: 'center',
+		justifyContent: 'flex-end',
+		alignItems: 'center',
+	},
+	revealUserContainer: {
+		width: '100%',
+		height: '60%',
+		display: 'flex',
+		justifyContent: 'flex-end',
 		alignItems: 'center',
 	},
 	revealTextContainer: {
 		width: '100%',
+		height: '40%',
 		display: 'flex',
+		padding: 25,
 		flexDirection: 'column',
 		alignItems: 'center',
+		backgroundColor: COLORS.backgroundDark,
 	},
 	reviewContainer: {
 		width: '100%',
