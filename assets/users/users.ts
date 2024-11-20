@@ -528,7 +528,7 @@ export const allUsers = {
 			{
 				question: "How do you see your life five years from now?",
 				answer: [
-					"Hopefully, I'm not stuck in a law office—no offense to lawyers, but that's not me.",
+					"I know I study law, but, hopefully, I'm not stuck in a law office—no offense to lawyers, but that's not me.",
 					"I'd love to be traveling, partying, and getting paid to share my adventures online.",
 					"Basically, living life to the fullest and not being tied down to a desk."
 				]
