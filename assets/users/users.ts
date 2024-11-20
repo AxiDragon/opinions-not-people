@@ -27,458 +27,569 @@ export const allUsers = {
 			},
 		]
 	),
-	GRANT: new User("Grant", Opinion.NEGATIVE, "Hey. What's going on?", "Okay. I understand.",
+	GRANT: new User("Grant", Opinion.NEGATIVE, "Hey, what's going on?", "Alright, I see.",
 		[
 			{
 				question: "What is your favorite way to spend a weekend?",
 				answer: [
-					"I love a peaceful weekend tending to my flowers and herbs in the garden.",
-					"There's something so fulfilling about watching things grow under my care, seeing a little seedling turn into something beautiful.",
-					"After a few hours in the garden, I usually host a potluck dinner with friends and family.",
-					"We all bring old family recipes or new dishes we're excited to try.",
-					"It's a joy to share stories and memories over food, connecting in a way that only a shared meal can bring."
+					"I like getting into my workshop early and making real progress on my carvings—it's no good letting projects pile up.",
+					"If someone needs help with their crafts, I'll step in, though I won't sugarcoat what they're doing wrong.",
+					"By evening, I'm either playing games with the grandkids or teaching them that patience beats their gadgets any day."
 				]
 			},
 			{
 				question: "Have you picked up any new hobbies recently?",
 				answer: [
-					"Recently, I've tried my hand at birdwatching, which has been surprisingly relaxing.",
-					"There's something wonderful about sitting quietly with my binoculars, just waiting to see which birds will visit.",
-					"I find myself captivated by the colors and songs of each bird, and I'm learning to identify a few of them by their calls.",
-					"It's a reminder that there's so much beauty around us, especially in the small, often unnoticed things."
+					"I've been dabbling in crafting little puzzle boxes—great for keeping curious kids and grandkids entertained.",
+					"It's tricky work, but it's satisfying to stump people with a clever design.",
+					"Honestly, I'd say most people could use more puzzles in their life to keep their minds sharp."
 				]
 			},
 			{
 				question: "Is there a hobby you've always wanted to try but haven't?",
 				answer: [
-					"I've always wanted to learn watercolor painting.",
-					"There's a softness and gentleness to watercolors that really appeals to me.",
-					"I imagine capturing delicate flowers or landscapes in light washes of color, but I suppose part of me is a bit hesitant.",
-					"I worry I might make a mess or that it won't come out as I envision.",
-					"But maybe one day I'll give it a try, just for the joy of creating something new."
+					"I've thought about trying metalwork, but I'm not sure I have the patience for all that heating and hammering.",
+					"Still, there's something about making tools or trinkets that sounds rewarding.",
+					"Maybe I'll give it a shot if someone finally convinces me it's worth my time."
 				]
 			},
 			{
 				question: "What is your favorite hobby?",
 				answer: [
-					"Gardening is by far my favorite hobby.",
-					"There's a therapeutic calmness in working with the soil and nurturing plants from tiny seeds to full bloom.",
-					"It's a quiet, patient process, and I love that it teaches me to appreciate the small things, like the first sprout or a sudden burst of flowers.",
-					"It's a space where I can let go of worries and simply enjoy the rhythm of nature, which has a way of grounding me."
+					"Woodcarving is where my heart is, no question.",
+					"Making little statues of people or critters reminds me that every detail matters, even the ones no one else notices.",
+					"Besides, it's a great way to show folks what hard work and a sharp blade can achieve."
 				]
 			},
 			{
 				question: "What's one thing on your bucket list?",
 				answer: [
-					"Visiting the English countryside is at the top of my list.",
-					"I've always been drawn to the idea of those picturesque villages, green rolling hills, and historical sites full of stories.",
-					"There's a certain charm I imagine, walking through cobblestone streets lined with old cottages, perhaps with ivy creeping up the walls.",
-					"I think there's something timeless about places like that, and I'd love to experience it firsthand, just wandering and taking it all in."
+					"I'd like to carve a massive statue of my family to stand in the garden.",
+					"It'd be a reminder of what really matters—and of all the times they've tested my patience!",
+					"Plus, it'd outlast most of those flashy things people waste time on these days."
 				]
 			},
 			{
 				question: "What do you think is the most important quality in a friend?",
 				answer: [
-					"Consistency.",
-					"To me, a true friend is someone who's there through thick and thin, who doesn't change with the seasons or vanish when things get tough.",
-					"I value people who are steady and dependable, someone I can count on no matter the situation.",
-					"Life can be so unpredictable, and having a friend who's a constant is one of the greatest comforts, like a safe harbor in any storm."
+					"I'll take honesty over politeness any day.",
+					"A real friend tells you when you're wrong or when your work looks sloppy, even if it stings.",
+					"It's the only way anyone gets better at anything."
 				]
 			},
 			{
 				question: "How do your values influence your daily decisions?",
 				answer: [
-					"My values are like a guide, reminding me to keep things simple and focus on what's truly important—family, friendships, and taking care of the things and people I love.",
-					"They shape how I spend my time and energy, encouraging me to choose quality over quantity, patience over haste, and kindness over conflict.",
-					"I try to let these values direct me in ways that I hope bring a sense of peace to my life and to those around me."
+					"I stick to what I know is right, even if it ruffles feathers.",
+					"For example, I'll teach someone how to carve properly, even if they're too stubborn to listen at first.",
+					"Doing the right thing isn't always comfortable, but it's always worth it."
 				]
 			},
 			{
 				question: "What cause are you most passionate about, and why?",
 				answer: [
-					"I'm deeply passionate about supporting local businesses and community projects.",
-					"I believe that local businesses give a place its character, and that when we support our own, we create a sense of belonging and resilience.",
-					"Local shops and projects are often rooted in personal stories, hard work, and care for the community.",
-					"Keeping things local just feels more human, more connected, and that's something I think is worth preserving."
+					"I care about keeping old crafts alive—none of that newfangled, flimsy stuff people buy and toss out.",
+					"Crafting teaches patience, discipline, and pride in your work, and we're losing that.",
+					"If I can pass those values down, I'll feel like I've done my part."
 				]
 			},
 			{
 				question: "Who is someone you look up to?",
 				answer: [
-					"My grandmother.",
-					"She had an incredible way of making everyone feel seen and valued, and her home was a refuge where people could come to feel safe and loved.",
-					"She had a quiet strength, the kind of wisdom that only comes from a life full of compassion and resilience.",
-					"I look up to her kindness, her patience, and her ability to make people feel at ease just by being herself."
+					"There was a carver in my town when I was a kid who could make the wood practically breathe.",
+					"He told me once, 'Don't waste wood on half-done work,' and that's stuck with me.",
+					"I've tried to live up to his example, though I doubt I've matched him yet."
 				]
 			},
 			{
 				question: "What's a pivotal moment in your life that shaped who you are today?",
 				answer: [
-					"Opening my craft shop was a defining moment for me.",
-					"It was a leap of faith, something that took courage and taught me patience.",
-					"Running a shop showed me the value of small, daily interactions—how each conversation, each exchange, no matter how small, builds connections.",
-					"It shaped me into someone who sees the beauty in everyday moments, and who values the simple joys in life."
+					"The first time I sold one of my carvings at a market was a big deal.",
+					"Seeing someone value my work enough to pay for it made me realize I had something worth sharing.",
+					"It's what pushed me to open my craft shop years later."
 				]
 			},
 			{
 				question: "What is a travel experience that changed your perspective?",
 				answer: [
-					"Visiting an old friend's farm had a profound impact on me.",
-					"Spending time there reminded me of the importance of staying connected to the land and living a life that respects nature's rhythm.",
-					"Seeing how my friend lived, growing his own food and caring for his animals, made me realize that a slower, more intentional life can bring so much fulfillment.",
-					"It made me want to live in a way that's kinder to the earth."
+					"I visited a village where everyone made everything by hand, from tools to toys.",
+					"It was refreshing to see people who took pride in real work instead of cutting corners.",
+					"It reminded me that doing things right is always better than doing them fast."
 				]
 			},
 			{
 				question: "What lesson have you learned from a past mistake?",
 				answer: [
-					"One of the biggest lessons I've learned is not to jump to conclusions.",
-					"In the past, I sometimes made assumptions too quickly, which led to misunderstandings.",
-					"I've learned the importance of listening first and taking the time to understand others before forming opinions.",
-					"It's not always easy, but I try to remind myself to be patient and keep an open mind."
+					"I learned not to rush my work just to meet a deadline.",
+					"Once, I finished a carving too quickly, and it broke within a week—embarrassing, to say the least.",
+					"Now, I take the time to do it properly, no matter how impatient people get."
 				]
 			},
 			{
 				question: "What's your idea of a perfect day?",
 				answer: [
-					"A perfect day for me would be a sunny one spent in my garden, getting my hands in the soil and watching everything thrive.",
-					"In the evening, I'd sit down to a simple meal with my family, sharing stories and laughter.",
-					"Afterward, maybe I'd unwind with a good book or a crossword puzzle before heading to bed, feeling content and grateful for the day."
+					"It starts with a quiet morning, strong coffee, and the birds outside.",
+					"Then I'd spend the day in the shop, finishing a piece I've been working on for weeks.",
+					"By evening, I'd gather the family for a meal and a good game—or two, if I'm winning!"
 				]
 			},
 			{
 				question: "Do you have any unique quirks?",
 				answer: [
-					"I organize my pantry by color.",
-					"I know it sounds a bit odd, but for some reason, it just feels right to me!",
-					"There's something calming about opening the pantry and seeing everything arranged in a way that's not only orderly but also visually pleasing.",
-					"It's a small thing, but it brings me a little joy every time."
+					"I've got a habit of slapping the table when I'm excited—scares the grandkids every time.",
+					"I also whistle when I'm deep in thought, though I don't realize I'm doing it.",
+					"My wife says it's like having a human teakettle around the house."
 				]
 			},
 			{
 				question: "What goal are you currently working on?",
 				answer: [
-					"I'm compiling a cookbook of old family recipes for my grandkids.",
-					"I want to make sure these recipes are preserved, not just as instructions but as a piece of family history.",
-					"Each recipe comes with memories, like the smell of my grandmother's kitchen or the laughter of family gatherings, and I hope these stories will be passed down along with the dishes."
+					"I'm carving a set of statues for the local town square.",
+					"It's my way of leaving something behind that'll outlast me.",
+					"People need a reminder of the beauty in real craftsmanship, not just quick fixes."
 				]
 			},
 			{
 				question: "How do you see your life five years from now?",
 				answer: [
-					"Hopefully, not much will have changed.",
-					"I see myself still living simply, surrounded by my family, with a thriving garden that I can escape to.",
-					"I'd like to be in good health, enjoying time with my grandkids and maybe even teaching them some of the things I've learned along the way, like gardening or cooking."
+					"I'll still be running my shop, no question about it.",
+					"I'd like to have taught my grandkids enough to carry on some of my skills.",
+					"And if I'm lucky, maybe I'll finally finish that family garden statue I've been dreaming of."
 				]
 			},
 			{
 				question: "If you could change one thing about the world, what would it be?",
 				answer: [
-					"I'd love for people to spend more time appreciating the simple things.",
-					"In a world that's always rushing and pushing for more, I think we sometimes forget the beauty of a quiet moment, a warm meal, or a kind word.",
-					"I believe that if more people could slow down and notice the small blessings, the world would be a gentler, more compassionate place."
+					"I'd get rid of all this throwaway culture—things are too cheap and meaningless these days.",
+					"People should learn to fix and make things, not just toss them out for something new.",
+					"It'd make the world a better, more thoughtful place."
+				]
+			},
+			{
+				question: "What's the best advice you've ever received?",
+				answer: [
+					"'If you're going to do something, do it right the first time,' was what my father used to say.",
+					"It's why I never rush my carvings or accept half-baked work from anyone.",
+					"That advice has stuck with me through thick and thin."
+				]
+			},
+			{
+				question: "What's something small that makes you happy?",
+				answer: [
+					"The sound of a perfectly sharp blade gliding through wood is music to my ears.",
+					"It's proof that I've done the prep work right and that I'm in control of the craft.",
+					"Simple things like that remind me why I love what I do."
+				]
+			},
+			{
+				question: "What have you done in the past week?",
+				answer: [
+					"I finished carving a new set of statues for a friend—took me longer than I wanted, but they're worth it.",
+					"Hosted the monthly craft group and had to tell a few folks to stop slacking on their stitching.",
+					"Oh, and I spotted a bird I hadn't seen in years. My wife was thrilled!"
+				]
+			},
+			{
+				question: "What do you usually do during working hours?",
+				answer: [
+					"I spend most of my time carving or fixing up the shop, though I'll drop everything to help a customer.",
+					"If someone wants to chat, I'll talk, but I don't sugarcoat advice—it's the only way they'll improve.",
+					"And if no one's around, I enjoy the quiet. It's good for thinking."
+				]
+			},
+			{
+				question: "What is something you can't stand?",
+				answer: [
+					"I can't stand when people don't take pride in their work.",
+					"Sloppy, rushed efforts are a waste of time and resources, plain and simple.",
+					"If you're going to do something, do it right—or don't do it at all."
+				]
+			},
+			{
+				question: "What is a pet peeve of yours?",
+				answer: [
+					"People leaving tools where they don't belong drives me up the wall.",
+					"There's a place for everything, and it's not that hard to put things back.",
+					"If I trip over one more misplaced mallet, someone's getting an earful!"
 				]
 			}
 		]
 	),
-	JASMIN: new User("Jasmin", Opinion.POSITIVE, "How may I help you?", "Alright - I understand.",
+	JASMIN: new User("Jasmin", Opinion.NEGATIVE, "What do you need?", "Okay, okay.",
 		[
 			{
 				question: "What is your favorite way to spend a weekend?",
 				answer: [
-					"A morning at the farmers' market, exploring all the fresh fruits, vegetables, and homemade goods.",
-					"I love picking out a few fresh ingredients to cook with for the weekend.",
-					"Then, I'll head to the library, where I can lose myself in the quiet aisles filled with books.",
-					"There's something so calming about being surrounded by stories and ideas.",
-					"And to top it all off, a family dinner with everyone gathered around the table, sharing laughs and catching up on the week."
+					"Ideally, I'm out in the forest with my sketchbook, capturing whatever inspires me.",
+					"If it's raining, my husband and I will work on puzzles or binge a show—we're pretty competitive with those puzzles, though!",
+					"Later, we might meet up with friends for drinks, because weekends are too short to waste being boring."
 				]
 			},
 			{
 				question: "Have you picked up any new hobbies recently?",
 				answer: [
-					"Yes! I've started experimenting with baking different kinds of bread, which has become a little weekend ritual.",
-					"I never realized how satisfying it would be to knead dough and see it rise in the oven.",
-					"I've been trying out different recipes, from classic sourdough to sweet brioche.",
-					"It's such a rewarding process, especially when the kitchen fills with that warm, fresh-baked bread smell."
+					"I've been experimenting with making digital art—abstract, of course.",
+					"It's a completely different medium, but I love the challenge of working without getting paint under my nails for once.",
+					"It's not replacing my canvas work, though—traditional art is where my soul is."
 				]
 			},
 			{
 				question: "Is there a hobby you've always wanted to try but haven't?",
 				answer: [
-					"I've always been fascinated by calligraphy.",
-					"There's an elegance and calm to it that I find really appealing.",
-					"I imagine it would take a lot of patience and practice to get those strokes just right.",
-					"Seeing beautifully written words in flowing script feels almost like a kind of art."
+					"Pottery has always intrigued me, but I don't know if I'd have the patience for it.",
+					"The idea of shaping something with my hands, instead of a brush, sounds freeing in a way.",
+					"Maybe one day I'll give it a shot—if I can find a studio that doesn't feel too pretentious."
 				]
 			},
 			{
 				question: "What is your favorite hobby?",
 				answer: [
-					"Reading mystery novels, without a doubt.",
-					"I love the thrill of piecing together clues, trying to solve the mystery before it's revealed in the book.",
-					"There's a sense of satisfaction in figuring it out, and even if I don't, it's always fun to see how the story unfolds.",
-					"The suspense and clever twists keep me hooked every time."
+					"Creating art is more than a hobby for me—it's a lifeline.",
+					"But if I'm not working, I really love a good crossword puzzle. It's like art for the brain!",
+					"Plus, solving puzzles with my husband always leads to some playful arguments."
 				]
 			},
 			{
 				question: "What's one thing on your bucket list?",
 				answer: [
-					"I'd love to explore old castles and historical sites around Europe.",
-					"I've always been fascinated by history and would love to walk through ancient halls and imagine what life was like back then.",
-					"While I'm there, I'd also want to do a bit of family history research, to see if there's any connection to those places.",
-					"I think it would be a journey of both discovery and appreciation."
+					"I want to host an outdoor art gallery right in the forest where I get so much inspiration.",
+					"It'd be amazing to see how my work looks surrounded by the trees and sunlight.",
+					"It might be a logistical nightmare, but the idea of it feels so right."
 				]
 			},
 			{
 				question: "What do you think is the most important quality in a friend?",
 				answer: [
-					"Kindness is, to me, the most important quality in a friend.",
-					"I think that kindness makes all other qualities shine a little brighter.",
-					"Whether it's being there during hard times or simply showing small, thoughtful gestures, kindness really goes a long way.",
-					"It's a quality that makes any friendship feel warm and safe, like you can truly be yourself without judgment."
+					"Loyalty, hands down. If you're my friend, I expect you to back me up.",
+					"I don't have patience for people who play it safe or are too afraid to speak their mind.",
+					"A real friend sticks by you, even when you're stirring the pot."
 				]
 			},
 			{
 				question: "How do your values influence your daily decisions?",
 				answer: [
-					"My values are like a compass, keeping me grounded and focused on treating others well, even in the small, day-to-day moments.",
-					"I try to be mindful of how my actions affect those around me, even if it's just offering a smile or a kind word.",
-					"It's the little things, like showing respect and understanding, that I believe count most.",
-					"Each choice I make feels more meaningful when it aligns with what I hold important in life."
+					"I believe in trusting my gut—if something feels wrong or right, I don't hesitate.",
+					"I also think everyone should work for what they have, so I make sure I'm earning everything I enjoy.",
+					"It's why I push myself to create art that actually says something."
 				]
 			},
 			{
 				question: "What cause are you most passionate about, and why?",
 				answer: [
-					"I'm passionate about supporting our local food bank.",
-					"I think everyone deserves a warm meal, especially in challenging times when some people might be struggling.",
-					"It's a simple yet impactful way to help people in the community feel cared for.",
-					"Volunteering there reminds me that, even in a small way, we can each make a difference in someone's life."
+					"Promoting art education is huge for me—it's where I found my voice when no one else believed in me.",
+					"Too many people see art as a luxury when it's a necessity for expression and growth.",
+					"If I can inspire just one person to pick up a brush, it's worth it."
 				]
 			},
 			{
 				question: "Who is someone you look up to?",
 				answer: [
-					"My father has always been a huge influence in my life.",
-					"He taught me about the importance of hard work and staying humble, no matter what.",
-					"He had a way of showing kindness to everyone, treating each person he met with respect.",
-					"It's a quality I admire deeply and try to carry forward in my own life."
+					"There's no one person, honestly—anyone who breaks the mold and stands by their vision earns my respect.",
+					"I admire people who don't fold under pressure, even when the world tells them to conform.",
+					"It's a trait I've always tried to embody myself."
 				]
 			},
 			{
 				question: "What's a pivotal moment in your life that shaped who you are today?",
 				answer: [
-					"When my son came out to me, it was a moment that changed how I viewed love and acceptance.",
-					"It taught me so much about what family really means and the importance of embracing people for who they are.",
-					"I realized that true love isn't about fitting into a mold; it's about supporting each other wholeheartedly.",
-					"It's a lesson that continues to shape how I approach relationships in my life."
+					"When I sold my first painting, my parents called it a 'fluke' and told me not to get my hopes up.",
+					"It was the moment I realized I didn't need their approval to succeed.",
+					"That sale gave me the confidence to keep going, and now here I am."
 				]
 			},
 			{
 				question: "What is a travel experience that changed your perspective?",
 				answer: [
-					"Visiting a small coastal village once had a profound impact on me.",
-					"It showed me how vastly different people's lives can be, from their day-to-day routines to their traditions.",
-					"And yet, there was a common thread—people there were just as connected to their families and communities as anywhere else.",
-					"It reminded me of our shared humanity, despite how varied our lives might seem on the surface."
+					"Visiting an artist's retreat in the mountains was eye-opening—it was just artists, no distractions, and pure focus.",
+					"It showed me how much of my best work comes when I'm completely immersed in my craft.",
+					"It also reminded me how much I love coming back home to my husband afterward!"
 				]
 			},
 			{
 				question: "What lesson have you learned from a past mistake?",
 				answer: [
-					"I've learned that sometimes, saying nothing at all is the kindest response.",
-					"There have been times when I jumped to conclusions or reacted too quickly.",
-					"Now, I try to listen first and think carefully before speaking, recognizing that silence can often be more supportive than words.",
-					"It's taught me the value of patience and empathy in communication."
+					"I've learned not to let people's opinions hold me back, even when they come from someone I care about.",
+					"Early on, I wasted time trying to make 'safe' art to please others, and it felt empty.",
+					"Now, I trust myself and create for me first—if others like it, that's just a bonus."
 				]
 			},
 			{
 				question: "What's your idea of a perfect day?",
 				answer: [
-					"My perfect day would be a cozy one spent indoors with a good book, a cup of tea, and maybe a baking project in the afternoon.",
-					"I'd bake something simple like cookies or a pie, filling the house with warmth and delicious smells.",
-					"In the evening, I'd go for a gentle walk, enjoying the fresh air and reflecting on the day.",
-					"It's the kind of simple, fulfilling day that leaves me feeling both relaxed and content."
+					"A perfect day starts with coffee and a challenging puzzle—something that really makes me think.",
+					"Then, I'd spend the afternoon painting outside, listening to the sounds of the forest.",
+					"Finally, a quiet evening with my husband, maybe watching a show we both love. Bliss."
 				]
 			},
 			{
 				question: "Do you have any unique quirks?",
 				answer: [
-					"I have a habit of organizing my books by the color of their spine, and I know it's a bit unusual.",
-					"But for some reason, it just feels right to me—it's visually satisfying and makes my bookshelf feel like a piece of art.",
-					"It's a small, quirky detail, but it brings a little bit of joy to my everyday routine.",
-					"Plus, I think it adds a unique personality to my space."
+					"I hum when I'm focused—my husband thinks it's endearing, but it drives some of my friends crazy.",
+					"Also, I can't leave a puzzle unfinished, even if it means staying up way too late.",
+					"It's just who I am—I hate loose ends."
 				]
 			},
 			{
 				question: "What goal are you currently working on?",
 				answer: [
-					"I'm focused on perfecting my sourdough bread recipe.",
-					"It's been a work in progress, with a lot of trial and error, especially in getting the texture just right.",
-					"I've started keeping a little journal to track what works and what doesn't, which has been fun.",
-					"Each loaf brings me a step closer to that ideal sourdough with the perfect crust and chewy interior."
+					"I'm preparing a new series for a gallery exhibit—it's abstract, but this time I'm playing with more vibrant colors.",
+					"It's a step outside my usual palette, and I'm excited to see how people react.",
+					"The goal is to push boundaries, both for me and my audience."
 				]
 			},
 			{
 				question: "How do you see your life five years from now?",
 				answer: [
-					"I hope to be traveling more, exploring the countryside and small towns with a little caravan.",
-					"I imagine waking up to beautiful, peaceful landscapes and enjoying the simplicity of life on the road.",
-					"It's a dream of freedom and discovery, where each day is a chance to experience something new.",
-					"I'd love for this journey to be filled with moments of quiet reflection and new memories."
+					"Hopefully, my husband and I will have kids by then—it's something we're really looking forward to.",
+					"I'd love to keep creating art that resonates with people and expands my reach.",
+					"And maybe, just maybe, I'll finally finish that 5,000-piece puzzle we've been putting off!"
 				]
 			},
 			{
 				question: "If you could change one thing about the world, what would it be?",
 				answer: [
-					"More empathy is something I think the world needs.",
-					"In challenging times, it's easy to get caught up in our own struggles and overlook those of others.",
-					"I believe that if we all took the time to understand one another's perspectives, it would make the world a kinder, more connected place.",
-					"Empathy can bridge so many divides, bringing us together in ways that really matter."
+					"I'd make sure people have more access to the arts—it's something everyone should experience.",
+					"Art has a way of showing people who they really are, and that's something the world needs more of.",
+					"It'd be a better place if everyone had a little more creativity in their lives."
+				]
+			},
+			{
+				question: "What's the best advice you've ever received?",
+				answer: [
+					"'If you don't believe in yourself, no one else will,' was something I heard from a fellow artist.",
+					"It's what pushed me to keep going when my family doubted me.",
+					"Now, I remind myself of that every time I start doubting my work."
+				]
+			},
+			{
+				question: "What's something small that makes you happy?",
+				answer: [
+					"The smell of fresh paint always lifts my mood—it's like a signal that creation is about to happen.",
+					"Also, solving a puzzle with my husband and seeing his face when I beat him—it never gets old.",
+					"It's the little things that make life feel special."
+				]
+			},
+			{
+				question: "What have you done in the past week?",
+				answer: [
+					"I finished three pieces for an upcoming show—it was exhausting but worth it.",
+					"My husband and I also tackled a tough crossword—it was one of those where every clue feels like a riddle.",
+					"Oh, and I made a trip to the forest for some quick sketches—it always clears my mind."
+				]
+			},
+			{
+				question: "What do you usually do during working hours?",
+				answer: [
+					"It's all about the art—I'm either painting, planning my next piece, or cleaning up after the chaos.",
+					"Sometimes I'll spend hours just staring at a canvas, waiting for the right idea to hit.",
+					"Other times, I'll break up the day with a quick puzzle or some brainstorming with my husband."
+				]
+			},
+			{
+				question: "What is something you can't stand?",
+				answer: [
+					"I can't stand people who make excuses—it drives me up the wall.",
+					"Everyone has challenges, but you either work through them or you don't. There's no in-between.",
+					"It's why I have little patience for pity parties."
+				]
+			},
+			{
+				question: "What is a pet peeve of yours?",
+				answer: [
+					"People who touch my artwork without asking—it's beyond disrespectful.",
+					"I also hate when someone interrupts me when I'm in the zone—it's like breaking a spell.",
+					"If you see me working, just wait. I'll always make time to chat afterward."
 				]
 			}
 		]
 	),
-	MARCO: new User("Marco", Opinion.NEGATIVE, "What's happening?", "Understood.",
+	MARCO: new User("Marco", Opinion.POSITIVE, "Yo, what's up?", "'Kay, sounds good.",
 		[
 			{
 				question: "What is your favorite way to spend a weekend?",
 				answer: [
-					"I love starting the weekend with a long hike.",
-					"It helps me reset and enjoy nature.",
-					"Then, I usually spend time cooking a big meal with family, sharing laughs and good food together."
+					"Hitting up the best clubs with my bros and just letting loose.",
+					"The perfect weekend ends with me waking up with a hangover so bad I can barely remember the night.",
+					"Bonus points if there's a story about me dancing on a table or pulling off some crazy stunt!"
 				]
 			},
 			{
 				question: "Have you picked up any new hobbies recently?",
 				answer: [
-					"Yes, I've started knitting.",
-					"It's surprisingly calming, and I find it satisfying to create something from scratch.",
-					"I've even managed to make a scarf or two!"
+					"Not really—law school takes up too much time for that, even if I don't put in much effort.",
+					"But I have been trying to step up my drumming game whenever I'm at home.",
+					"It's fun, loud, and honestly, it's great for clearing my head after a long week."
 				]
 			},
 			{
 				question: "Is there a hobby you've always wanted to try but haven't?",
 				answer: [
-					"I've always wanted to learn how to play the piano.",
-					"I think it would be so rewarding to play music.",
-					"But I just haven't found the time to dedicate to learning yet."
+					"I'd love to learn how to DJ—it'd be so sick to be the guy controlling the vibe at a club.",
+					"I mean, who wouldn't want to be the one making everyone lose their minds on the dance floor?",
+					"Plus, I could probably pull off some cool tricks while spinning tracks."
 				]
 			},
 			{
 				question: "What is your favorite hobby?",
 				answer: [
-					"Cooking new recipes with fresh ingredients is my favorite hobby.",
-					"Experimenting in the kitchen is so exciting!",
-					"Nothing beats a meal you've made from scratch and can share with loved ones."
+					"Going out and having a wild night, hands down.",
+					"It's the perfect mix of energy, chaos, and just living in the moment.",
+					"But when I'm not out, playing the drums is my jam—it's like my personal party at home."
 				]
 			},
 			{
 				question: "What's one thing on your bucket list?",
 				answer: [
-					"I'd love to visit the mountains for a long, scenic hike.",
-					"The idea of spending days surrounded by natural beauty really appeals to me.",
-					"I'd also love to camp out there and stargaze at night."
+					"I really want to take a party trip around the world and hit up the wildest clubs everywhere.",
+					"Imagine reviewing each place for the vibes, drinks, and overall insanity—that'd be the dream.",
+					"Who knows, maybe I could turn it into a career someday!"
 				]
 			},
 			{
 				question: "What do you think is the most important quality in a friend?",
 				answer: [
-					"Honesty is essential to me in any friendship.",
-					"I think real friends tell you the truth, even when it's hard to hear.",
-					"It's not always easy, but it builds trust and respect."
+					"Someone who knows how to have fun and isn't afraid to go all in.",
+					"I need friends who can match my energy, whether it's dancing all night or pulling off crazy stunts.",
+					"If they can handle my hangover rants the next day, even better."
 				]
 			},
 			{
 				question: "How do your values influence your daily decisions?",
 				answer: [
-					"My values keep me grounded and remind me why I do what I do.",
-					"My work is about helping others, and my values remind me that every small act matters.",
-					"They push me to stay true to myself, especially in challenging situations."
+					"I value living in the moment, so I try not to take life too seriously.",
+					"If I have a choice between fun and responsibility… let's just say fun usually wins.",
+					"That's probably why law school feels like such a drag most days!"
 				]
 			},
 			{
 				question: "What cause are you most passionate about, and why?",
 				answer: [
-					"I'm most passionate about health and wellness.",
-					"I believe that everyone deserves access to good healthcare.",
-					"This passion drives me to support initiatives and organizations that aim to make healthcare accessible to all."
+					"I'm passionate about making life less boring—people need to loosen up and have a good time.",
+					"I think too many people stress about stuff that won't matter in the long run.",
+					"If I can help others have fun and enjoy life more, I'd call that a win."
 				]
 			},
 			{
 				question: "Who is someone you look up to?",
 				answer: [
-					"My aunt is someone I truly look up to.",
-					"She has been through so much in her life but has remained incredibly resilient.",
-					"Her strength and kindness inspire me every day."
+					"I look up to influencers who've turned their love for partying into a career.",
+					"It takes guts to carve out a life doing something unconventional and fun.",
+					"Plus, they get to live the dream—having fun and making money at the same time."
 				]
 			},
 			{
 				question: "What's a pivotal moment in your life that shaped who you are today?",
 				answer: [
-					"Losing someone close to me was a life-changing experience.",
-					"It taught me to cherish every moment with loved ones.",
-					"I now prioritize spending time with family and friends, as life is too short to take anything for granted."
+					"The first time I went clubbing and realized how freeing it felt to just be myself.",
+					"It was a night where nothing mattered—no grades, no expectations, just pure fun.",
+					"That's when I decided life's too short to take too seriously."
 				]
 			},
 			{
 				question: "What is a travel experience that changed your perspective?",
 				answer: [
-					"Visiting rural villages and seeing healthcare work firsthand was eye-opening.",
-					"It showed me how different life can be, even just a few hours away from a big city.",
-					"This experience deepened my appreciation for resources we often take for granted."
+					"I went on a weekend trip to a big city with my friends, and the nightlife was insane.",
+					"It showed me how different people can be in other places—everyone was just so free-spirited.",
+					"It made me want to explore more, to see what else is out there."
 				]
 			},
 			{
 				question: "What lesson have you learned from a past mistake?",
 				answer: [
-					"One big lesson I've learned is to not overthink things that are out of my control.",
-					"Sometimes, the best thing you can do is let go and trust that things will work out.",
-					"I'm still practicing this, but it's been a valuable lesson."
+					"I've learned that you can't let people tell you what your life should look like.",
+					"Trying to fit into what others expect only makes you miserable—believe me, I've tried.",
+					"Now I focus on doing what feels right for me, even if it's not the 'safe' choice."
 				]
 			},
 			{
 				question: "What's your idea of a perfect day?",
 				answer: [
-					"My perfect day would start with a morning outdoors, maybe a hike or a walk.",
-					"Then, I'd enjoy a hearty meal with family and friends.",
-					"Just spending time together and sharing stories makes it all perfect."
+					"It starts with sleeping in, then a lazy afternoon jamming on my drums.",
+					"At night, I'd hit up a club with my bros, and we'd party until sunrise.",
+					"The perfect day ends with stories I'll barely remember and a hangover I'll never forget."
 				]
 			},
 			{
 				question: "Do you have any unique quirks?",
 				answer: [
-					"I carry a notebook everywhere I go.",
-					"I like to jot down little things I notice, ideas, or quotes I come across.",
-					"It's become a habit that helps me keep track of small details that matter."
+					"I have a habit of making up ridiculous nicknames for everyone—especially when I'm drunk.",
+					"Also, I can't hear music without drumming along on whatever's nearby, even if it's a table.",
+					"My friends say it's annoying, but I think it's part of my charm."
 				]
 			},
 			{
 				question: "What goal are you currently working on?",
 				answer: [
-					"I'm working on improving my Spanish skills.",
-					"It's been great to learn, and it helps me communicate better with some of the families I support.",
-					"Being able to connect more deeply through language is really fulfilling."
+					"I'm trying to build a social media presence—it's slow, but I think I've got potential.",
+					"My goal is to start posting videos reviewing the nightlife in my city.",
+					"Who knows, maybe it'll turn into something big someday."
 				]
 			},
 			{
 				question: "How do you see your life five years from now?",
 				answer: [
-					"Hopefully, I'll be doing a lot more traveling, exploring different cultures.",
-					"I'd also like to find new ways to support the communities I care about.",
-					"Maybe I'll even be working in a field that combines travel and community outreach."
+					"Hopefully, I'm not stuck in a law office—no offense to lawyers, but that's not me.",
+					"I'd love to be traveling, partying, and getting paid to share my adventures online.",
+					"Basically, living life to the fullest and not being tied down to a desk."
 				]
 			},
 			{
 				question: "If you could change one thing about the world, what would it be?",
 				answer: [
-					"I would love to make healthcare accessible to everyone.",
-					"There are so many people who don't have access to basic care, which I think is a fundamental right.",
-					"No matter where someone lives, they deserve a chance to be healthy."
+					"I'd make sure everyone had the chance to have a little fun without feeling guilty.",
+					"Life's too short for endless stress and no play—it'd be a better world if we all partied more.",
+					"Let's just say, I'd make it a lot more colorful and carefree."
+				]
+			},
+			{
+				question: "What's the best advice you've ever received?",
+				answer: [
+					"Someone once told me, 'You can always make money, but you can't make memories twice.'",
+					"It hit me hard because it's so true—you've got to live for the moment.",
+					"That advice pretty much fuels how I approach life now."
+				]
+			},
+			{
+				question: "What's something small that makes you happy?",
+				answer: [
+					"When I hit the perfect rhythm on my drums and it just clicks—man, that's satisfying.",
+					"Oh, and that first sip of an ice-cold drink at the start of a night out.",
+					"Sometimes, it's the little things that hype you up for the big ones."
+				]
+			},
+			{
+				question: "What have you done in the past week?",
+				answer: [
+					"Let's see—I partied twice, spent a day recovering from a brutal hangover, and jammed on my drums.",
+					"I also showed up to a couple of law classes, mostly just to keep up appearances.",
+					"And I've been brainstorming some ideas for my first nightlife review video."
+				]
+			},
+			{
+				question: "What do you usually do during working hours?",
+				answer: [
+					"Honestly? I try to survive my law classes without falling asleep.",
+					"If I'm not in class, I'm either procrastinating on assignments or planning my next night out.",
+					"Work hours aren't really my vibe—I'm more of a 'live for the night' kind of guy."
+				]
+			},
+			{
+				question: "What is something you can't stand?",
+				answer: [
+					"I can't stand people who take themselves too seriously—it's exhausting to be around them.",
+					"Life's meant to be fun, not a constant competition over who's got it more together.",
+					"Just relax and enjoy the ride—that's what I always say."
+				]
+			},
+			{
+				question: "What is a pet peeve of yours?",
+				answer: [
+					"When someone bails on plans last-minute—that really grinds my gears.",
+					"Like, if you say you're in, you're in. Don't leave me hanging, bro.",
+					"Also, I can't stand bad music at a party—it's a total buzzkill."
 				]
 			}
 		]
-
 	),
 	UNDEFINED: new User("Undefined", Opinion.NONE, "I'm not sure what to say...", "",
 		[

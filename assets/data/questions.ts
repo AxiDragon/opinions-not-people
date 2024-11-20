@@ -15,7 +15,13 @@ export const questions = [
 	"Do you have any unique quirks?",
 	"What goal are you currently working on?",
 	"How do you see your life five years from now?",
-	"If you could change one thing about the world, what would it be?"
+	"If you could change one thing about the world, what would it be?",
+	"What's the best advice you've ever received?",
+	"What's something small that makes you happy?",
+	"What have you done in the past week?",
+	"What do you usually do during working hours?",
+	"What is something you can't stand?",
+	"What is a pet peeve of yours?",
 ];
 
 export function getQuestions(count: number): string[] {
