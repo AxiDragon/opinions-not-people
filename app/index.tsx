@@ -11,6 +11,7 @@ import DragSort from "@/components/dragdrop/DragSort";
 import User from "@/models/User";
 import EndScreen from "@/components/EndScreen";
 import SavedInterrogation from "@/components/chat/conversations/SavedInterrogation";
+import EndConversation from "@/components/chat/conversations/EndConversation";
 import { isProduction } from "@/utility/testMode";
 
 export default function Index() {
@@ -26,6 +27,7 @@ export default function Index() {
       questionCount={isProduction() ? 3 : 0} />,
     <EndScreen />,
     <SavedInterrogation interrogatee={lastTapped} />,
+    <EndConversation />
   ]
 
   const handleSetScreen = (event: Event) => {

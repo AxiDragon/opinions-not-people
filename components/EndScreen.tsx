@@ -6,11 +6,11 @@ import { COLORS } from "@/constants/colors";
 import { useState } from "react";
 import Tappable from "./input/Tappable";
 import User from "@/models/User";
+import { setScreen } from "@/utility/EventDispatcher";
 
 const EndScreen = () => {
 	const [currentUser, setCurrentUser] = useState(0);
 	const [revealPhase, setRevealPhase] = useState(0);
-	const [isRevealing, setIsRevealing] = useState(true);
 
 	function getPlayerOpinionText() {
 		return (PLAYER.opinion == users[currentUser].playerOpinion ? "agreed" : "disagreed") + " with you";
@@ -45,8 +45,8 @@ const EndScreen = () => {
 			setCurrentUser(currentUser + 1);
 			setRevealPhase(0);
 		} else {
-			//all users revealed
-			setIsRevealing(false);
+			//all users revealed, go to ending
+			setScreen(5);
 		}
 	}
 
@@ -54,55 +54,41 @@ const EndScreen = () => {
 	return (
 		<View style={styles.container}>
 			{
-				isRevealing ?
-					<>
-						<View style={[styles.revealContainer,
-						{ backgroundColor: revealPhase === 0 ? COLORS.backgroundDark : '' }]}>
-							<View style={styles.revealUserContainer}>
-								{revealPhase !== 0 && <Image source={require("@/assets/vectors/beam.svg")} style={styles.beamStyle} />}
-								<UserUI user={users[currentUser]} darkened={revealPhase === 0 ? true : false} displayName={false} />
-							</View>
-							<View style={styles.revealTextContainer}>
-								{
-									revealPhase < 2 ?
-										<>
-										</>
-										:
-										revealPhase < 4 ?
-											<>
-												<Text style={styles.text}>
-													{revealPhase == 2 ?
-														"You thought that" :
-														"In reality,"}
-												</Text>
-												<Text style={styles.header}>
-													{users[currentUser].getName()}
-												</Text>
-												<Text style={styles.text}>
-													{revealPhase == 2 ?
-														getPlayerOpinionText() :
-														getUserOpinionText()}
-												</Text>
-											</> :
-											<Text style={styles.text}>{getResultText(users[currentUser])}</Text>
-								}
-							</View>
+				<>
+					<View style={[styles.revealContainer,
+					{ backgroundColor: revealPhase === 0 ? COLORS.backgroundDark : '' }]}>
+						<View style={styles.revealUserContainer}>
+							{revealPhase !== 0 && <Image source={require("@/assets/vectors/beam.svg")} style={styles.beamStyle} />}
+							<UserUI user={users[currentUser]} darkened={revealPhase === 0 ? true : false} displayName={false} />
 						</View>
-						<Tappable onTap={handleTap} />
-					</>
-					:
-					// TODO: end chat instead, reflecting on the results
-					<View style={styles.reviewContainer}>
-						<Text style={[styles.header, { marginBottom: 25 }]}>Results</Text>
-						<View style={styles.peopleContainer}>
-							{users.map((user, i) =>
-								<View style={styles.personContainer} key={i}>
-									<UserUI user={user} />
-									<Text style={styles.text}>{getResultText(user)}</Text>
-								</View>
-							)}
+						<View style={styles.revealTextContainer}>
+							{
+								revealPhase < 2 ?
+									<>
+									</>
+									:
+									revealPhase < 4 ?
+										<>
+											<Text style={styles.text}>
+												{revealPhase == 2 ?
+													"You thought that" :
+													"In reality,"}
+											</Text>
+											<Text style={styles.header}>
+												{users[currentUser].getName()}
+											</Text>
+											<Text style={styles.text}>
+												{revealPhase == 2 ?
+													getPlayerOpinionText() :
+													getUserOpinionText()}
+											</Text>
+										</> :
+										<Text style={styles.text}>{getResultText(users[currentUser])}</Text>
+							}
 						</View>
 					</View>
+					<Tappable onTap={handleTap} />
+				</>
 			}
 		</View>
 	);
