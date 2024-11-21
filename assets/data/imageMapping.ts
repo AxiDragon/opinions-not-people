@@ -8,8 +8,12 @@ const images: ImageMapping = {
 	'marco': require('@/assets/users/icons/marco.svg'),
 	'jasmin': require('@/assets/users/icons/jasmin.svg'),
 	'grant': require('@/assets/users/icons/grant.svg'),
+	'hanna': require('@/assets/users/icons/hanna.svg'),
+	'isabel': require('@/assets/users/icons/isabel.svg'),
+	'julian': require('@/assets/users/icons/julian.svg'),
+	'kate': require('@/assets/users/icons/kate.svg'),
+	'adrian': require('@/assets/users/icons/adrian.svg'),
 	'undefined': require('@/assets/users/icons/undefined.svg'),
-	'player': require('@/assets/users/icons/pno.svg'), //for debugging
 };
 
 
@@ -23,8 +27,7 @@ export default function getImage(name: string): any {
 
 export const playerIcons = [
 	images['pno'],
-	images['captain'],
-	// images['marco'],
-	// images['jasmin'],
-	// images['grant']
+	images['isabel'],
+	images['julian'],
+	images['adrian'],
 ];
