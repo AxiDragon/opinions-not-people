@@ -11,6 +11,7 @@ import DragSort from "@/components/dragdrop/DragSort";
 import User from "@/models/User";
 import EndScreen from "@/components/EndScreen";
 import SavedInterrogation from "@/components/chat/conversations/SavedInterrogation";
+import { isProduction } from "@/utility/testMode";
 
 export default function Index() {
   const [currentScreen, setCurrentScreen] = useState(0);
@@ -21,7 +22,8 @@ export default function Index() {
   const screens = [
     <IntroConversation />,
     <DragSort />,
-    <Interrogation interrogatee={interrogatees[currentInterrogatee]} questionCount={3} />,
+    <Interrogation interrogatee={interrogatees[currentInterrogatee]}
+      questionCount={isProduction() ? 3 : 0} />,
     <EndScreen />,
     <SavedInterrogation interrogatee={lastTapped} />,
   ]

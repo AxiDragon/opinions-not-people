@@ -9,6 +9,7 @@ import { Opinion } from "@/models/User";
 import { setScreen } from "@/utility/EventDispatcher";
 import IconSelector from "../IconSelector";
 import OpinionRadioInput from "@/components/input/OpinionRadioInput";
+import { isProduction } from "@/utility/testMode";
 
 const IntroConversation: React.FC = () => {
 	const { setName, name } = useUser();
@@ -56,6 +57,28 @@ const IntroConversation: React.FC = () => {
 			chatRef.current.continueChat();
 		}
 	};
+
+	const debugIntro: Message[] = [
+		new Message({
+			text: "My name is...", customContent: nameInput(),
+			user: PLAYER,
+			continueCondition: () => changedUsername,
+		}),
+		new Message({
+			text: "",
+			user: PLAYER,
+			customContent: <IconSelector onSelect={setPickedIcon} />,
+			continueCondition: () => pickedIcon !== "-1",
+		}),
+		new Message({
+			text: "",
+			customContent: <OpinionRadioInput onSelect={onOpinionSelect} />,
+			continueCondition: () => opinion !== Opinion.NONE,
+			onContinue: () => {
+				PLAYER.playerOpinion = opinion;
+			}
+		}),
+	];
 
 	const intro: Message[] = [
 		new Message({
@@ -124,7 +147,7 @@ const IntroConversation: React.FC = () => {
 		new Message({ text: "The government is watching.", user: user }),
 	];
 
-	return <Chat messages={intro}
+	return <Chat messages={isProduction() ? intro : debugIntro}
 		ref={chatRef}
 		onEnd={() => setScreen(1)} />;
 }

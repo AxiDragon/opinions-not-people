@@ -6,6 +6,7 @@ import Chat, { ChatHandle } from "../Chat";
 import QuestionSelector from "../QuestionSelector";
 import { getQuestions } from "@/assets/data/questions";
 import { setScreen } from "@/utility/EventDispatcher";
+import { isProduction } from "@/utility/testMode";
 
 type Props = {
 	interrogatee: User;
@@ -73,6 +74,12 @@ const Interrogation: React.FC<Props> = ({ interrogatee, questionCount }: Props) 
 		}
 	};
 
+	const debugInterrogation = [
+		new Message({
+			text: `You are now talking with ${interrogatee.getName()}.`,
+		}),
+	]
+
 	const interrogation = [
 		new Message({
 			text: `You are now talking with ${interrogatee.getName()}.`,
@@ -95,7 +102,7 @@ const Interrogation: React.FC<Props> = ({ interrogatee, questionCount }: Props) 
 	]
 
 	return (
-		<Chat messages={interrogation}
+		<Chat messages={isProduction() ? interrogation : debugInterrogation}
 			ref={chatRef}
 			onEnd={() => {
 				setScreen(1);
