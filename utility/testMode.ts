@@ -3,7 +3,7 @@ export enum TestMode {
 	TEST, // cuts down a lot of dialogue
 }
 
-export let testMode = TestMode.TEST;
+export let testMode = TestMode.PRODUCTION;
 
 export function isProduction(): boolean {
 	return testMode === TestMode.PRODUCTION;

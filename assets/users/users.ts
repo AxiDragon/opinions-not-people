@@ -3,30 +3,6 @@ import User, { Opinion } from "@/models/User";
 export const PLAYER = new User("Agent ???", Opinion.POSITIVE, "error");
 
 export const ALL_USERS = {
-	PNO: new User("PNO", Opinion.POSITIVE, ["Heya! I'm PNO!", "I'm PNO! I'm a robot to guide you through this game."], "",
-		[
-			{
-				question: "What's your name?",
-				answer: "My name is PNO! It means for 'People Not Opinions'!"
-			},
-			{
-				question: "What hobbies do you have?",
-				answer: ["Meeting new people is always fun.", "But also, I don't have hobbies because I'm not real!"]
-			},
-			{
-				question: "Are you an agent of chaos?",
-				answer: ["Maybe?", "I'm here to prevent chaos, though!"]
-			},
-			{
-				question: "What's your favorite color?",
-				answer: ["I'd say orange is nice!", "It's the color of my UI!"]
-			},
-			{
-				question: "Do you have emotions?",
-				answer: ["Well, no, but I pretend I do!", "...that's a bit sad, isn't it?"]
-			},
-		]
-	),
 	GRANT: new User("Grant", Opinion.NEGATIVE, "Hey, what's going on?", "Alright, I see.",
 		[
 			{
@@ -591,7 +567,384 @@ export const ALL_USERS = {
 			}
 		]
 	),
-	UNDEFINED: new User("Undefined", Opinion.NONE, "I'm not sure what to say...", "",
+	HANNA: new User("Hanna", Opinion.NEGATIVE, "Uhm, hello?", "O-okay.",
+		[
+			{
+				question: "What is your favorite way to spend a weekend?",
+				answer: [
+					"I love spending a weekend baking something simple and enjoying tea with friends.",
+					"If I can, I'll also try to fit in some painting—decorating glassware always feels so calming.",
+					"It's all about keeping the weekend peaceful and productive."
+				]
+			},
+			{
+				question: "Have you picked up any new hobbies recently?",
+				answer: [
+					"Not recently—I've been too focused on my studies.",
+					"But I've been thinking about improving my writing skills, maybe journaling to start.",
+					"It feels like something I could work on gradually, even with a busy schedule."
+				]
+			},
+			{
+				question: "Is there a hobby you've always wanted to try but haven't?",
+				answer: [
+					"I've always been curious about pottery—it seems so creative yet structured.",
+					"It's probably the kind of thing I'd love, but I've never had the chance to try it.",
+					"Maybe one day, when life slows down a bit."
+				]
+			},
+			{
+				question: "What is your favorite hobby?",
+				answer: [
+					"Baking with friends is my favorite—it's fun and brings everyone together.",
+					"I also really enjoy painting glassware—it's relaxing and lets me be creative.",
+					"Both give me a sense of accomplishment, which I love."
+				]
+			},
+			{
+				question: "What's one thing on your bucket list?",
+				answer: [
+					"I'd love to write an autobiography someday, about my life with my boyfriend.",
+					"It's something I've dreamed of for a while, but I need more time to practice writing.",
+					"It would be amazing to capture our story in my own words."
+				]
+			},
+			{
+				question: "What do you think is the most important quality in a friend?",
+				answer: [
+					"Reliability, hands down.",
+					"I need to know that someone will stick by their word and be there when it matters.",
+					"It's what makes friendships feel solid and trustworthy."
+				]
+			},
+			{
+				question: "How do your values influence your daily decisions?",
+				answer: [
+					"They guide everything I do—I always prioritize stability and consistency.",
+					"I avoid unnecessary risks and make choices that align with my long-term goals.",
+					"It's all about building a steady foundation for the future."
+				]
+			},
+			{
+				question: "What cause are you most passionate about, and why?",
+				answer: [
+					"I'm passionate about education—it's the key to creating opportunities.",
+					"Everyone deserves access to quality learning, and I think it shapes the way people see the world.",
+					"It's a belief that comes from my own academic journey and how much it's impacted me."
+				]
+			},
+			{
+				question: "Who is someone you look up to?",
+				answer: [
+					"I really look up to my boyfriend—he's so grounded and supportive.",
+					"He inspires me to stay focused and reminds me to take breaks when I need them.",
+					"He's a huge part of why I feel confident about our future."
+				]
+			},
+			{
+				question: "What's a pivotal moment in your life that shaped who you are today?",
+				answer: [
+					"Skipping a year of school was a huge moment—it set me on a fast-paced track.",
+					"It taught me that I could handle pressure, but also that I need balance.",
+					"It's probably why I value stability so much now."
+				]
+			},
+			{
+				question: "What is a travel experience that changed your perspective?",
+				answer: [
+					"I haven't traveled much, but I did visit a research lab with my class once.",
+					"Seeing the work being done there was eye-opening—it showed me what's possible in my field.",
+					"It made me more determined to excel in biology."
+				]
+			},
+			{
+				question: "What lesson have you learned from a past mistake?",
+				answer: [
+					"I've learned not to overcommit myself—it's easy to burn out that way.",
+					"There was a semester where I took on too much and ended up exhausted.",
+					"Now, I try to be realistic about what I can handle."
+				]
+			},
+			{
+				question: "What's your idea of a perfect day?",
+				answer: [
+					"A quiet day spent with my boyfriend, maybe starting with a morning walk.",
+					"Then baking something delicious together and enjoying tea in the afternoon.",
+					"Ending the day with a good book and some calm music would be perfect."
+				]
+			},
+			{
+				question: "Do you have any unique quirks?",
+				answer: [
+					"I always organize my books by how much I've learned from them—it's my own little system.",
+					"I also tend to hum when I'm painting or baking, without realizing it.",
+					"My friends find it amusing, but I guess it's just my way of staying focused."
+				]
+			},
+			{
+				question: "What goal are you currently working on?",
+				answer: [
+					"Right now, my main goal is excelling in my studies and preparing for exams.",
+					"I'm also trying to make more time for my hobbies, especially writing.",
+					"It's a challenge balancing everything, but I'm determined to manage it."
+				]
+			},
+			{
+				question: "How do you see your life five years from now?",
+				answer: [
+					"I hope to be married to my boyfriend and maybe have a little one on the way.",
+					"Ideally, I'll be working part-time, with most of my focus on family and home life.",
+					"Stability and happiness are what I'm aiming for."
+				]
+			},
+			{
+				question: "If you could change one thing about the world, what would it be?",
+				answer: [
+					"I'd make sure everyone had access to basic education—it's such a foundation for everything else.",
+					"It's heartbreaking to think of people who never get the chance to learn and grow.",
+					"That's something I'd want to see changed."
+				]
+			},
+			{
+				question: "What's the best advice you've ever received?",
+				answer: [
+					"My mom once told me, 'Don't rush into life—just because you're ahead doesn't mean you need to sprint.'",
+					"It's helped me when I feel overwhelmed by expectations.",
+					"It reminds me that balance is just as important as achievement."
+				]
+			},
+			{
+				question: "What's something small that makes you happy?",
+				answer: [
+					"A quiet evening with my boyfriend, maybe just sipping tea and chatting.",
+					"The smell of fresh baked cookies when I'm with my friends—it feels so comforting.",
+					"Oh, and finding a perfectly written sentence in a book—it's like discovering a little treasure."
+				]
+			},
+			{
+				question: "What have you done in the past week?",
+				answer: [
+					"Mostly studying—I had a big exam coming up, so I've been hitting the books hard.",
+					"I did make time to bake some muffins with a friend, though, which was a nice break.",
+					"And my boyfriend and I spent an afternoon talking about our plans for the future—it was lovely."
+				]
+			},
+			{
+				question: "What do you usually do during working hours?",
+				answer: [
+					"I'm usually either in lectures or at the library, deep in my biology textbooks.",
+					"When I'm not studying, I try to organize my notes or prepare for upcoming assignments.",
+					"It's a lot, but I find satisfaction in staying on top of things."
+				]
+			},
+			{
+				question: "What is something you can't stand?",
+				answer: [
+					"I can't stand when people don't keep their promises—it feels disrespectful and careless.",
+					"It's especially frustrating when it happens with group projects—it throws everything off.",
+					"I think people should value consistency as much as I do."
+				]
+			},
+			{
+				question: "What is a pet peeve of yours?",
+				answer: [
+					"When someone interrupts me while I'm focused—it's like they've broken a delicate thread.",
+					"Also, people who dismiss non-fiction as boring—that really irks me.",
+					"I mean, real life has so much depth—why wouldn't you want to explore it?"
+				]
+			}
+		]
+	),
+	KATE: new User("Kate", Opinion.POSITIVE, "Hey! What can I help you with?", "Oooookay...",
+		[
+			{
+				question: "What is your favorite way to spend a weekend?",
+				answer: [
+					"I love spending a quiet weekend diving into a new game or learning something tech-related.",
+					"But if a friend suggests going out for a drink, I'm all for it—I love those spontaneous moments.",
+					"It's about balancing my alone time with meaningful connections."
+				]
+			},
+			{
+				question: "Have you picked up any new hobbies recently?",
+				answer: [
+					"I've started getting into digital art, mostly because it's relaxing and fun to experiment with.",
+					"It's not something I'm amazing at yet, but I love the creative process.",
+					"It's also a nice way to disconnect from the seriousness of work and activism."
+				]
+			},
+			{
+				question: "Is there a hobby you've always wanted to try but haven't?",
+				answer: [
+					"I've always wanted to try rock climbing—it seems like such a rush.",
+					"I think I'd enjoy the challenge of it, but I've never gotten around to trying it.",
+					"Maybe one day a friend will convince me to give it a shot."
+				]
+			},
+			{
+				question: "What is your favorite hobby?",
+				answer: [
+					"Spending time tinkering with tech is definitely my favorite—it feels so rewarding to figure things out.",
+					"I also really enjoy exploring new games with my friends.",
+					"It's nice to combine my love for technology with something social."
+				]
+			},
+			{
+				question: "What's one thing on your bucket list?",
+				answer: [
+					"I'd love to take a long trip to a tropical island with my wife and friends.",
+					"Just disconnecting from everything and soaking up some sunshine sounds amazing.",
+					"It's something I've been dreaming about for a while."
+				]
+			},
+			{
+				question: "What do you think is the most important quality in a friend?",
+				answer: [
+					"Loyalty is the most important quality to me.",
+					"I've been through enough to know that people who stand by you, even when it's tough, are worth everything.",
+					"It's a rare trait, and I cherish it deeply."
+				]
+			},
+			{
+				question: "How do your values influence your daily decisions?",
+				answer: [
+					"I try to approach life with empathy and fairness in mind, even when it's hard.",
+					"My experiences have taught me the importance of standing up for myself and others.",
+					"Everything I do, even online activism, reflects my values of equality and respect."
+				]
+			},
+			{
+				question: "What cause are you most passionate about, and why?",
+				answer: [
+					"Feminism is something I'm deeply passionate about—it's personal for me.",
+					"I've faced discrimination and hardships, and I want to make sure others don't have to endure the same.",
+					"Using my skills to support that cause gives me a sense of purpose."
+				]
+			},
+			{
+				question: "Who is someone you look up to?",
+				answer: [
+					"I really look up to my wife—she's been so supportive and patient through everything.",
+					"She has this incredible strength and kindness that inspires me every day.",
+					"She's shown me what unconditional love really looks like."
+				]
+			},
+			{
+				question: "What's a pivotal moment in your life that shaped who you are today?",
+				answer: [
+					"Coming out and dealing with the fallout was a defining moment for me.",
+					"It was painful to lose connections, but it also made me stronger and more confident in myself.",
+					"It taught me to value the people who truly stand by me."
+				]
+			},
+			{
+				question: "What is a travel experience that changed your perspective?",
+				answer: [
+					"I once went on a small road trip with friends—it wasn't anything fancy, but it reminded me of how freeing life can be.",
+					"We visited small towns, tried new things, and just lived in the moment.",
+					"It made me appreciate the little joys that come from breaking routine."
+				]
+			},
+			{
+				question: "What lesson have you learned from a past mistake?",
+				answer: [
+					"I learned not to keep silent when something feels wrong.",
+					"In my first marriage, I stayed quiet about issues for too long, hoping things would fix themselves.",
+					"Now, I know how important it is to speak up for yourself and your needs."
+				]
+			},
+			{
+				question: "What's your idea of a perfect day?",
+				answer: [
+					"A perfect day would start with a lazy morning at home, maybe watching something with my wife.",
+					"In the afternoon, I'd meet up with friends for drinks or a new activity.",
+					"Then, a cozy evening back home, just relaxing and feeling at peace."
+				]
+			},
+			{
+				question: "Do you have any unique quirks?",
+				answer: [
+					"I have a habit of talking to myself when I'm debugging something—it helps me think.",
+					"I also always drink my coffee from the same mug; it feels like a tiny ritual.",
+					"My friends tease me about it, but I think it's part of my charm."
+				]
+			},
+			{
+				question: "What goal are you currently working on?",
+				answer: [
+					"Right now, I'm focusing on helping organize this vacation with my friends.",
+					"It's been a challenge getting everyone on the same page, but I'm determined to make it happen.",
+					"It feels good to plan something fun and meaningful."
+				]
+			},
+			{
+				question: "How do you see your life five years from now?",
+				answer: [
+					"I see myself settled into a comfortable routine with my wife and continuing to explore new experiences together.",
+					"I'd like to be in a better place emotionally, feeling more secure and confident.",
+					"Maybe I'll have found a new passion or hobby to dive into."
+				]
+			},
+			{
+				question: "If you could change one thing about the world, what would it be?",
+				answer: [
+					"I'd make the world a more understanding and accepting place for everyone.",
+					"It's heartbreaking how much harm is done by ignorance and prejudice.",
+					"I think we'd all be happier if we treated each other with more kindness."
+				]
+			},
+			{
+				question: "What's the best advice you've ever received?",
+				answer: [
+					"Someone once told me, 'You can't please everyone, so focus on what makes you happy.'",
+					"It stuck with me, especially after losing connections with people I thought I could count on.",
+					"Now, I try to prioritize my happiness and the people who truly care about me."
+				]
+			},
+			{
+				question: "What's something small that makes you happy?",
+				answer: [
+					"When my wife surprises me with a cup of coffee while I'm working, it always makes my day.",
+					"There's something so comforting about those small, thoughtful gestures.",
+					"It's a reminder that I'm loved, even during the busiest moments."
+				]
+			},
+			{
+				question: "What have you done in the past week?",
+				answer: [
+					"This past week, I spent time helping my friends plan our long-overdue vacation.",
+					"I also got caught up in a new online campaign for one of the causes I care about.",
+					"Oh, and I finally tried out that recipe my wife suggested—it didn't turn out too bad!"
+				]
+			},
+			{
+				question: "What do you usually do during working hours?",
+				answer: [
+					"I spend most of my working hours coding or troubleshooting IT issues.",
+					"It's a lot of problem-solving, but I find it pretty rewarding when things finally click.",
+					"Sometimes, I'll have music on in the background to make the hours fly by."
+				]
+			},
+			{
+				question: "What is something you can't stand?",
+				answer: [
+					"I can't stand when people dismiss others' struggles without trying to understand them.",
+					"It feels like such a waste of energy to judge instead of empathize.",
+					"Everyone's carrying something, and we'd all be better off showing some kindness."
+				]
+			},
+			{
+				question: "What is a pet peeve of yours?",
+				answer: [
+					"People leaving things half-finished really gets under my skin.",
+					"Whether it's a work project or cleaning up after themselves, it's frustrating when others don't follow through.",
+					"I guess I value closure more than I realized!"
+				]
+			}
+		]
+
+	),
+	CAPTAIN: new User("Captain", Opinion.NONE, "", "",
 		[
 			{
 				question: "What's your name?",
@@ -599,14 +952,7 @@ export const ALL_USERS = {
 			},
 		]
 	),
-	CAPTAIN: new User("Captain", Opinion.NONE, "I'm not sure what to say...", "",
-		[
-			{
-				question: "What's your name?",
-				answer: "I'm not sure what to say..."
-			},
-		]
-	),
+	UNDEFINED: new User("Undefined", Opinion.NONE, "", "", [])
 }
 /**
  * users that will appear in the game 
@@ -616,6 +962,8 @@ export const ALL_USERS = {
  */
 export const USERS = [
 	ALL_USERS.GRANT,
+	ALL_USERS.KATE,
 	ALL_USERS.JASMIN,
 	ALL_USERS.MARCO,
+	ALL_USERS.HANNA,
 ]
