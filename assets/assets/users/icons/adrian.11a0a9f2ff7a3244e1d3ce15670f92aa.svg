@@ -1,0 +1,8 @@
+<svg width="80.3mm" height="76.38mm" version="1.1" viewBox="0 0 80.3 76.38" xmlns="http://www.w3.org/2000/svg">
+ <g transform="translate(-37.31 -46.6)">
+  <path transform="matrix(.2407 -.003313 .003313 .2407 62.03 79.38)" d="m164.7 183.3-206.1-2.732-61.09-196.9 168.3-118.9 165.1 123.4z" fill="#6cf7a4"/>
+  <path d="m65.92 64.32v21.41" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".8" stroke-width="7"/>
+  <path d="m84.36 64.32v21.41" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".8" stroke-width="7"/>
+  <ellipse cx="75.91" cy="106.7" rx="18.65" ry="10.82" fill-opacity=".8"/>
+ </g>
+</svg>
