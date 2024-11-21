@@ -1,4 +1,4 @@
-import { PLAYER, users } from "@/assets/users/users";
+import { PLAYER, USERS } from "@/assets/users/users";
 import { Image } from "expo-image";
 import { View, Text, StyleSheet } from "react-native";
 import UserUI from "./chat/UserUI";
@@ -13,11 +13,11 @@ const EndScreen = () => {
 	const [revealPhase, setRevealPhase] = useState(0);
 
 	function getPlayerOpinionText() {
-		return (PLAYER.opinion == users[currentUser].playerOpinion ? "agreed" : "disagreed") + " with you";
+		return (PLAYER.opinion == USERS[currentUser].playerOpinion ? "agreed" : "disagreed") + " with you";
 	}
 
 	function getUserOpinionText() {
-		return (PLAYER.opinion == users[currentUser].opinion ? "AGREED" : "DISAGREED") + " with you";
+		return (PLAYER.opinion == USERS[currentUser].opinion ? "AGREED" : "DISAGREED") + " with you";
 	}
 
 	function getResultText(user: User) {
@@ -41,7 +41,7 @@ const EndScreen = () => {
 	function handleTap() {
 		if (revealPhase < 4) {
 			setRevealPhase(revealPhase + 1);
-		} else if (currentUser != users.length - 1) {
+		} else if (currentUser != USERS.length - 1) {
 			setCurrentUser(currentUser + 1);
 			setRevealPhase(0);
 		} else {
@@ -59,7 +59,7 @@ const EndScreen = () => {
 					{ backgroundColor: revealPhase === 0 ? COLORS.backgroundDark : '' }]}>
 						<View style={styles.revealUserContainer}>
 							{revealPhase !== 0 && <Image source={require("@/assets/vectors/beam.svg")} style={styles.beamStyle} />}
-							<UserUI user={users[currentUser]} darkened={revealPhase === 0 ? true : false} displayName={false} />
+							<UserUI user={USERS[currentUser]} darkened={revealPhase === 0 ? true : false} displayName={false} />
 						</View>
 						<View style={styles.revealTextContainer}>
 							{
@@ -75,7 +75,7 @@ const EndScreen = () => {
 													"In reality,"}
 											</Text>
 											<Text style={styles.header}>
-												{users[currentUser].getName()}
+												{USERS[currentUser].getName()}
 											</Text>
 											<Text style={styles.text}>
 												{revealPhase == 2 ?
@@ -83,7 +83,7 @@ const EndScreen = () => {
 													getUserOpinionText()}
 											</Text>
 										</> :
-										<Text style={styles.text}>{getResultText(users[currentUser])}</Text>
+										<Text style={styles.text}>{getResultText(USERS[currentUser])}</Text>
 							}
 						</View>
 					</View>

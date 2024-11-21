@@ -1,4 +1,4 @@
-import { allUsers } from "@/assets/users/users";
+import { ALL_USERS } from "@/assets/users/users";
 import Message from "./Message";
 
 export enum EndingType {
@@ -27,6 +27,6 @@ export default class Ending {
 		this.ending = props.ending;
 		this.fired = props.fired;
 		this.endingCondition = props.endingCondition;
-		this.messages = props.messageText.map((text) => new Message({ text: text, user: allUsers.CAPTAIN }));
+		this.messages = props.messageText.map((text) => new Message({ text: text, user: ALL_USERS.CAPTAIN }));
 	}
 }

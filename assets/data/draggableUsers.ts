@@ -1,11 +1,11 @@
-import { allUsers, users } from "../users/users";
+import { ALL_USERS, USERS } from "../users/users";
 
 
 let usersTapped = 0;
 //used to save info without it being lost when the component re-renders
-const draggableUsers = users.map((user, i) => {
+const draggableUsers = USERS.map((user, i) => {
 	return {
-		user: allUsers.UNDEFINED,
+		user: ALL_USERS.UNDEFINED,
 		i,
 		translateX: 0,
 		translateY: 0
@@ -13,7 +13,7 @@ const draggableUsers = users.map((user, i) => {
 });
 
 export function onNewUserTapped(tappedUserId: number) {
-	draggableUsers[tappedUserId].user = users[usersTapped++];
+	draggableUsers[tappedUserId].user = USERS[usersTapped++];
 }
 
 export default draggableUsers;

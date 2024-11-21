@@ -1,11 +1,11 @@
 import Ending, { EndingType } from "@/models/Ending";
-import { PLAYER, users } from "../users/users";
+import { PLAYER, USERS } from "../users/users";
 
 const ENDINGS = [
 	new Ending({
 		ending: EndingType.ALL_RELEASED,
 		fired: true,
-		endingCondition: () => users.every(user => user.playerOpinion === PLAYER.opinion),
+		endingCondition: () => USERS.every(user => user.playerOpinion === PLAYER.opinion),
 		messageText: [
 			"ALL_RELEASED",
 		]
@@ -13,7 +13,7 @@ const ENDINGS = [
 	new Ending({
 		ending: EndingType.ALL_IMPRISONED,
 		fired: false,
-		endingCondition: () => users.every(user => user.playerOpinion !== PLAYER.opinion),
+		endingCondition: () => USERS.every(user => user.playerOpinion !== PLAYER.opinion),
 		messageText: [
 			"ALL_IMPRISONED",
 		]
@@ -21,7 +21,7 @@ const ENDINGS = [
 	new Ending({
 		ending: EndingType.ALL_WRONG,
 		fired: true,
-		endingCondition: () => users.every(user => user.playerOpinion !== user.opinion),
+		endingCondition: () => USERS.every(user => user.playerOpinion !== user.opinion),
 		messageText: [
 			"ALL_WRONG",
 		]
@@ -32,13 +32,13 @@ const ENDINGS = [
 		endingCondition: () => {
 			let correctCount = 0;
 
-			users.forEach(user => {
+			USERS.forEach(user => {
 				if (user.playerOpinion === user.opinion) {
 					correctCount++;
 				}
 			});
 
-			return correctCount <= users.length / 2;
+			return correctCount <= USERS.length / 2;
 		},
 		messageText: [
 			"MORE_THAN_HALF_WRONG",
@@ -50,13 +50,13 @@ const ENDINGS = [
 		endingCondition: () => {
 			let correctCount = 0;
 
-			users.forEach(user => {
+			USERS.forEach(user => {
 				if (user.playerOpinion === user.opinion) {
 					correctCount++;
 				}
 			});
 
-			return correctCount > users.length / 2;
+			return correctCount > USERS.length / 2;
 		},
 		messageText: [
 			"MORE_THAN_HALF_RIGHT",

@@ -3,7 +3,7 @@ import DraggableUser from "./DraggableUser";
 import React, { useEffect, useRef, useState } from "react";
 import { COLORS } from "@/constants/colors";
 import { Opinion } from "@/models/User";
-import { PLAYER, users } from "@/assets/users/users";
+import { PLAYER, USERS } from "@/assets/users/users";
 import { setScreen } from "@/utility/EventDispatcher";
 import draggableUsers, { onNewUserTapped } from "@/assets/data/draggableUsers";
 
@@ -25,7 +25,7 @@ const DragSort = () => {
 	const disagreeBoxRef = useRef<View>(null);
 
 	const checkAllUsersAllocated = (): boolean => {
-		return users.every(user => user.playerOpinion !== Opinion.NONE);
+		return USERS.every(user => user.playerOpinion !== Opinion.NONE);
 	}
 
 	const measureBox = (ref: React.RefObject<View>, i: number) => {

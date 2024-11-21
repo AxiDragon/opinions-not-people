@@ -5,7 +5,7 @@ import { COLORS } from "@/constants/colors";
 import { UserProvider } from "@/context/UserContext";
 import IntroConversation from "@/components/chat/conversations/IntroConversation";
 import Interrogation from "@/components/chat/conversations/Interrogation";
-import { allUsers, users } from "@/assets/users/users";
+import { ALL_USERS, USERS } from "@/assets/users/users";
 import { useEffect, useState } from "react";
 import DragSort from "@/components/dragdrop/DragSort";
 import User from "@/models/User";
@@ -16,9 +16,9 @@ import { isProduction } from "@/utility/testMode";
 
 export default function Index() {
   const [currentScreen, setCurrentScreen] = useState(0);
-  const [interrogatees, setInterrogatees] = useState<User[]>(Array(users.length).fill(allUsers.UNDEFINED));
+  const [interrogatees, setInterrogatees] = useState<User[]>(Array(USERS.length).fill(ALL_USERS.UNDEFINED));
   const [currentInterrogatee, setCurrentInterrogatee] = useState(-1);
-  const [lastTapped, setLastTapped] = useState<User>(allUsers.UNDEFINED);
+  const [lastTapped, setLastTapped] = useState<User>(ALL_USERS.UNDEFINED);
 
   const screens = [
     <IntroConversation />,

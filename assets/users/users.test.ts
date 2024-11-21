@@ -1,4 +1,4 @@
-import { users } from './users';
+import { USERS } from './users';
 import User from '@/models/User';
 import { questions } from '../data/questions';
 import Response from '@/models/Response';
@@ -10,7 +10,7 @@ describe('Stop complaining', () => {
 })
 
 describe('User responses', () => {
-	Object.values(users).forEach((user: User) => {
+	Object.values(USERS).forEach((user: User) => {
 		describe(`User: ${user.getName()}`, () => {
 			questions.forEach((question) => {
 				test(`should have a response to the question: "${question}"`, () => {

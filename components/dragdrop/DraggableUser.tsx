@@ -1,5 +1,5 @@
 import getImage from "@/assets/data/imageMapping";
-import { allUsers } from "@/assets/users/users";
+import { ALL_USERS } from "@/assets/users/users";
 import User from "@/models/User";
 import { setScreen } from "@/utility/EventDispatcher";
 import { useRef, useState } from "react";
@@ -26,7 +26,7 @@ export default function DraggableUser({ user, id, size, initialX, initialY, onEn
 	const tap = Gesture.Tap()
 		.numberOfTaps(1)
 		.onStart(() => {
-			if (user === allUsers.UNDEFINED) {
+			if (user === ALL_USERS.UNDEFINED) {
 				onFirstTap && onFirstTap(id);
 			} else {
 				window.dispatchEvent(new CustomEvent("tappedInterrogatee", { detail: { user } }));
@@ -36,7 +36,7 @@ export default function DraggableUser({ user, id, size, initialX, initialY, onEn
 
 	//TODO: Add some edge detection to prevent the image from going off-screen
 	const drag = Gesture.Pan().onChange(event => {
-		if (user !== allUsers.UNDEFINED) {
+		if (user !== ALL_USERS.UNDEFINED) {
 			translateX.value += event.changeX;
 			translateY.value += event.changeY;
 		}

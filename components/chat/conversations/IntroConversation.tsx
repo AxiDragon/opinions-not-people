@@ -1,5 +1,5 @@
 import Message from "@/models/Message";
-import { allUsers, PLAYER } from "@/assets/users/users";
+import { ALL_USERS, PLAYER } from "@/assets/users/users";
 import { TextInput } from "react-native";
 import { useUser } from "@/context/UserContext";
 import Chat, { ChatHandle } from "../Chat";
@@ -18,7 +18,7 @@ const IntroConversation: React.FC = () => {
 	const [opinion, setOpinion] = useState<Opinion>(Opinion.NONE);
 	const chatRef = useRef<ChatHandle>(null);
 
-	const user = allUsers.CAPTAIN;
+	const user = ALL_USERS.CAPTAIN;
 
 	const changeUsername = (name: string) => {
 		PLAYER.setName('Agent ' + name);

@@ -2,7 +2,7 @@ import User, { Opinion } from "@/models/User";
 
 export const PLAYER = new User("Agent ???", Opinion.POSITIVE, "error");
 
-export const allUsers = {
+export const ALL_USERS = {
 	PNO: new User("PNO", Opinion.POSITIVE, ["Heya! I'm PNO!", "I'm PNO! I'm a robot to guide you through this game."], "",
 		[
 			{
@@ -614,8 +614,8 @@ export const allUsers = {
  * Reminder to myself to make the first user someone stereotypically "good" and the second user someone stereotypically "bad"
  * @type {User[]}
  */
-export const users = [
-	allUsers.GRANT,
-	allUsers.JASMIN,
-	allUsers.MARCO,
+export const USERS = [
+	ALL_USERS.GRANT,
+	ALL_USERS.JASMIN,
+	ALL_USERS.MARCO,
 ]
