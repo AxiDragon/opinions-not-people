@@ -1,6 +1,6 @@
 import User, { Opinion } from "@/models/User";
 
-export const PLAYER = new User("Agent ???", Opinion.POSITIVE, "error");
+export const PLAYER = new User("Agent ???", Opinion.NONE, "error");
 
 export const ALL_USERS = {
 	GRANT: new User("Grant", Opinion.NEGATIVE, "Hey, what's going on?", "Alright, I see.",

@@ -28,6 +28,8 @@ const IntroConversation: React.FC = () => {
 
 	const onOpinionSelect = (value: any) => {
 		setOpinion(value);
+		PLAYER.opinion = value;
+
 		continueChat();
 	}
 
@@ -74,10 +76,8 @@ const IntroConversation: React.FC = () => {
 			text: "",
 			customContent: <OpinionRadioInput onSelect={onOpinionSelect} />,
 			continueCondition: () => opinion !== Opinion.NONE,
-			onContinue: () => {
-				PLAYER.playerOpinion = opinion;
-			}
 		}),
+		new Message({ text: "Good luck, Agent.", user: user }),
 	];
 
 	const intro: Message[] = [
@@ -125,9 +125,6 @@ const IntroConversation: React.FC = () => {
 			text: "",
 			customContent: <OpinionRadioInput onSelect={onOpinionSelect} />,
 			continueCondition: () => opinion !== Opinion.NONE,
-			onContinue: () => {
-				PLAYER.playerOpinion = opinion;
-			}
 		}),
 		new Message({ text: "...", user: user }),
 		new Message({ text: "Good.", user: user }),
