@@ -89,10 +89,6 @@ const Interrogation: React.FC<Props> = ({ interrogatee, questionCount }: Props) 
 			text: `Hello ${interrogatee.getName()}. I'm going to ask you a few questions.`,
 			user: PLAYER,
 		}),
-		new Message({
-			text: "Answer them truthfully.",
-			user: PLAYER,
-		}),
 		...interrogatee.getInformedMessage(),
 		...getQuestionSequence(),
 		new Message({
