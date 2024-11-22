@@ -116,11 +116,11 @@ const DragSort = () => {
 					You think that same-sex marriage should be {PLAYER.opinion === Opinion.POSITIVE ? "legal" : "illegal"}.
 					<br />
 					<br />
-					Click unidentified users (?) to talk to them.
+					Click unidentified suspects (?) to talk to them.
 					<br />
-					Drag identified users to assign them, whether you think they agree or disagree with you.
+					Drag identified suspects to decide to release or imprison them.
 					<br />
-					Click identified users to read their responses.
+					Click identified suspects to read their responses.
 				</Text>
 				<View style={styles.draggableContainer}>
 					{draggableUsers.map((user, i) => (
@@ -142,7 +142,9 @@ const DragSort = () => {
 					style={styles.box}
 					onLayout={() => measureBox(agreeBoxRef, 0)}>
 					<Text style={styles.boxHeader}>
-						AGREE
+						RELEASE
+						<br />
+						(AGREE)
 					</Text>
 				</View>
 				<View
@@ -150,7 +152,9 @@ const DragSort = () => {
 					style={styles.box}
 					onLayout={() => measureBox(disagreeBoxRef, 1)}>
 					<Text style={styles.boxHeader}>
-						DISAGREE
+						IMPRISON
+						<br />
+						(DISAGREE)
 					</Text>
 				</View>
 			</View>
@@ -183,6 +187,7 @@ const styles = StyleSheet.create({
 		alignSelf: 'center',
 		justifyContent: 'center',
 		gap: 25,
+		padding: 25,
 		flexWrap: 'wrap',
 		maxWidth: 500,
 		zIndex: 1,
