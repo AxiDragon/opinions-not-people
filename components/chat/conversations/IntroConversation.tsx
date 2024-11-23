@@ -106,7 +106,7 @@ const IntroConversation: React.FC = () => {
 		}),
 		new Message({ text: "...", user: user }),
 		new Message({ text: "Okay.", user: user }),
-		new Message({ text: "Which of these icons best represents you?", user: user }),
+		new Message({ text: "Which of these icons best represent you?", user: user }),
 		new Message({
 			text: "",
 			user: PLAYER,
