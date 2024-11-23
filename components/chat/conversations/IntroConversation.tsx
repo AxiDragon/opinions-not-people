@@ -19,8 +19,13 @@ const IntroConversation: React.FC = () => {
 	const chatRef = useRef<ChatHandle>(null);
 
 	const user = ALL_USERS.CAPTAIN;
+	const maxNameLength = 15;
 
 	const changeUsername = (name: string) => {
+		if (name.length > maxNameLength) {
+			name = name.substring(0, maxNameLength);
+		}
+
 		PLAYER.setName('Agent ' + name);
 		setName(name);
 		setChangedUsername(true);
