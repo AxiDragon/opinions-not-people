@@ -92,6 +92,10 @@ const styles = StyleSheet.create({
 		flexDirection: "column",
 		alignItems: "center",
 		overflow: 'hidden',
+		shadowColor: 'black',
+		shadowRadius: 15,
+		shadowOffset: { width: 0, height: 5 },
+		shadowOpacity: 0.5,
 	},
 	messageText: {
 		fontSize: 20,

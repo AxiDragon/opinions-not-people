@@ -3,6 +3,8 @@ import { View, StyleSheet, Pressable } from "react-native";
 import { Image } from "expo-image";
 import { COLORS } from "@/constants/colors";
 import { PLAYER } from "@/assets/users/users";
+import SelectableIcon from "./SelectableIcon";
+import { useState } from "react";
 
 type Props = {
 	/*
@@ -14,9 +16,13 @@ type Props = {
 
 const IconSelector = ({ onSelect }: Props) => {
 	const imageSize = 96;
+	const [selectedIcon, setSelectedIcon] = useState<string>("");
+
 
 	const handleSelectIcon = (icon: any) => {
 		PLAYER.image = icon;
+
+		setSelectedIcon(icon);
 
 		if (onSelect) {
 			onSelect(icon);
@@ -26,13 +32,14 @@ const IconSelector = ({ onSelect }: Props) => {
 	return (
 		<View style={styles.iconSelector}>
 			{
-				playerIcons.map((icon, index) => {
-					return (
-						<Pressable key={index} onPress={() => handleSelectIcon(icon)}>
-							<Image source={icon} style={{ width: imageSize, height: imageSize }} />
-						</Pressable>
-					);
-				})
+				playerIcons.map((icon, index) =>
+					<SelectableIcon
+						key={index}
+						onPress={handleSelectIcon}
+						imageSize={imageSize}
+						icon={icon}
+						selected={icon === selectedIcon} />
+				)
 			}
 		</View>
 	);
@@ -44,7 +51,7 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		flexWrap: "wrap",
 		justifyContent: "center",
-		gap: 25,
+		gap: 50,
 		padding: 25,
 		backgroundColor: COLORS.backgroundDark,
 		marginTop: 25,
