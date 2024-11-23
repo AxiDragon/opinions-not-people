@@ -99,13 +99,11 @@ const IntroConversation: React.FC = () => {
 			},
 			user: user,
 		}),
-		new Message({ text: "I'm going to need your name.", user: user }),
 		new Message({
-			text: "My name is...", customContent: nameInput(),
-			user: PLAYER,
+			text: "I'm going to need your name.", user: user,
+			customContent: nameInput(),
 			continueCondition: () => changedUsername,
 		}),
-		//TODO: Icon selection
 		new Message({ text: "...", user: user }),
 		new Message({ text: "Okay.", user: user }),
 		new Message({ text: "Which of these icons best represents you?", user: user }),
