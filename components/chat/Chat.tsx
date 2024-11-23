@@ -72,7 +72,8 @@ const Chat = forwardRef<ChatHandle, Props>(({ messages, onEnd = () => { }, start
 					<MessageUI key={i}
 						message={message}
 						show={i <= currentMessageIndex}
-						interactable={i === currentMessageIndex} />
+						interactable={i === currentMessageIndex}
+						animated />
 				))}
 			</ScrollView>
 			<Tappable onTap={handleTap} />

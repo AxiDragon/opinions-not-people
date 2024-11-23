@@ -8,6 +8,7 @@ type Props = {
 	message: Message;
 	show?: boolean;
 	interactable?: boolean;
+	animated?: boolean;
 }
 
 const characterInterval = 30;
@@ -15,20 +16,24 @@ const pauseCharacter = 250;
 
 const pauseCharacters = [".", ",", "!", "?"];
 
-export default function MessageUI({ message, show = true, interactable = true }: Props) {
+export default function MessageUI({ message, show = true, interactable = true, animated = true }: Props) {
 	const messageText = message.getText();
 	const translateX = useRef(new Animated.Value(-1)).current;
-	const [length, setLength] = useState(0);
+	const [length, setLength] = useState(animated ? 0 : messageText.length);
 
 	useEffect(() => {
-		Animated.timing(translateX, {
-			toValue: show ? 0 : -1,
-			duration: 500,
-			useNativeDriver: true,
-			easing: Easing.out(Easing.poly(5)),
-		}).start();
+		if (animated) {
+			Animated.timing(translateX, {
+				toValue: show ? 0 : -1,
+				duration: 500,
+				useNativeDriver: true,
+				easing: Easing.out(Easing.poly(5)),
+			}).start();
+		} else {
+			translateX.setValue(show ? 0 : -1);
+		}
 
-		if (!show) {
+		if (!show && animated) {
 			setLength(0);
 		}
 	}, [show]);
@@ -47,6 +52,11 @@ export default function MessageUI({ message, show = true, interactable = true }:
 	}
 
 	useEffect(() => {
+		if (!animated) {
+			setLength(show ? messageText.length : 0);
+			return;
+		}
+
 		const interval = setTimeout(() => {
 			setLength(show ? length + 1 : 0);
 		}, getInterval(messageText, length - 1));
