@@ -86,6 +86,11 @@ const IntroConversation: React.FC = () => {
 	];
 
 	const intro: Message[] = [
+		new Message({ text: "Hi! Please note that this project is unfinished and abandoned." }),
+		new Message({ text: "It aimed to make people aware of outgroup homogeneity bias, but really missed the mark." }),
+		new Message({ text: "I'm just keeping it around since, despite its failures, it still taught me a lot." }),
+		new Message({ text: "Enjoy!" }),
+		new Message({ text: " " }),
 		new Message({
 			text: () => {
 				const hours = new Date().getHours();
