@@ -89,6 +89,9 @@ const IntroConversation: React.FC = () => {
 		new Message({ text: "Hi! Please note that this project is unfinished and abandoned." }),
 		new Message({ text: "It aimed to make people aware of outgroup homogeneity bias, but really missed the mark." }),
 		new Message({ text: "I'm just keeping it around since, despite its failures, it still taught me a lot." }),
+		new Message({
+			text: "If you want to view the final iteration, you can visit:\n https://axidragon.github.io/outgroup-odyssey/ \n (You're going to have to copy and paste that, sorry)",
+		}),
 		new Message({ text: "Enjoy!" }),
 		new Message({ text: " " }),
 		new Message({
